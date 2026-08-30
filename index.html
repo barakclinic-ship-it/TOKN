@@ -1,0 +1,3100 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌳 The Tree of Knowledge</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn6q+PC90ZXh0Pjwvc3ZnPg==">
+<style>
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#f2ede8; --white:#faf7f4;
+  --green:#8fa882; --green-dk:#6e8a63; --green-lt:#e4ece0;
+  --blue:#8aa5b8; --blue-dk:#6a8898;
+  --red:#c08888; --red-lt:#eedede;
+  --yellow:#c8a872;
+  --gray:#b0a89e; --gray-lt:#e6e0da;
+  --text:#3a3330; --border:transparent;
+  --radius:16px;
+}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;margin:0;padding:0;overflow-x:hidden;}
+.page{display:flex;flex-direction:column;align-items:center;padding:0 16px 0;box-sizing:border-box;}
+.page.hidden{display:none;}
+
+/* ── SETUP SCREEN ── */
+#setup{width:100%;max-width:560px;gap:16px;padding-top:4px;padding-bottom:80px;}
+.setup-title{font-size:26px;font-weight:900;color:var(--text);text-align:center;margin-bottom:4px;}
+.setup-sub{font-size:14px;color:var(--gray);text-align:center;font-weight:600;}
+.app-masthead{display:flex;align-items:center;gap:14px;padding:4px 0;margin-bottom:2px;direction:ltr;text-align:left;}
+.app-icon-outline{font-size:32px;line-height:1;}
+.app-name{font-size:19px;font-weight:800;color:var(--text);letter-spacing:-0.3px;line-height:1.2;text-align:left;}
+.app-tagline{font-size:13px;color:var(--gray);font-weight:500;margin-top:3px;text-align:left;}
+.setup-section-label{font-size:13px;font-weight:800;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.setup-collapse-body{overflow:hidden;max-height:0;transition:max-height .4s ease;}
+.setup-collapse-body.open{max-height:4000px;}
+
+/* Source toggles */
+
+
+
+
+
+
+
+
+
+.src-btn[data-mode="pt"].active     {background:#9b7ec8;color:#fff;border-color:#9b7ec8;}
+.src-btn[data-mode="drug"].active   {background:#c47a7a;color:#fff;border-color:#c47a7a;}
+.src-btn[data-mode="flags"].active  {background:#c49a4a;color:#fff;border-color:#c49a4a;}
+.src-btn[data-mode="herbs"].active  {background:#6a9e7a;color:#fff;border-color:#6a9e7a;}
+.src-btn[data-mode="english"].active{background:#6a8eb8;color:#fff;border-color:#6a8eb8;}
+.src-btn[data-mode="japanese"].active{background:#b86a7a;color:#fff;border-color:#b86a7a;}
+.src-btn[data-mode="nutrition"].active{background:#7aab6e;color:#fff;border-color:#7aab6e;}
+.src-btn[data-mode="history"]{color:#8a7a5a;}
+.src-btn[data-mode="history"].active{background:#8a7a5a;color:#fff;border-color:#8a7a5a;}
+.src-btn[data-mode="blood"]{color:#b85a6a;}
+.src-btn[data-mode="blood"].active{background:#b85a6a;color:#fff;border-color:#b85a6a;}<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlashCards</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#f7f7f7; --white:#ffffff;
+  --green:#58cc02; --green-dk:#46a302; --green-lt:#d7ffb8;
+  --blue:#1cb0f6;  --blue-dk:#0099d0;
+  --red:#ff4b4b;   --red-lt:#ffdfe0;
+  --yellow:#ffc800;
+  --gray:#afafaf;  --gray-lt:#e5e5e5;
+  --text:#3c3c3c;  --border:#e5e5e5;
+  --radius:16px;
+}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;}
+
+/* ── SETUP SCREEN ── */
+#setup{width:100%;max-width:560px;gap:16px;padding-top:4px;padding-bottom:80px;}
+.setup-title{font-size:26px;font-weight:900;color:var(--text);text-align:center;margin-bottom:4px;}
+.setup-sub{font-size:14px;color:var(--gray);text-align:center;font-weight:600;}
+.setup-section-label{font-size:13px;font-weight:800;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;}
+.setup-collapse-body{overflow:hidden;max-height:0;transition:max-height .4s ease;}
+.setup-collapse-body.open{max-height:4000px;}
+
+/* Source toggles */
+
+
+.src-btn.active{color:#fff;border-color:transparent;}
+.src-btn[data-mode="pt"].active    {background:#8b5cf6;}
+.src-btn[data-mode="drug"].active  {background:#ef4444;}
+.src-btn[data-mode="flags"].active {background:#f59e0b;}
+.src-btn[data-mode="herbs"].active {background:#10b981;}
+.src-btn[data-mode="english"].active{background:#3b82f6;}
+
+/* Category accordion */
+.cat-section{margin-bottom:10px;width:100%;}
+.cat-accordion-header{
+  display:flex;align-items:center;
+  width:100%;padding:14px 20px;border-radius:12px;cursor:pointer;
+  color:#fff;font-size:14px;font-weight:800;
+  user-select:none;box-sizing:border-box;
+}
+
+.cat-chips{display:flex;flex-wrap:wrap;gap:6px;padding:8px 4px 4px;}
+.cat-chips-wrap{overflow:hidden;max-height:0;transition:max-height .6s ease;}
+.cat-chips-wrap.open{max-height:3000px;}
+.topic-chip{display:block;margin-bottom:2px;border-radius:10px;padding:8px 14px;transition:transform .15s,background .2s,color .2s;touch-action:pan-y;}
+.topic-chip:active{transform:scale(0.97);}
+.cat-chip{
+  font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;
+  padding:5px 12px;border-radius:99px;cursor:pointer;
+  border:2px solid;background:var(--white);
+  transition:all .15s;
+}
+.cat-chip.on{color:#fff;}
+
+
+/* Quantity & mode row */
+.setup-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.setup-row-label{font-size:13px;font-weight:700;color:var(--gray);white-space:nowrap;}
+.qty-btn,.gtype-btn{
+  font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;
+  padding:7px 16px;border-radius:99px;cursor:pointer;
+  border:none;background:var(--white);color:var(--gray);
+  box-shadow:0 1px 6px rgba(0,0,0,.08);transition:all .15s;
+}
+.qty-btn.active{background:#d4a85a;border-color:#b08840;color:#fff;box-shadow:0 2px 0 #b08840;}
+.gtype-btn.active{background:var(--blue);border-color:var(--blue-dk);color:#fff;box-shadow:0 2px 0 var(--blue-dk);}
+
+/* Start button */
+.btn-start{margin-top:32px;width:100%;padding:16px;background:#2d2926;color:#fff;border:none;border-radius:var(--radius);box-shadow:0 2px 10px rgba(0,0,0,.18);cursor:pointer;font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;transition:transform .1s;}
+.btn-start-fixed{
+  position:fixed;bottom:0;left:0;right:0;
+  padding:18px;background:#2d2926;color:#fff;
+  border:none;
+  font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;
+  cursor:pointer;z-index:100;
+  box-shadow:0 -2px 16px rgba(0,0,0,.12);
+  transition:background .15s;display:none;
+}
+.btn-start-fixed:active{background:#1a1614;}
+.btn-start:active{transform:translateY(3px);box-shadow:0 1px 0 var(--green-dk);}
+
+/* ── GAME SCREEN ── */
+#game{width:100%;max-width:560px;}
+
+/* Game header */
+.game-header{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  padding:18px 0 12px;border-bottom:2px solid var(--border);margin-bottom:16px;
+}
+.game-title{font-size:15px;font-weight:900;color:var(--text);}
+.btn-back{
+  font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;
+  padding:6px 14px;border-radius:99px;cursor:pointer;
+  border:2px solid var(--border);background:var(--white);color:var(--gray);
+}
+
+/* Progress */
+.prog-wrap{width:100%;margin-bottom:16px;}
+.prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.prog-label{font-size:13px;font-weight:700;color:var(--gray);}
+.streak-badge{font-size:13px;font-weight:800;color:var(--yellow);}
+.prog-bar{height:10px;background:var(--gray-lt);border-radius:99px;overflow:hidden;}
+.prog-fill{height:100%;background:var(--green);border-radius:99px;transition:width .4s ease;width:0%;}
+.prog-fill::after{content:'';position:absolute;right:0;top:0;bottom:0;width:6px;background:rgba(255,255,255,.4);border-radius:99px;}
+.prog-bar{position:relative;}
+.streak-dots{display:flex;gap:5px;margin-top:8px;}
+.sdot{width:10px;height:10px;border-radius:50%;background:var(--gray-lt);transition:background .25s;}
+.sdot.hit{background:var(--green);}
+.sdot.miss{background:var(--red);}
+
+/* Card badge (source + category) */
+.card-badge-wrap{
+  display:flex;gap:6px;align-items:center;
+  position:absolute;top:14px;right:14px;
+}
+.badge{
+  font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+  padding:3px 9px;border-radius:99px;color:#fff;
+}
+
+/* Card */
+.scene{width:100%;max-width:560px;height:250px;perspective:1200px;cursor:pointer;margin-bottom:14px;}
+.card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .42s cubic-bezier(.4,0,.2,1);}
+.card-inner.flipped{transform:rotateY(180deg);}
+.card-face{position:absolute;inset:0;background:var(--card-bg,var(--white));border-radius:var(--radius);border:none;box-shadow:0 2px 8px rgba(0,0,0,.07);backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 28px;gap:10px;transition:background .3s,border-color .3s;}
+.card-face.back{transform:rotateY(180deg);background:var(--card-bg-back,#f0fff0);border:none;}
+.card-word{font-size:clamp(28px,6vw,46px);font-weight:900;color:var(--text);text-align:center;line-height:1.15;direction:ltr;}
+.card-sub{font-size:13px;font-weight:600;color:var(--gray);}
+.card-answer{font-size:clamp(20px,4.5vw,32px);font-weight:800;color:var(--green-dk);text-align:center;line-height:1.25;}
+.card-hint{position:absolute;bottom:14px;font-size:12px;font-weight:600;color:var(--gray);}
+.card-cat-label{
+  position:absolute;bottom:12px;left:14px;
+  font-size:10px;font-weight:700;color:rgba(0,0,0,0.28);
+  letter-spacing:0.5px;text-transform:uppercase;
+  line-height:1.5;text-align:left;
+}
+.tts-btn-answer{
+  background:none;border:none;font-size:18px;cursor:pointer;
+  opacity:0.45;transition:opacity .2s;padding:4px;
+}
+.tts-btn-answer:hover{opacity:1;}
+.tts-btn-answer.hidden{display:none;}
+.tts-btn{position:absolute;top:12px;left:12px;background:none;border:none;font-size:20px;cursor:pointer;opacity:1;transition:opacity .2s,transform .15s;padding:4px;}
+.tts-btn:hover{transform:scale(1.15);}
+.tts-btn.tts-off{opacity:.25;filter:grayscale(1);}
+.tts-btn.speaking{animation:tts-pulse .55s infinite alternate;}
+@keyframes tts-pulse{from{transform:scale(1)}to{transform:scale(1.25)}}
+.card-face.flash-ok{animation:fl-ok .4s;}
+.card-face.flash-bad{animation:fl-bad .4s;}
+@keyframes fl-ok{0%,100%{background:#f0fff0}50%{background:#c6f7c6}}
+@keyframes fl-bad{0%,100%{background:#fff0f0}50%{background:#ffc6c6}}
+
+.flip-back-link{font-size:13px;font-weight:700;color:var(--blue);cursor:pointer;text-decoration:underline;text-align:center;margin-bottom:8px;display:none;}
+
+/* Buttons */
+.btn-flip{width:100%;padding:14px;border-radius:var(--radius);font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;background:var(--white);color:var(--blue);border:none;box-shadow:0 1px 8px rgba(0,0,0,.09);cursor:pointer;margin-bottom:12px;transition:transform .1s;}
+.btn-flip:active{transform:translateY(2px);box-shadow:0 1px 0 var(--blue-dk);}
+.btn-row{width:100%;display:flex;gap:10px;}
+.btn-answer{flex:1;padding:14px;border-radius:var(--radius);font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;cursor:pointer;transition:transform .1s,box-shadow .1s;border:2px solid;}
+.btn-answer:active{transform:translateY(2px);}
+.btn-wrong{background:#f5eded;color:var(--red);border:none;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+.btn-wrong:active{box-shadow:0 1px 0 #e0a0a0;}
+.btn-right{background:var(--green);color:#fff;border:none;box-shadow:0 1px 8px rgba(0,0,0,.12);}
+.btn-right:active{box-shadow:0 1px 0 var(--green-dk);}
+.btn-row.hidden,.btn-flip.hidden{display:none;}
+
+/* Quiz */
+.quiz-wrap{width:100%;display:none;flex-direction:column;gap:12px;}
+.quiz-q-card{width:100%;background:var(--card-bg,var(--white));border:none;border-radius:var(--radius);box-shadow:0 2px 8px rgba(0,0,0,.07);padding:28px 24px;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;min-height:150px;justify-content:center;transition:background .3s,border-color .3s;}
+.quiz-word{font-size:clamp(24px,5.5vw,40px);font-weight:900;color:var(--text);text-align:center;direction:ltr;line-height:1.2;}
+.quiz-sub{font-size:13px;font-weight:600;color:var(--gray);}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.quiz-opt{padding:14px 12px;border-radius:var(--radius);font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;text-align:right;line-height:1.3;cursor:pointer;background:var(--white);color:var(--text);border:none;box-shadow:0 1px 6px rgba(0,0,0,.07);transition:all .15s;display:flex;align-items:center;gap:6px;}
+.quiz-opt:hover:not(:disabled){background:#edf3f8;color:var(--blue);box-shadow:0 2px 8px rgba(0,0,0,.1);}
+.quiz-opt:active:not(:disabled){transform:translateY(2px);box-shadow:0 1px 0 var(--border);}
+.quiz-opt.correct{background:var(--green-lt);border:none;color:var(--green-dk);box-shadow:0 1px 6px rgba(0,0,0,.07);}
+.quiz-opt.wrong{background:var(--red-lt);border:none;color:var(--red);box-shadow:0 1px 6px rgba(0,0,0,.07);}
+.quiz-opt.reveal{background:var(--green-lt);border:none;color:var(--green-dk);}
+.quiz-opt:disabled{cursor:default;}
+.quiz-feedback{text-align:center;font-size:15px;font-weight:800;min-height:22px;}
+.quiz-feedback.ok{color:var(--green);}
+.quiz-feedback.bad{color:var(--red);}
+.btn-got-it{width:100%;padding:14px;background:var(--red);color:#fff;border:none;box-shadow:0 1px 8px rgba(0,0,0,.1);border-radius:var(--radius);font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;cursor:pointer;transition:transform .1s,box-shadow .1s;}
+.btn-got-it:active{transform:translateY(2px);box-shadow:0 1px 0 #cc0000;}
+.btn-got-it.hidden{display:none;}
+
+/* Stats */
+.stats{width:100%;display:flex;gap:10px;margin-top:18px;}
+.stat-box{flex:1;background:var(--white);border:none;border-radius:var(--radius);box-shadow:0 1px 6px rgba(0,0,0,.06);padding:12px 8px;text-align:center;}
+.stat-val{font-size:22px;font-weight:900;}
+.stat-lbl{font-size:11px;font-weight:700;color:var(--gray);margin-top:2px;}
+.g{color:var(--green);}.r{color:var(--red);}.b{color:var(--blue);}
+
+/* Finish */
+#finish{text-align:center;gap:16px;width:100%;max-width:560px;margin-top:40px;}
+#finish .big{font-size:72px;}
+#finish h2{font-size:30px;font-weight:900;}
+#finish p{font-size:16px;font-weight:600;color:var(--gray);}
+.btn-restart{padding:16px 48px;background:var(--green);color:#fff;border:none;box-shadow:0 2px 10px rgba(0,0,0,.12);border-radius:var(--radius);cursor:pointer;font-family:'Nunito',sans-serif;font-size:17px;font-weight:900;margin-top:4px;}
+.btn-back-finish{padding:12px 32px;background:var(--white);color:var(--gray);border:none;box-shadow:0 1px 6px rgba(0,0,0,.07);border-radius:var(--radius);cursor:pointer;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;margin-top:4px;}
+
+/* Category color system */
+/* Each unique (source,cat) combo gets a color via JS-injected inline styles */
+
+
+.screen { display:none; }
+.screen.active { display:flex; flex-direction:column; align-items:center; padding:0 16px 60px; }
+
+/* ── CONFETTI ── */
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  border-radius: 2px;
+  animation: confetti-fall linear forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+@keyframes confetti-fall {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg) scale(0.5); opacity: 0; }
+}
+.yoohoo {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  font-size: 52px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  z-index: 9998;
+  animation: yoohoo-pop 0.6s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
+  pointer-events: none;
+  white-space: nowrap;
+}
+@keyframes yoohoo-pop {
+  0%   { transform: translate(-50%, -50%) scale(0) rotate(-10deg); opacity: 0; }
+  60%  { transform: translate(-50%, -50%) scale(1.2) rotate(5deg); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<div id="screen-setup" class="screen active">
+<div id="setup" class="page">
+  <div class="app-masthead">
+    <span class="app-icon-outline">🪾</span>
+    <div>
+      <div class="app-name">The Tree of<br>Knowledge</div>
+    </div>
+  </div>
+
+  <div style="width:100%">
+    <div onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"
+         style="background:#2d2926;color:#fff;border-radius:14px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:Nunito,sans-serif;font-size:15px;font-weight:800;user-select:none;">
+      <span>קטגוריות</span>
+      <span style="font-size:10px;opacity:0.6;transition:transform .2s;" class="sc-arrow">▼</span>
+    </div>
+    <div class="setup-collapse-body">
+      <div id="catSections" style="width:100%;padding-top:8px;"></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="setup-section-label">כמות הצלחות ליעד</div>
+    <div class="setup-row">
+      <button class="qty-btn active" onclick="setQty(10)">10</button>
+      <button class="qty-btn" onclick="setQty(20)">20</button>
+      <button class="qty-btn" onclick="setQty(30)">30</button>
+      <button class="qty-btn" id="qtyAll" onclick="setQty(0)">הכל</button>
+    </div>
+  </div>
+
+  <div>
+    <div class="setup-section-label">סוג משחק</div>
+    <div class="setup-row">
+      <button class="gtype-btn" id="gtFlash" onclick="setGameType('flash')">כרטיסיות</button>
+      <button class="gtype-btn active" id="gtQuiz" onclick="setGameType('quiz')">בחירה מרובה</button>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<button class="btn-start-fixed" id="btnStart" onclick="startGame()">התחל</button>
+
+<div id="screen-game" class="screen">
+<!-- ══ GAME SCREEN ══ -->
+<div id="game" class="page">
+  <div class="game-header" style="justify-content:flex-start;border-bottom:none;padding:14px 0 6px;">
+    <span onclick="goBack()" style="font-size:26px;cursor:pointer;opacity:0.55;transition:opacity .2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.55" title="חזור להגדרות">🪾</span>
+</div>
+
+  <div class="prog-wrap">
+    <div class="prog-top">
+      <span class="prog-label" id="progLabel">0 / 0</span>
+      <span class="streak-badge" id="streakBadge">רצף 0</span>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+    <div class="streak-dots" id="streakDots"></div>
+  </div>
+
+  <!-- Flashcard -->
+  <div class="scene" id="flashScene" onclick="onCardClick()">
+    <div class="card-inner" id="cardInner">
+      <div class="card-face front">
+        <button class="tts-btn" id="ttsBtnFlash" onclick="speakCurrent(event)">🔊</button>
+        <div class="card-cat-label" id="cardCatLabel"></div>
+        <div class="card-word" id="cardWord">—</div>
+        <div class="card-sub"  id="cardSub"></div>
+        <div class="card-hint">לחץ להפוך · S להאזין</div>
+      </div>
+      <div class="card-face back" id="cardBack">
+<div class="card-answer" id="cardAnswer">—</div>
+        <div class="card-hint">הידעת?</div>
+      </div>
+    </div>
+  </div>
+  <div class="flip-back-link" id="flipBackLink" onclick="unflipCard()">הפוך חזרה</div>
+  <button class="btn-flip hidden" id="btnFlip" onclick="flipCard()">הצג תשובה</button>
+  <div class="btn-row hidden" id="btnRow">
+    <button class="btn-answer btn-wrong" onclick="answer(false)">לא ידעתי</button>
+    <button class="btn-answer btn-right" onclick="answer(true)">ידעתי</button>
+  </div>
+
+  <!-- Quiz -->
+  <div class="quiz-wrap" id="quizWrap">
+    <div class="quiz-q-card" id="quizQCard">
+      <button class="tts-btn" id="ttsBtnQuiz" onclick="speakCurrent(event)">🔊</button>
+      <div class="card-cat-label" id="qCatLabel"></div>
+      <div class="quiz-word" id="qWord">—</div>
+      <div class="quiz-sub"  id="qSub"></div>
+    </div>
+    <div class="quiz-options" id="quizOptions"></div>
+    <div class="quiz-feedback" id="quizFeedback" style="display:flex;align-items:center;gap:8px;justify-content:center;"></div>
+    <button class="btn-got-it hidden" id="btnGotIt" onclick="nextCard()">הבנתי, המשך</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat-box"><div class="stat-val g" id="sRight">0</div><div class="stat-lbl">ידעתי</div></div>
+    <div class="stat-box"><div class="stat-val r" id="sWrong">0</div><div class="stat-lbl">לא ידעתי</div></div>
+    <div class="stat-box"><div class="stat-val b" id="sLeft">0</div><div class="stat-lbl">נותרו</div></div>
+    <div class="stat-box"><div class="stat-val" id="sPct">—</div><div class="stat-lbl">הצלחה</div></div>
+  </div>
+</div>
+
+<!-- ══ FINISH SCREEN ══ -->
+<div id="finish" class="page" style="display:none">
+
+  <!-- Score circle -->
+  <div id="fScoreWrap" style="margin:20px 0 8px;display:flex;flex-direction:column;align-items:center;gap:4px;">
+    <div id="fScore" style="font-size:56px;font-weight:900;line-height:1;color:var(--text);">—%</div>
+    <div style="font-size:13px;color:var(--gray);font-weight:600;">מהסיבוב הראשון</div>
+  </div>
+
+  <!-- Stats row -->
+  <div style="display:flex;gap:10px;margin:8px 0 24px;width:100%;">
+    <div style="flex:1;background:var(--white);border-radius:14px;padding:12px 8px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.06);">
+      <div id="fRight" style="font-size:22px;font-weight:900;color:var(--green);">0</div>
+      <div style="font-size:11px;color:var(--gray);font-weight:700;margin-top:2px;">נכון</div>
+    </div>
+    <div style="flex:1;background:var(--white);border-radius:14px;padding:12px 8px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.06);">
+      <div id="fWrong" style="font-size:22px;font-weight:900;color:var(--red);">0</div>
+      <div style="font-size:11px;color:var(--gray);font-weight:700;margin-top:2px;">שגוי</div>
+    </div>
+    <div style="flex:1;background:var(--white);border-radius:14px;padding:12px 8px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.06);">
+      <div id="fTotal" style="font-size:22px;font-weight:900;color:var(--text);">0</div>
+      <div style="font-size:11px;color:var(--gray);font-weight:700;margin-top:2px;">שאלות</div>
+    </div>
+  </div>
+
+
+  <button class="btn-restart" onclick="restart()" style="width:100%;margin-bottom:10px;">סיבוב נוסף</button>
+  <button class="btn-back-finish" onclick="goBack()" style="width:100%;">הגדרות חדשות</button>
+</div>
+
+<!-- ══ REVIEW MODAL ══ -->
+<div id="reviewModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:20px;padding:28px 24px;max-width:380px;width:90%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.2);">
+    <div style="font-size:40px;margin-bottom:8px;">✏️</div>
+    <div style="font-size:20px;font-weight:900;color:#3c3c3c;margin-bottom:8px;" id="reviewTitle">בואו נתקן טעויות</div>
+    <div style="font-size:14px;color:#afafaf;font-weight:600;margin-bottom:20px;" id="reviewMsg"></div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <button onclick="startReview()" style="padding:14px;background:#58cc02;color:#fff;border:2px solid #46a302;box-shadow:0 3px 0 #46a302;border-radius:14px;font-family:Nunito,sans-serif;font-size:16px;font-weight:900;cursor:pointer;">תקן את הטעויות</button>
+      <button onclick="closeReview()" style="padding:12px;background:#fff;color:#afafaf;border:2px solid #e5e5e5;border-radius:14px;font-family:Nunito,sans-serif;font-size:15px;font-weight:700;cursor:pointer;">סיים בכל זאת</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+// ── TWO-FINGER DRAG SELECT ON ACCORDION HEADERS ──
+(function() {
+  let _hdrDragMode = null;
+  document.addEventListener('touchstart', e => {
+    if (e.touches.length !== 2) return;
+    const hdr = e.target.closest('.cat-accordion-header');
+    if (!hdr) return;
+    const wrap = hdr.nextElementSibling;
+    if (!wrap || !wrap.dataset.src) return;
+    const src = wrap.dataset.src;
+    const anyActive = [...activeCatKeys].some(k => k.startsWith(src + '|'));
+    _hdrDragMode = !anyActive; // if off → turn on; if on → turn off
+    applyHeader(hdr, wrap, src, _hdrDragMode);
+  }, {passive:true});
+
+  document.addEventListener('touchmove', e => {
+    if (e.touches.length !== 2 || _hdrDragMode === null) return;
+    e.preventDefault();
+    const mx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const my = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+    const el = document.elementFromPoint(mx, my);
+    const hdr = el && el.closest('.cat-accordion-header');
+    if (!hdr) return;
+    const wrap = hdr.nextElementSibling;
+    if (!wrap || !wrap.dataset.src) return;
+    applyHeader(hdr, wrap, wrap.dataset.src, _hdrDragMode);
+  }, {passive:false});
+
+  document.addEventListener('touchend', e => {
+    if (e.touches.length === 0) _hdrDragMode = null;
+  });
+
+  function applyHeader(hdr, wrap, src, on) {
+    const sc = SOURCE_COLORS[src];
+    wrap.querySelectorAll('.topic-chip').forEach(chip => {
+      applyChip(chip, on);
+    });
+    hdr.style.background = on ? sc.bg : '#c0bab4';
+    hdr.style.opacity    = on ? '1' : '0.6';
+  }
+})();
+
+
+// ── CELEBRATION ──
+function launchConfetti() {
+  const colors = ['#ff6b6b','#ffd93d','#6bcb77','#4d96ff','#ff6fc8','#c77dff','#f4a261','#2ec4b6'];
+  const emojis = ['🎉','🎊','⭐','💥','🔥','✨','🌟','💫'];
+  const count = 120;
+
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      const isEmoji = Math.random() < 0.2;
+      if (isEmoji) {
+        piece.style.cssText = 'background:none;font-size:20px;width:auto;height:auto;';
+        piece.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      } else {
+        piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+        const size = 6 + Math.random()*10;
+        piece.style.width  = size + 'px';
+        piece.style.height = size + 'px';
+        if (Math.random() < 0.3) piece.style.borderRadius = '50%';
+      }
+      piece.style.left = Math.random()*100 + 'vw';
+      piece.style.animationDuration = (1.5 + Math.random()*2.5) + 's';
+      piece.style.animationDelay    = (Math.random()*0.5) + 's';
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 4000);
+    }, i * 15);
+  }
+
+  // Yoohoo text
+  const msgs = ['יוהוווו! 🎉','מושלם! 💥','100%! ⭐','אלוף! 🏆','מדהים! 🔥'];
+  const yoo = document.createElement('div');
+  yoo.className = 'yoohoo';
+  yoo.textContent = msgs[Math.floor(Math.random()*msgs.length)];
+  document.body.appendChild(yoo);
+  setTimeout(() => {
+    yoo.style.transition = 'opacity 0.5s';
+    yoo.style.opacity = '0';
+    setTimeout(() => yoo.remove(), 600);
+  }, 2000);
+
+  // Sound — play multiple cheerful beeps via AudioContext
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const notes = [523, 659, 784, 1047, 784, 1047, 1319];
+    notes.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = freq;
+      osc.type = 'sine';
+      gain.gain.setValueAtTime(0.3, ctx.currentTime + i*0.12);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i*0.12 + 0.25);
+      osc.start(ctx.currentTime + i*0.12);
+      osc.stop(ctx.currentTime + i*0.12 + 0.3);
+    });
+  } catch(e) {}
+}
+
+// ── PAGE ROUTER ──
+function showPage(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
+  window.scrollTo(0, 0);
+  document.getElementById('btnStart').style.display = name === 'setup' ? 'block' : 'none';
+  if (name === 'game') {
+    const g = document.getElementById('game');
+    g.classList.remove('hidden'); g.style.display = 'flex';
+    const f = document.getElementById('finish');
+    f.classList.add('hidden'); f.style.display = 'none';
+    bootGame();
+  }
+}
+
+// ── SHARED: DATA + COLORS + FUNCTIONS ──
+
+
+const PT_DATA = [
+["Animals","girafa","GIRAFFE"],["Animals","cão","DOG"],["Animals","gato","CAT"],["Animals","cavalo","HORSE"],["Animals","vaca","COW"],["Animals","porco","PIG"],["Animals","ovelha","SHEEP"],["Animals","cabra","GOAT"],["Animals","burro","DONKEY"],["Animals","coelho","RABBIT"],["Animals","rato","MOUSE"],["Animals","elefante","ELEPHANT"],["Animals","leão","LION"],["Animals","tigre","TIGER"],["Animals","urso","BEAR"],["Animals","lobo","WOLF"],["Animals","raposa","FOX"],["Animals","macaco","MONKEY"],["Animals","zebra","ZEBRA"],["Animals","rinoceronte","RHINOCEROS"],["Animals","hipopótamo","HIPPOPOTAMUS"],["Animals","camelo","CAMEL"],["Animals","canguru","KANGAROO"],["Animals","gorila","GORILLA"],["Animals","leopardo","LEOPARD"],["Animals","pantera","PANTHER"],["Animals","hiena","HYENA"],["Animals","veado","DEER"],["Animals","javali","BOAR"],["Animals","lince","LYNX"],
+["Birds","pomba","DOVE"],["Birds","águia","EAGLE"],["Birds","falcão","FALCON"],["Birds","corvo","CROW"],["Birds","papagaio","PARROT"],["Birds","pinguim","PENGUIN"],["Birds","avestruz","OSTRICH"],["Birds","flamingo","FLAMINGO"],["Birds","cegonha","STORK"],["Birds","gaivota","SEAGULL"],["Birds","pato","DUCK"],["Birds","ganso","GOOSE"],["Birds","cisne","SWAN"],["Birds","pelicano","PELICAN"],["Birds","tucano","TOUCAN"],["Birds","coruja","OWL"],["Birds","andorinha","SWALLOW"],["Birds","tentilhão","FINCH"],["Birds","melro","BLACKBIRD"],["Birds","pica-pau","WOODPECKER"],
+["Fish","salmão","SALMON"],["Fish","bacalhau","COD"],["Fish","atum","TUNA"],["Fish","sardinha","SARDINE"],["Fish","truta","TROUT"],["Fish","polvo","OCTOPUS"],["Fish","lula","SQUID"],["Fish","carpa","CARP"],["Fish","enguia","EEL"],["Fish","robalo","SEABASS"],["Fish","dourada","SEABREAM"],["Fish","tubarão","SHARK"],["Fish","golfinho","DOLPHIN"],["Fish","baleia","WHALE"],["Fish","foca","SEAL"],["Fish","lagosta","LOBSTER"],["Fish","caranguejo","CRAB"],["Fish","camarão","SHRIMP"],["Fish","mexilhão","MUSSEL"],["Fish","ostra","OYSTER"],
+["Insects","abelha","BEE"],["Insects","borboleta","BUTTERFLY"],["Insects","formiga","ANT"],["Insects","mosca","FLY"],["Insects","mosquito","MOSQUITO"],["Insects","besouro","BEETLE"],["Insects","grilo","CRICKET"],["Insects","libélula","DRAGONFLY"],["Insects","aranha","SPIDER"],["Insects","escorpião","SCORPION"],["Insects","caracol","SNAIL"],["Insects","minhoca","WORM"],["Insects","centopeia","CENTIPEDE"],["Insects","louva-a-deus","MANTIS"],["Insects","vespa","WASP"],
+["Fruits","maçã","APPLE"],["Fruits","laranja","ORANGE"],["Fruits","banana","BANANA"],["Fruits","uva","GRAPE"],["Fruits","morango","STRAWBERRY"],["Fruits","melancia","WATERMELON"],["Fruits","melão","MELON"],["Fruits","pêssego","PEACH"],["Fruits","pera","PEAR"],["Fruits","ameixa","PLUM"],["Fruits","cereja","CHERRY"],["Fruits","limão","LEMON"],["Fruits","lima","LIME"],["Fruits","ananás","PINEAPPLE"],["Fruits","manga","MANGO"],["Fruits","papaia","PAPAYA"],["Fruits","kiwi","KIWI"],["Fruits","figo","FIG"],["Fruits","framboesa","RASPBERRY"],["Fruits","mirtilo","BLUEBERRY"],["Fruits","amora","BLACKBERRY"],["Fruits","romã","POMEGRANATE"],["Fruits","coco","COCONUT"],
+["Vegetables","cenoura","CARROT"],["Vegetables","batata","POTATO"],["Vegetables","tomate","TOMATO"],["Vegetables","cebola","ONION"],["Vegetables","alho","GARLIC"],["Vegetables","alface","LETTUCE"],["Vegetables","couve","CABBAGE"],["Vegetables","brócolo","BROCCOLI"],["Vegetables","espinafre","SPINACH"],["Vegetables","pepino","CUCUMBER"],["Vegetables","pimento","PEPPER"],["Vegetables","abóbora","PUMPKIN"],["Vegetables","beringela","EGGPLANT"],["Vegetables","beterraba","BEETROOT"],["Vegetables","nabo","TURNIP"],["Vegetables","couve-flor","CAULIFLOWER"],["Vegetables","feijão-verde","GREEN BEAN"],["Vegetables","ervilha","PEA"],["Vegetables","milho","CORN"],["Vegetables","aspargo","ASPARAGUS"],["Vegetables","cogumelo","MUSHROOM"],
+["Food","pão","BREAD"],["Food","arroz","RICE"],["Food","massa","PASTA"],["Food","sopa","SOUP"],["Food","salada","SALAD"],["Food","carne","MEAT"],["Food","frango","CHICKEN"],["Food","peixe","FISH"],["Food","ovo","EGG"],["Food","queijo","CHEESE"],["Food","manteiga","BUTTER"],["Food","iogurte","YOGURT"],["Food","mel","HONEY"],["Food","açúcar","SUGAR"],["Food","sal","SALT"],["Food","azeite","OLIVE OIL"],["Food","farinha","FLOUR"],["Food","bolo","CAKE"],["Food","chocolate","CHOCOLATE"],["Food","gelado","ICE CREAM"],["Food","pizza","PIZZA"],["Food","hambúrguer","HAMBURGER"],
+["Drinks","água","WATER"],["Drinks","sumo","JUICE"],["Drinks","leite","MILK"],["Drinks","café","COFFEE"],["Drinks","chá","TEA"],["Drinks","cerveja","BEER"],["Drinks","vinho","WINE"],["Drinks","refrigerante","SODA"],["Drinks","limonada","LEMONADE"],["Drinks","batido","MILKSHAKE"],["Drinks","champanhe","CHAMPAGNE"],["Drinks","cidra","CIDER"],
+["Body","cabeça","HEAD"],["Body","pescoço","NECK"],["Body","ombro","SHOULDER"],["Body","braço","ARM"],["Body","cotovelo","ELBOW"],["Body","pulso","WRIST"],["Body","mão","HAND"],["Body","dedo","FINGER"],["Body","tórax","CHEST"],["Body","barriga","BELLY"],["Body","costas","BACK"],["Body","perna","LEG"],["Body","joelho","KNEE"],["Body","tornozelo","ANKLE"],["Body","pé","FOOT"],
+["Face","olho","EYE"],["Face","nariz","NOSE"],["Face","boca","MOUTH"],["Face","orelha","EAR"],["Face","testa","FOREHEAD"],["Face","bochecha","CHEEK"],["Face","queixo","CHIN"],["Face","lábio","LIP"],["Face","língua","TONGUE"],["Face","dente","TOOTH"],["Face","cabelo","HAIR"],["Face","barba","BEARD"],
+["Colors","vermelho","RED"],["Colors","azul","BLUE"],["Colors","verde","GREEN"],["Colors","amarelo","YELLOW"],["Colors","roxo","PURPLE"],["Colors","rosa","PINK"],["Colors","preto","BLACK"],["Colors","branco","WHITE"],["Colors","cinzento","GRAY"],["Colors","castanho","BROWN"],["Colors","dourado","GOLDEN"],["Colors","prateado","SILVER"],
+["Numbers","zero","ZERO"],["Numbers","um","ONE"],["Numbers","dois","TWO"],["Numbers","três","THREE"],["Numbers","quatro","FOUR"],["Numbers","cinco","FIVE"],["Numbers","seis","SIX"],["Numbers","sete","SEVEN"],["Numbers","oito","EIGHT"],["Numbers","nove","NINE"],["Numbers","dez","TEN"],["Numbers","vinte","TWENTY"],["Numbers","cem","HUNDRED"],["Numbers","mil","THOUSAND"],
+["Days","segunda-feira","MONDAY"],["Days","terça-feira","TUESDAY"],["Days","quarta-feira","WEDNESDAY"],["Days","quinta-feira","THURSDAY"],["Days","sexta-feira","FRIDAY"],["Days","sábado","SATURDAY"],["Days","domingo","SUNDAY"],
+["Months","janeiro","JANUARY"],["Months","fevereiro","FEBRUARY"],["Months","março","MARCH"],["Months","abril","APRIL"],["Months","maio","MAY"],["Months","junho","JUNE"],["Months","julho","JULY"],["Months","agosto","AUGUST"],["Months","setembro","SEPTEMBER"],["Months","outubro","OCTOBER"],["Months","novembro","NOVEMBER"],["Months","dezembro","DECEMBER"],
+["Family","mãe","MOTHER"],["Family","pai","FATHER"],["Family","filho","SON"],["Family","filha","DAUGHTER"],["Family","irmão","BROTHER"],["Family","irmã","SISTER"],["Family","avó","GRANDMOTHER"],["Family","avô","GRANDFATHER"],["Family","tio","UNCLE"],["Family","tia","AUNT"],["Family","primo","COUSIN"],["Family","marido","HUSBAND"],["Family","esposa","WIFE"],
+["Jobs","médico","DOCTOR"],["Jobs","engenheiro","ENGINEER"],["Jobs","advogado","LAWYER"],["Jobs","polícia","POLICE OFFICER"],["Jobs","bombeiro","FIREFIGHTER"],["Jobs","piloto","PILOT"],["Jobs","jornalista","JOURNALIST"],["Jobs","cozinheiro","COOK"],["Jobs","dentista","DENTIST"],["Jobs","veterinário","VETERINARIAN"],["Jobs","cientista","SCIENTIST"],
+["Verbs","correr","RUN"],["Verbs","andar","WALK"],["Verbs","saltar","JUMP"],["Verbs","nadar","SWIM"],["Verbs","voar","FLY"],["Verbs","comer","EAT"],["Verbs","beber","DRINK"],["Verbs","dormir","SLEEP"],["Verbs","trabalhar","WORK"],["Verbs","estudar","STUDY"],["Verbs","ler","READ"],["Verbs","escrever","WRITE"],["Verbs","falar","SPEAK"],["Verbs","ouvir","LISTEN"],["Verbs","comprar","BUY"],["Verbs","vender","SELL"],["Verbs","abrir","OPEN"],["Verbs","fechar","CLOSE"],["Verbs","ajudar","HELP"],["Verbs","aprender","LEARN"],["Verbs","ensinar","TEACH"],
+["Adjectives","grande","BIG"],["Adjectives","pequeno","SMALL"],["Adjectives","alto","TALL"],["Adjectives","baixo","SHORT"],["Adjectives","rápido","FAST"],["Adjectives","lento","SLOW"],["Adjectives","forte","STRONG"],["Adjectives","fraco","WEAK"],["Adjectives","novo","NEW"],["Adjectives","velho","OLD"],["Adjectives","bonito","BEAUTIFUL"],["Adjectives","limpo","CLEAN"],["Adjectives","sujo","DIRTY"],["Adjectives","quente","HOT"],
+["Martial Arts","karaté","KARATE"],["Martial Arts","judô","JUDO"],["Martial Arts","taekwondo","TAEKWONDO"],["Martial Arts","kung-fu","KUNG FU"],["Martial Arts","aikido","AIKIDO"],["Martial Arts","jiu-jitsu","JIU JITSU"],["Martial Arts","muay-thai","MUAY THAI"],["Martial Arts","capoeira","CAPOEIRA"],["Martial Arts","kendo","KENDO"],["Martial Arts","sumô","SUMO"],
+["Transport","avião","AIRPLANE"],["Transport","carro","CAR"],["Transport","autocarro","BUS"],["Transport","comboio","TRAIN"],["Transport","metro","SUBWAY"],["Transport","bicicleta","BICYCLE"],["Transport","mota","MOTORCYCLE"],["Transport","barco","BOAT"],["Transport","navio","SHIP"],["Transport","helicóptero","HELICOPTER"],["Transport","táxi","TAXI"],
+["Nature","montanha","MOUNTAIN"],["Nature","rio","RIVER"],["Nature","mar","SEA"],["Nature","lago","LAKE"],["Nature","floresta","FOREST"],["Nature","deserto","DESERT"],["Nature","ilha","ISLAND"],["Nature","praia","BEACH"],["Nature","vulcão","VOLCANO"],["Nature","cascata","WATERFALL"],["Nature","areia","SAND"],["Nature","pedra","STONE"],["Nature","flor","FLOWER"],
+["Sports","futebol","FOOTBALL"],["Sports","basquetebol","BASKETBALL"],["Sports","ténis","TENNIS"],["Sports","natação","SWIMMING"],["Sports","atletismo","ATHLETICS"],["Sports","ciclismo","CYCLING"],["Sports","boxe","BOXING"],["Sports","surf","SURFING"],["Sports","escalada","CLIMBING"],["Sports","ginástica","GYMNASTICS"],
+["Weather","sol","SUN"],["Weather","chuva","RAIN"],["Weather","neve","SNOW"],["Weather","vento","WIND"],["Weather","nevoeiro","FOG"],["Weather","trovão","THUNDER"],["Weather","relâmpago","LIGHTNING"],["Weather","nuvem","CLOUD"],["Weather","arco-íris","RAINBOW"],["Weather","tempestade","STORM"],["Weather","calor","HEAT"],["Weather","frio","COLD"],
+["Phrases","bom dia","Good morning"],["Phrases","boa tarde","Good afternoon"],["Phrases","boa noite","Good night"],["Phrases","por favor","Please"],["Phrases","obrigado","Thank you"],["Phrases","de nada","You're welcome"],["Phrases","com licença","Excuse me"],["Phrases","desculpe","I'm sorry"],["Phrases","como está?","How are you?"],["Phrases","estou bem","I'm fine"],["Phrases","não entendo","I don't understand"],["Phrases","fala inglês?","Do you speak English?"],["Phrases","quanto custa?","How much does it cost?"],["Phrases","onde fica?","Where is it?"],["Phrases","preciso de ajuda","I need help"],["Phrases","tenho fome","I'm hungry"],["Phrases","tenho sede","I'm thirsty"],["Phrases","estou cansado","I'm tired"],["Phrases","que horas são?","What time is it?"],["Phrases","até logo","See you later"],["Phrases","até amanhã","See you tomorrow"],["Phrases","boa sorte","Good luck"],["Phrases","parabéns","Congratulations"],["Phrases","com certeza","Of course"],["Phrases","talvez","Maybe"],["Phrases","não sei","I don't know"],["Phrases","pode repetir?","Can you repeat?"],["Phrases","fala mais devagar","Speak more slowly"],["Phrases","está bem","That's fine / OK"],["Phrases","que saudade","I miss you / I missed it"],
+
+["Phrases","Bom dia!","Good morning!"],
+["Phrases","Boa tarde!","Good afternoon!"],
+["Phrases","Boa noite!","Good evening / Good night!"],
+["Phrases","Como está?","How are you? (formal)"],
+["Phrases","Como te chamas?","What is your name? (informal)"],
+["Phrases","Chamo-me...","My name is..."],
+["Phrases","Estou bem, obrigado.","I'm fine, thank you."],
+["Phrases","E você?","And you?"],
+["Phrases","Muito prazer!","Nice to meet you!"],
+["Phrases","Igualmente!","Likewise! / Same to you!"],
+["Phrases","Por favor, fale mais devagar.","Please speak more slowly."],
+["Phrases","Não entendo.","I don't understand."],
+["Phrases","Pode repetir, por favor?","Can you repeat that, please?"],
+["Phrases","Como se diz... em português?","How do you say... in Portuguese?"],
+["Phrases","Não sei.","I don't know."],
+["Phrases","Fala inglês?","Do you speak English?"],
+["Phrases","Só um pouco.","Just a little."],
+["Phrases","Onde fica a casa de banho?","Where is the bathroom?"],
+["Phrases","Onde fica o metro?","Where is the subway?"],
+["Phrases","Como chego a...?","How do I get to...?"],
+["Phrases","Vire à direita / à esquerda.","Turn right / left."],
+["Phrases","Siga em frente.","Go straight ahead."],
+["Phrases","Quanto custa isto?","How much does this cost?"],
+["Phrases","É muito caro.","It's very expensive."],
+["Phrases","Tem um mais barato?","Do you have a cheaper one?"],
+["Phrases","Quero um café, por favor.","I'd like a coffee, please."],
+["Phrases","A conta, por favor.","The bill, please."],
+["Phrases","Está incluído o serviço?","Is service included?"],
+["Phrases","A que horas abre / fecha?","What time does it open / close?"],
+["Phrases","Tenho uma reserva.","I have a reservation."],
+["Phrases","Queria um quarto para duas pessoas.","I'd like a double room."],
+["Phrases","Pode chamar um táxi?","Can you call a taxi?"],
+["Phrases","Para o aeroporto, por favor.","To the airport, please."],
+["Phrases","Estou perdido.","I'm lost."],
+["Phrases","Preciso de ajuda.","I need help."],
+["Phrases","Ligue para a polícia!","Call the police!"],
+["Phrases","Preciso de um médico.","I need a doctor."],
+["Phrases","Não me sinto bem.","I don't feel well."],
+["Phrases","Tenho alergia a...","I'm allergic to..."],
+["Phrases","Que horas são?","What time is it?"],
+["Phrases","Hoje está bom tempo.","The weather is nice today."],
+["Phrases","Está a chover.","It's raining."],
+["Phrases","De onde é?","Where are you from?"],
+["Phrases","Sou de Israel.","I'm from Israel."],
+["Phrases","Há quanto tempo está em Portugal?","How long have you been in Portugal?"],
+["Phrases","Gosto muito de Lisboa.","I really like Lisbon."],
+["Phrases","Que saudade!","I miss it so much! / What nostalgia!"],
+["Phrases","Com licença.","Excuse me. / May I pass?"],
+["Phrases","Desculpe, foi sem querer.","Sorry, it was an accident."],
+["Phrases","Não faz mal.","No problem. / It's OK."],
+["Phrases","Com certeza!","Of course!"],
+["Phrases","Está bem.","That's fine / OK."],
+["Phrases","Boa sorte!","Good luck!"],
+["Phrases","Feliz aniversário!","Happy birthday!"],
+["Phrases","Parabéns!","Congratulations!"],
+["Phrases","Até logo!","See you later!"],
+["Phrases","Até amanhã!","See you tomorrow!"],
+["Phrases","Cuide-se!","Take care!"],
+["Phrases","Bom apetite!","Enjoy your meal!"],
+["Phrases","Saúde!","Cheers! / Bless you!"],
+];
+
+const FLAGS_DATA = [
+["אירופה","🇫🇷","FRANCE"],["אירופה","🇩🇪","GERMANY"],["אירופה","🇮🇹","ITALY"],["אירופה","🇪🇸","SPAIN"],["אירופה","🇵🇹","PORTUGAL"],["אירופה","🇬🇧","UK"],["אירופה","🇳🇱","NETHERLANDS"],["אירופה","🇧🇪","BELGIUM"],["אירופה","🇦🇹","AUSTRIA"],["אירופה","🇨🇭","SWITZERLAND"],["אירופה","🇸🇪","SWEDEN"],["אירופה","🇳🇴","NORWAY"],["אירופה","🇩🇰","DENMARK"],["אירופה","🇫🇮","FINLAND"],["אירופה","🇵🇱","POLAND"],["אירופה","🇨🇿","CZECH REPUBLIC"],["אירופה","🇬🇷","GREECE"],["אירופה","🇹🇷","TURKEY"],["אירופה","🇷🇺","RUSSIA"],["אירופה","🇺🇦","UKRAINE"],["אירופה","🇷🇴","ROMANIA"],["אירופה","🇭🇺","HUNGARY"],["אירופה","🇸🇰","SLOVAKIA"],["אירופה","🇭🇷","CROATIA"],["אירופה","🇸🇮","SLOVENIA"],["אירופה","🇷🇸","SERBIA"],["אירופה","🇧🇬","BULGARIA"],["אירופה","🇮🇪","IRELAND"],["אירופה","🇱🇺","LUXEMBOURG"],["אירופה","🇮🇸","ICELAND"],
+["אסיה","🇨🇳","CHINA"],["אסיה","🇯🇵","JAPAN"],["אסיה","🇰🇷","SOUTH KOREA"],["אסיה","🇮🇳","INDIA"],["אסיה","🇹🇭","THAILAND"],["אסיה","🇻🇳","VIETNAM"],["אסיה","🇮🇩","INDONESIA"],["אסיה","🇲🇾","MALAYSIA"],["אסיה","🇵🇭","PHILIPPINES"],["אסיה","🇸🇬","SINGAPORE"],["אסיה","🇵🇰","PAKISTAN"],["אסיה","🇧🇩","BANGLADESH"],["אסיה","🇳🇵","NEPAL"],["אסיה","🇱🇰","SRI LANKA"],["אסיה","🇲🇳","MONGOLIA"],["אסיה","🇰🇿","KAZAKHSTAN"],["אסיה","🇺🇿","UZBEKISTAN"],["אסיה","🇦🇿","AZERBAIJAN"],["אסיה","🇬🇪","GEORGIA"],["אסיה","🇦🇲","ARMENIA"],
+["מזרח תיכון","🇮🇱","ISRAEL"],["מזרח תיכון","🇸🇦","SAUDI ARABIA"],["מזרח תיכון","🇦🇪","UAE"],["מזרח תיכון","🇯🇴","JORDAN"],["מזרח תיכון","🇱🇧","LEBANON"],["מזרח תיכון","🇪🇬","EGYPT"],["מזרח תיכון","🇮🇷","IRAN"],["מזרח תיכון","🇮🇶","IRAQ"],["מזרח תיכון","🇸🇾","SYRIA"],["מזרח תיכון","🇾🇪","YEMEN"],["מזרח תיכון","🇴🇲","OMAN"],["מזרח תיכון","🇶🇦","QATAR"],["מזרח תיכון","🇧🇭","BAHRAIN"],["מזרח תיכון","🇰🇼","KUWAIT"],
+["אמריקה","🇺🇸","USA"],["אמריקה","🇨🇦","CANADA"],["אמריקה","🇲🇽","MEXICO"],["אמריקה","🇧🇷","BRAZIL"],["אמריקה","🇦🇷","ARGENTINA"],["אמריקה","🇨🇱","CHILE"],["אמריקה","🇨🇴","COLOMBIA"],["אמריקה","🇵🇪","PERU"],["אמריקה","🇻🇪","VENEZUELA"],["אמריקה","🇺🇾","URUGUAY"],["אמריקה","🇧🇴","BOLIVIA"],["אמריקה","🇪🇨","ECUADOR"],["אמריקה","🇵🇾","PARAGUAY"],["אמריקה","🇨🇺","CUBA"],["אמריקה","🇩🇴","DOMINICAN REPUBLIC"],["אמריקה","🇯🇲","JAMAICA"],
+["אפריקה","🇳🇬","NIGERIA"],["אפריקה","🇿🇦","SOUTH AFRICA"],["אפריקה","🇰🇪","KENYA"],["אפריקה","🇪🇹","ETHIOPIA"],["אפריקה","🇬🇭","GHANA"],["אפריקה","🇹🇿","TANZANIA"],["אפריקה","🇺🇬","UGANDA"],["אפריקה","🇷🇼","RWANDA"],["אפריקה","🇸🇳","SENEGAL"],["אפריקה","🇲🇦","MOROCCO"],["אפריקה","🇩🇿","ALGERIA"],["אפריקה","🇹🇳","TUNISIA"],["אפריקה","🇱🇾","LIBYA"],["אפריקה","🇲🇿","MOZAMBIQUE"],["אפריקה","🇿🇼","ZIMBABWE"],
+["אוקיאניה","🇦🇺","AUSTRALIA"],["אוקיאניה","🇳🇿","NEW ZEALAND"],["אוקיאניה","🇫🇯","FIJI"],["אוקיאניה","🇵🇬","PAPUA NEW GUINEA"],
+];
+
+const HERBS_DATA = [
+["מערבי","לבנדר","lavender"],
+["מערבי","lavender","לבנדר"],
+["מערבי","לבנדר","Lavandula angustifolia"],
+["מערבי","Lavandula angustifolia","לבנדר"],
+["מערבי","lavender","Lavandula angustifolia"],
+["מערבי","Lavandula angustifolia","lavender"],
+["מערבי","לבנדר","Anxiety & Sleep"],
+["מערבי","lavender","Anxiety & Sleep"],
+["מערבי","Lavandula angustifolia","Anxiety & Sleep"],
+["מערבי","Anxiety & Sleep","לבנדר"],
+["מערבי","Anxiety & Sleep","lavender"],
+["מערבי","Anxiety & Sleep","Lavandula angustifolia"],
+["מערבי","קמומיל","chamomile"],
+["מערבי","chamomile","קמומיל"],
+["מערבי","קמומיל","Matricaria chamomilla"],
+["מערבי","Matricaria chamomilla","קמומיל"],
+["מערבי","chamomile","Matricaria chamomilla"],
+["מערבי","Matricaria chamomilla","chamomile"],
+["מערבי","קמומיל","Digestion & Calm"],
+["מערבי","chamomile","Digestion & Calm"],
+["מערבי","Matricaria chamomilla","Digestion & Calm"],
+["מערבי","Digestion & Calm","קמומיל"],
+["מערבי","Digestion & Calm","chamomile"],
+["מערבי","Digestion & Calm","Matricaria chamomilla"],
+["מערבי","אכינצאה","echinacea"],
+["מערבי","echinacea","אכינצאה"],
+["מערבי","אכינצאה","Echinacea purpurea"],
+["מערבי","Echinacea purpurea","אכינצאה"],
+["מערבי","echinacea","Echinacea purpurea"],
+["מערבי","Echinacea purpurea","echinacea"],
+["מערבי","אכינצאה","Immune Support"],
+["מערבי","echinacea","Immune Support"],
+["מערבי","Echinacea purpurea","Immune Support"],
+["מערבי","Immune Support","אכינצאה"],
+["מערבי","Immune Support","echinacea"],
+["מערבי","Immune Support","Echinacea purpurea"],
+["מערבי","ולריאן","valerian"],
+["מערבי","valerian","ולריאן"],
+["מערבי","ולריאן","Valeriana officinalis"],
+["מערבי","Valeriana officinalis","ולריאן"],
+["מערבי","valerian","Valeriana officinalis"],
+["מערבי","Valeriana officinalis","valerian"],
+["מערבי","ולריאן","Insomnia & Anxiety"],
+["מערבי","valerian","Insomnia & Anxiety"],
+["מערבי","Valeriana officinalis","Insomnia & Anxiety"],
+["מערבי","Insomnia & Anxiety","ולריאן"],
+["מערבי","Insomnia & Anxiety","valerian"],
+["מערבי","Insomnia & Anxiety","Valeriana officinalis"],
+["מערבי","פרע","St. John's Wort"],
+["מערבי","St. John's Wort","פרע"],
+["מערבי","פרע","Hypericum perforatum"],
+["מערבי","Hypericum perforatum","פרע"],
+["מערבי","St. John's Wort","Hypericum perforatum"],
+["מערבי","Hypericum perforatum","St. John's Wort"],
+["מערבי","פרע","Depression"],
+["מערבי","St. John's Wort","Depression"],
+["מערבי","Hypericum perforatum","Depression"],
+["מערבי","Depression","פרע"],
+["מערבי","Depression","St. John's Wort"],
+["מערבי","Depression","Hypericum perforatum"],
+["מערבי","נענע","peppermint"],
+["מערבי","peppermint","נענע"],
+["מערבי","נענע","Mentha piperita"],
+["מערבי","Mentha piperita","נענע"],
+["מערבי","peppermint","Mentha piperita"],
+["מערבי","Mentha piperita","peppermint"],
+["מערבי","נענע","Digestion & Headache"],
+["מערבי","peppermint","Digestion & Headache"],
+["מערבי","Mentha piperita","Digestion & Headache"],
+["מערבי","Digestion & Headache","נענע"],
+["מערבי","Digestion & Headache","peppermint"],
+["מערבי","Digestion & Headache","Mentha piperita"],
+["מערבי","זנגביל","ginger"],
+["מערבי","ginger","זנגביל"],
+["מערבי","זנגביל","Zingiber officinale"],
+["מערבי","Zingiber officinale","זנגביל"],
+["מערבי","ginger","Zingiber officinale"],
+["מערבי","Zingiber officinale","ginger"],
+["מערבי","זנגביל","Nausea & Inflammation"],
+["מערבי","ginger","Nausea & Inflammation"],
+["מערבי","Zingiber officinale","Nausea & Inflammation"],
+["מערבי","Nausea & Inflammation","זנגביל"],
+["מערבי","Nausea & Inflammation","ginger"],
+["מערבי","Nausea & Inflammation","Zingiber officinale"],
+["מערבי","כורכום","turmeric"],
+["מערבי","turmeric","כורכום"],
+["מערבי","כורכום","Curcuma longa"],
+["מערבי","Curcuma longa","כורכום"],
+["מערבי","turmeric","Curcuma longa"],
+["מערבי","Curcuma longa","turmeric"],
+["מערבי","כורכום","Inflammation & Joints"],
+["מערבי","turmeric","Inflammation & Joints"],
+["מערבי","Curcuma longa","Inflammation & Joints"],
+["מערבי","Inflammation & Joints","כורכום"],
+["מערבי","Inflammation & Joints","turmeric"],
+["מערבי","Inflammation & Joints","Curcuma longa"],
+["מערבי","שום","garlic"],
+["מערבי","garlic","שום"],
+["מערבי","שום","Allium sativum"],
+["מערבי","Allium sativum","שום"],
+["מערבי","garlic","Allium sativum"],
+["מערבי","Allium sativum","garlic"],
+["מערבי","שום","Heart & Antibacterial"],
+["מערבי","garlic","Heart & Antibacterial"],
+["מערבי","Allium sativum","Heart & Antibacterial"],
+["מערבי","Heart & Antibacterial","שום"],
+["מערבי","Heart & Antibacterial","garlic"],
+["מערבי","Heart & Antibacterial","Allium sativum"],
+["מערבי","רוזמרין","rosemary"],
+["מערבי","rosemary","רוזמרין"],
+["מערבי","רוזמרין","Rosmarinus officinalis"],
+["מערבי","Rosmarinus officinalis","רוזמרין"],
+["מערבי","rosemary","Rosmarinus officinalis"],
+["מערבי","Rosmarinus officinalis","rosemary"],
+["מערבי","רוזמרין","Memory & Circulation"],
+["מערבי","rosemary","Memory & Circulation"],
+["מערבי","Rosmarinus officinalis","Memory & Circulation"],
+["מערבי","Memory & Circulation","רוזמרין"],
+["מערבי","Memory & Circulation","rosemary"],
+["מערבי","Memory & Circulation","Rosmarinus officinalis"],
+["מערבי","תימין","thyme"],
+["מערבי","thyme","תימין"],
+["מערבי","תימין","Thymus vulgaris"],
+["מערבי","Thymus vulgaris","תימין"],
+["מערבי","thyme","Thymus vulgaris"],
+["מערבי","Thymus vulgaris","thyme"],
+["מערבי","תימין","Cough & Respiratory"],
+["מערבי","thyme","Cough & Respiratory"],
+["מערבי","Thymus vulgaris","Cough & Respiratory"],
+["מערבי","Cough & Respiratory","תימין"],
+["מערבי","Cough & Respiratory","thyme"],
+["מערבי","Cough & Respiratory","Thymus vulgaris"],
+["מערבי","מרווה","sage"],
+["מערבי","sage","מרווה"],
+["מערבי","מרווה","Salvia officinalis"],
+["מערבי","Salvia officinalis","מרווה"],
+["מערבי","sage","Salvia officinalis"],
+["מערבי","Salvia officinalis","sage"],
+["מערבי","מרווה","Throat & Menopause"],
+["מערבי","sage","Throat & Menopause"],
+["מערבי","Salvia officinalis","Throat & Menopause"],
+["מערבי","Throat & Menopause","מרווה"],
+["מערבי","Throat & Menopause","sage"],
+["מערבי","Throat & Menopause","Salvia officinalis"],
+["מערבי","גדילן","milk thistle"],
+["מערבי","milk thistle","גדילן"],
+["מערבי","גדילן","Silybum marianum"],
+["מערבי","Silybum marianum","גדילן"],
+["מערבי","milk thistle","Silybum marianum"],
+["מערבי","Silybum marianum","milk thistle"],
+["מערבי","גדילן","Liver Protection"],
+["מערבי","milk thistle","Liver Protection"],
+["מערבי","Silybum marianum","Liver Protection"],
+["מערבי","Liver Protection","גדילן"],
+["מערבי","Liver Protection","milk thistle"],
+["מערבי","Liver Protection","Silybum marianum"],
+["מערבי","שן ארי","dandelion"],
+["מערבי","dandelion","שן ארי"],
+["מערבי","שן ארי","Taraxacum officinale"],
+["מערבי","Taraxacum officinale","שן ארי"],
+["מערבי","dandelion","Taraxacum officinale"],
+["מערבי","Taraxacum officinale","dandelion"],
+["מערבי","שן ארי","Liver & Diuretic"],
+["מערבי","dandelion","Liver & Diuretic"],
+["מערבי","Taraxacum officinale","Liver & Diuretic"],
+["מערבי","Liver & Diuretic","שן ארי"],
+["מערבי","Liver & Diuretic","dandelion"],
+["מערבי","Liver & Diuretic","Taraxacum officinale"],
+["מערבי","סרפד","nettle"],
+["מערבי","nettle","סרפד"],
+["מערבי","סרפד","Urtica dioica"],
+["מערבי","Urtica dioica","סרפד"],
+["מערבי","nettle","Urtica dioica"],
+["מערבי","Urtica dioica","nettle"],
+["מערבי","סרפד","Allergies & Iron"],
+["מערבי","nettle","Allergies & Iron"],
+["מערבי","Urtica dioica","Allergies & Iron"],
+["מערבי","Allergies & Iron","סרפד"],
+["מערבי","Allergies & Iron","nettle"],
+["מערבי","Allergies & Iron","Urtica dioica"],
+["מערבי","סמבוק","elderberry"],
+["מערבי","elderberry","סמבוק"],
+["מערבי","סמבוק","Sambucus nigra"],
+["מערבי","Sambucus nigra","סמבוק"],
+["מערבי","elderberry","Sambucus nigra"],
+["מערבי","Sambucus nigra","elderberry"],
+["מערבי","סמבוק","Cold & Flu"],
+["מערבי","elderberry","Cold & Flu"],
+["מערבי","Sambucus nigra","Cold & Flu"],
+["מערבי","Cold & Flu","סמבוק"],
+["מערבי","Cold & Flu","elderberry"],
+["מערבי","Cold & Flu","Sambucus nigra"],
+["מערבי","עוזרר","hawthorn"],
+["מערבי","hawthorn","עוזרר"],
+["מערבי","עוזרר","Crataegus monogyna"],
+["מערבי","Crataegus monogyna","עוזרר"],
+["מערבי","hawthorn","Crataegus monogyna"],
+["מערבי","Crataegus monogyna","hawthorn"],
+["מערבי","עוזרר","Heart & Blood Pressure"],
+["מערבי","hawthorn","Heart & Blood Pressure"],
+["מערבי","Crataegus monogyna","Heart & Blood Pressure"],
+["מערבי","Heart & Blood Pressure","עוזרר"],
+["מערבי","Heart & Blood Pressure","hawthorn"],
+["מערבי","Heart & Blood Pressure","Crataegus monogyna"],
+["מערבי","מליסה","lemon balm"],
+["מערבי","lemon balm","מליסה"],
+["מערבי","מליסה","Melissa officinalis"],
+["מערבי","Melissa officinalis","מליסה"],
+["מערבי","lemon balm","Melissa officinalis"],
+["מערבי","Melissa officinalis","lemon balm"],
+["מערבי","מליסה","Stress & Sleep"],
+["מערבי","lemon balm","Stress & Sleep"],
+["מערבי","Melissa officinalis","Stress & Sleep"],
+["מערבי","Stress & Sleep","מליסה"],
+["מערבי","Stress & Sleep","lemon balm"],
+["מערבי","Stress & Sleep","Melissa officinalis"],
+["מערבי","פסיפלורה","passionflower"],
+["מערבי","passionflower","פסיפלורה"],
+["מערבי","פסיפלורה","Passiflora incarnata"],
+["מערבי","Passiflora incarnata","פסיפלורה"],
+["מערבי","passionflower","Passiflora incarnata"],
+["מערבי","Passiflora incarnata","passionflower"],
+["מערבי","פסיפלורה","Anxiety & Insomnia"],
+["מערבי","passionflower","Anxiety & Insomnia"],
+["מערבי","Passiflora incarnata","Anxiety & Insomnia"],
+["מערבי","Anxiety & Insomnia","פסיפלורה"],
+["מערבי","Anxiety & Insomnia","passionflower"],
+["מערבי","Anxiety & Insomnia","Passiflora incarnata"],
+["מערבי","ציפורן","calendula"],
+["מערבי","calendula","ציפורן"],
+["מערבי","ציפורן","Calendula officinalis"],
+["מערבי","Calendula officinalis","ציפורן"],
+["מערבי","calendula","Calendula officinalis"],
+["מערבי","Calendula officinalis","calendula"],
+["מערבי","ציפורן","Skin & Wound Healing"],
+["מערבי","calendula","Skin & Wound Healing"],
+["מערבי","Calendula officinalis","Skin & Wound Healing"],
+["מערבי","Skin & Wound Healing","ציפורן"],
+["מערבי","Skin & Wound Healing","calendula"],
+["מערבי","Skin & Wound Healing","Calendula officinalis"],
+["מערבי","שוש","licorice"],
+["מערבי","licorice","שוש"],
+["מערבי","שוש","Glycyrrhiza glabra"],
+["מערבי","Glycyrrhiza glabra","שוש"],
+["מערבי","licorice","Glycyrrhiza glabra"],
+["מערבי","Glycyrrhiza glabra","licorice"],
+["מערבי","שוש","Gut & Adrenal Support"],
+["מערבי","licorice","Gut & Adrenal Support"],
+["מערבי","Glycyrrhiza glabra","Gut & Adrenal Support"],
+["מערבי","Gut & Adrenal Support","שוש"],
+["מערבי","Gut & Adrenal Support","licorice"],
+["מערבי","Gut & Adrenal Support","Glycyrrhiza glabra"],
+["מערבי","אורגנו","oregano"],
+["מערבי","oregano","אורגנו"],
+["מערבי","אורגנו","Origanum vulgare"],
+["מערבי","Origanum vulgare","אורגנו"],
+["מערבי","oregano","Origanum vulgare"],
+["מערבי","Origanum vulgare","oregano"],
+["מערבי","אורגנו","Antibacterial & Antifungal"],
+["מערבי","oregano","Antibacterial & Antifungal"],
+["מערבי","Origanum vulgare","Antibacterial & Antifungal"],
+["מערבי","Antibacterial & Antifungal","אורגנו"],
+["מערבי","Antibacterial & Antifungal","oregano"],
+["מערבי","Antibacterial & Antifungal","Origanum vulgare"],
+["מערבי","שמיר מתוק","fennel"],
+["מערבי","fennel","שמיר מתוק"],
+["מערבי","שמיר מתוק","Foeniculum vulgare"],
+["מערבי","Foeniculum vulgare","שמיר מתוק"],
+["מערבי","fennel","Foeniculum vulgare"],
+["מערבי","Foeniculum vulgare","fennel"],
+["מערבי","שמיר מתוק","Bloating & Digestion"],
+["מערבי","fennel","Bloating & Digestion"],
+["מערבי","Foeniculum vulgare","Bloating & Digestion"],
+["מערבי","Bloating & Digestion","שמיר מתוק"],
+["מערבי","Bloating & Digestion","fennel"],
+["מערבי","Bloating & Digestion","Foeniculum vulgare"],
+["מערבי","אשווגנדה","ashwagandha"],
+["מערבי","ashwagandha","אשווגנדה"],
+["מערבי","אשווגנדה","Withania somnifera"],
+["מערבי","Withania somnifera","אשווגנדה"],
+["מערבי","ashwagandha","Withania somnifera"],
+["מערבי","Withania somnifera","ashwagandha"],
+["מערבי","אשווגנדה","Stress & Adaptogen"],
+["מערבי","ashwagandha","Stress & Adaptogen"],
+["מערבי","Withania somnifera","Stress & Adaptogen"],
+["מערבי","Stress & Adaptogen","אשווגנדה"],
+["מערבי","Stress & Adaptogen","ashwagandha"],
+["מערבי","Stress & Adaptogen","Withania somnifera"],
+["סיני","ג'ינסנג","ginseng"],
+["סיני","ג'ינסנג","Panax ginseng"],
+["סיני","ג'ינסנג","rén shēn 人參"],
+["סיני","ג'ינסנג","Energy & Vitality"],
+["סיני","Energy & Vitality","ג'ינסנג"],
+["סיני","ginseng","ג'ינסנג"],
+["סיני","ginseng","Panax ginseng"],
+["סיני","ginseng","rén shēn 人參"],
+["סיני","ginseng","Energy & Vitality"],
+["סיני","Energy & Vitality","ginseng"],
+["סיני","Panax ginseng","ג'ינסנג"],
+["סיני","Panax ginseng","ginseng"],
+["סיני","Panax ginseng","rén shēn 人參"],
+["סיני","Panax ginseng","Energy & Vitality"],
+["סיני","Energy & Vitality","Panax ginseng"],
+["סיני","rén shēn 人參","ג'ינסנג"],
+["סיני","rén shēn 人參","ginseng"],
+["סיני","rén shēn 人參","Panax ginseng"],
+["סיני","rén shēn 人參","Energy & Vitality"],
+["סיני","Energy & Vitality","rén shēn 人參"],
+["סיני","אסטרגלוס","astragalus"],
+["סיני","אסטרגלוס","Astragalus membranaceus"],
+["סיני","אסטרגלוס","huáng qí 黄耆"],
+["סיני","אסטרגלוס","Immune & Longevity"],
+["סיני","Immune & Longevity","אסטרגלוס"],
+["סיני","astragalus","אסטרגלוס"],
+["סיני","astragalus","Astragalus membranaceus"],
+["סיני","astragalus","huáng qí 黄耆"],
+["סיני","astragalus","Immune & Longevity"],
+["סיני","Immune & Longevity","astragalus"],
+["סיני","Astragalus membranaceus","אסטרגלוס"],
+["סיני","Astragalus membranaceus","astragalus"],
+["סיני","Astragalus membranaceus","huáng qí 黄耆"],
+["סיני","Astragalus membranaceus","Immune & Longevity"],
+["סיני","Immune & Longevity","Astragalus membranaceus"],
+["סיני","huáng qí 黄耆","אסטרגלוס"],
+["סיני","huáng qí 黄耆","astragalus"],
+["סיני","huáng qí 黄耆","Astragalus membranaceus"],
+["סיני","huáng qí 黄耆","Immune & Longevity"],
+["סיני","Immune & Longevity","huáng qí 黄耆"],
+["סיני","ריישי","reishi"],
+["סיני","ריישי","Ganoderma lucidum"],
+["סיני","ריישי","líng zhī 靈芝"],
+["סיני","ריישי","Immune & Anti-stress"],
+["סיני","Immune & Anti-stress","ריישי"],
+["סיני","reishi","ריישי"],
+["סיני","reishi","Ganoderma lucidum"],
+["סיני","reishi","líng zhī 靈芝"],
+["סיני","reishi","Immune & Anti-stress"],
+["סיני","Immune & Anti-stress","reishi"],
+["סיני","Ganoderma lucidum","ריישי"],
+["סיני","Ganoderma lucidum","reishi"],
+["סיני","Ganoderma lucidum","líng zhī 靈芝"],
+["סיני","Ganoderma lucidum","Immune & Anti-stress"],
+["סיני","Immune & Anti-stress","Ganoderma lucidum"],
+["סיני","líng zhī 靈芝","ריישי"],
+["סיני","líng zhī 靈芝","reishi"],
+["סיני","líng zhī 靈芝","Ganoderma lucidum"],
+["סיני","líng zhī 靈芝","Immune & Anti-stress"],
+["סיני","Immune & Anti-stress","líng zhī 靈芝"],
+["סיני","גוג'י","goji berry"],
+["סיני","גוג'י","Lycium barbarum"],
+["סיני","גוג'י","gǒu qǐ 枸杞"],
+["סיני","גוג'י","Antioxidant & Eye Health"],
+["סיני","Antioxidant & Eye Health","גוג'י"],
+["סיני","goji berry","גוג'י"],
+["סיני","goji berry","Lycium barbarum"],
+["סיני","goji berry","gǒu qǐ 枸杞"],
+["סיני","goji berry","Antioxidant & Eye Health"],
+["סיני","Antioxidant & Eye Health","goji berry"],
+["סיני","Lycium barbarum","גוג'י"],
+["סיני","Lycium barbarum","goji berry"],
+["סיני","Lycium barbarum","gǒu qǐ 枸杞"],
+["סיני","Lycium barbarum","Antioxidant & Eye Health"],
+["סיני","Antioxidant & Eye Health","Lycium barbarum"],
+["סיני","gǒu qǐ 枸杞","גוג'י"],
+["סיני","gǒu qǐ 枸杞","goji berry"],
+["סיני","gǒu qǐ 枸杞","Lycium barbarum"],
+["סיני","gǒu qǐ 枸杞","Antioxidant & Eye Health"],
+["סיני","Antioxidant & Eye Health","gǒu qǐ 枸杞"],
+["סיני","דאנג גואי","dong quai"],
+["סיני","דאנג גואי","Angelica sinensis"],
+["סיני","דאנג גואי","dāng guī 當歸"],
+["סיני","דאנג גואי","Women's Health"],
+["סיני","Women's Health","דאנג גואי"],
+["סיני","dong quai","דאנג גואי"],
+["סיני","dong quai","Angelica sinensis"],
+["סיני","dong quai","dāng guī 當歸"],
+["סיני","dong quai","Women's Health"],
+["סיני","Women's Health","dong quai"],
+["סיני","Angelica sinensis","דאנג גואי"],
+["סיני","Angelica sinensis","dong quai"],
+["סיני","Angelica sinensis","dāng guī 當歸"],
+["סיני","Angelica sinensis","Women's Health"],
+["סיני","Women's Health","Angelica sinensis"],
+["סיני","dāng guī 當歸","דאנג גואי"],
+["סיני","dāng guī 當歸","dong quai"],
+["סיני","dāng guī 當歸","Angelica sinensis"],
+["סיני","dāng guī 當歸","Women's Health"],
+["סיני","Women's Health","dāng guī 當歸"],
+["סיני","שוש סיני","Chinese licorice"],
+["סיני","שוש סיני","Glycyrrhiza uralensis"],
+["סיני","שוש סיני","gān cǎo 甘草"],
+["סיני","שוש סיני","Harmonizing Herb"],
+["סיני","Harmonizing Herb","שוש סיני"],
+["סיני","Chinese licorice","שוש סיני"],
+["סיני","Chinese licorice","Glycyrrhiza uralensis"],
+["סיני","Chinese licorice","gān cǎo 甘草"],
+["סיני","Chinese licorice","Harmonizing Herb"],
+["סיני","Harmonizing Herb","Chinese licorice"],
+["סיני","Glycyrrhiza uralensis","שוש סיני"],
+["סיני","Glycyrrhiza uralensis","Chinese licorice"],
+["סיני","Glycyrrhiza uralensis","gān cǎo 甘草"],
+["סיני","Glycyrrhiza uralensis","Harmonizing Herb"],
+["סיני","Harmonizing Herb","Glycyrrhiza uralensis"],
+["סיני","gān cǎo 甘草","שוש סיני"],
+["סיני","gān cǎo 甘草","Chinese licorice"],
+["סיני","gān cǎo 甘草","Glycyrrhiza uralensis"],
+["סיני","gān cǎo 甘草","Harmonizing Herb"],
+["סיני","Harmonizing Herb","gān cǎo 甘草"],
+["סיני","קינמון סיני","Chinese cinnamon"],
+["סיני","קינמון סיני","Cinnamomum cassia"],
+["סיני","קינמון סיני","ròu guì 肉桂"],
+["סיני","קינמון סיני","Cold Limbs & Circulation"],
+["סיני","Cold Limbs & Circulation","קינמון סיני"],
+["סיני","Chinese cinnamon","קינמון סיני"],
+["סיני","Chinese cinnamon","Cinnamomum cassia"],
+["סיני","Chinese cinnamon","ròu guì 肉桂"],
+["סיני","Chinese cinnamon","Cold Limbs & Circulation"],
+["סיני","Cold Limbs & Circulation","Chinese cinnamon"],
+["סיני","Cinnamomum cassia","קינמון סיני"],
+["סיני","Cinnamomum cassia","Chinese cinnamon"],
+["סיני","Cinnamomum cassia","ròu guì 肉桂"],
+["סיני","Cinnamomum cassia","Cold Limbs & Circulation"],
+["סיני","Cold Limbs & Circulation","Cinnamomum cassia"],
+["סיני","ròu guì 肉桂","קינמון סיני"],
+["סיני","ròu guì 肉桂","Chinese cinnamon"],
+["סיני","ròu guì 肉桂","Cinnamomum cassia"],
+["סיני","ròu guì 肉桂","Cold Limbs & Circulation"],
+["סיני","Cold Limbs & Circulation","ròu guì 肉桂"],
+["סיני","זנגביל סיני","Chinese ginger"],
+["סיני","זנגביל סיני","Zingiber officinale"],
+["סיני","זנגביל סיני","shēng jiāng 生薑"],
+["סיני","זנגביל סיני","Cold & Digestive Yang"],
+["סיני","Cold & Digestive Yang","זנגביל סיני"],
+["סיני","Chinese ginger","זנגביל סיני"],
+["סיני","Chinese ginger","Zingiber officinale"],
+["סיני","Chinese ginger","shēng jiāng 生薑"],
+["סיני","Chinese ginger","Cold & Digestive Yang"],
+["סיני","Cold & Digestive Yang","Chinese ginger"],
+["סיני","Zingiber officinale","זנגביל סיני"],
+["סיני","Zingiber officinale","Chinese ginger"],
+["סיני","Zingiber officinale","shēng jiāng 生薑"],
+["סיני","Zingiber officinale","Cold & Digestive Yang"],
+["סיני","Cold & Digestive Yang","Zingiber officinale"],
+["סיני","shēng jiāng 生薑","זנגביל סיני"],
+["סיני","shēng jiāng 生薑","Chinese ginger"],
+["סיני","shēng jiāng 生薑","Zingiber officinale"],
+["סיני","shēng jiāng 生薑","Cold & Digestive Yang"],
+["סיני","Cold & Digestive Yang","shēng jiāng 生薑"],
+["סיני","שיזנדרה","schisandra"],
+["סיני","שיזנדרה","Schisandra chinensis"],
+["סיני","שיזנדרה","wǔ wèi zǐ 五味子"],
+["סיני","שיזנדרה","Liver & Adaptogen"],
+["סיני","Liver & Adaptogen","שיזנדרה"],
+["סיני","schisandra","שיזנדרה"],
+["סיני","schisandra","Schisandra chinensis"],
+["סיני","schisandra","wǔ wèi zǐ 五味子"],
+["סיני","schisandra","Liver & Adaptogen"],
+["סיני","Liver & Adaptogen","schisandra"],
+["סיני","Schisandra chinensis","שיזנדרה"],
+["סיני","Schisandra chinensis","schisandra"],
+["סיני","Schisandra chinensis","wǔ wèi zǐ 五味子"],
+["סיני","Schisandra chinensis","Liver & Adaptogen"],
+["סיני","Liver & Adaptogen","Schisandra chinensis"],
+["סיני","wǔ wèi zǐ 五味子","שיזנדרה"],
+["סיני","wǔ wèi zǐ 五味子","schisandra"],
+["סיני","wǔ wèi zǐ 五味子","Schisandra chinensis"],
+["סיני","wǔ wèi zǐ 五味子","Liver & Adaptogen"],
+["סיני","Liver & Adaptogen","wǔ wèi zǐ 五味子"],
+["סיני","כריזנתמום","chrysanthemum"],
+["סיני","כריזנתמום","Chrysanthemum morifolium"],
+["סיני","כריזנתמום","jú huā 菊花"],
+["סיני","כריזנתמום","Eyes & Liver Heat"],
+["סיני","Eyes & Liver Heat","כריזנתמום"],
+["סיני","chrysanthemum","כריזנתמום"],
+["סיני","chrysanthemum","Chrysanthemum morifolium"],
+["סיני","chrysanthemum","jú huā 菊花"],
+["סיני","chrysanthemum","Eyes & Liver Heat"],
+["סיני","Eyes & Liver Heat","chrysanthemum"],
+["סיני","Chrysanthemum morifolium","כריזנתמום"],
+["סיני","Chrysanthemum morifolium","chrysanthemum"],
+["סיני","Chrysanthemum morifolium","jú huā 菊花"],
+["סיני","Chrysanthemum morifolium","Eyes & Liver Heat"],
+["סיני","Eyes & Liver Heat","Chrysanthemum morifolium"],
+["סיני","jú huā 菊花","כריזנתמום"],
+["סיני","jú huā 菊花","chrysanthemum"],
+["סיני","jú huā 菊花","Chrysanthemum morifolium"],
+["סיני","jú huā 菊花","Eyes & Liver Heat"],
+["סיני","Eyes & Liver Heat","jú huā 菊花"],
+["סיני","גרעין לוטוס","lotus seed"],
+["סיני","גרעין לוטוס","Nelumbo nucifera"],
+["סיני","גרעין לוטוס","lián zǐ 蓮子"],
+["סיני","גרעין לוטוס","Calm Mind & Digestion"],
+["סיני","Calm Mind & Digestion","גרעין לוטוס"],
+["סיני","lotus seed","גרעין לוטוס"],
+["סיני","lotus seed","Nelumbo nucifera"],
+["סיני","lotus seed","lián zǐ 蓮子"],
+["סיני","lotus seed","Calm Mind & Digestion"],
+["סיני","Calm Mind & Digestion","lotus seed"],
+["סיני","Nelumbo nucifera","גרעין לוטוס"],
+["סיני","Nelumbo nucifera","lotus seed"],
+["סיני","Nelumbo nucifera","lián zǐ 蓮子"],
+["סיני","Nelumbo nucifera","Calm Mind & Digestion"],
+["סיני","Calm Mind & Digestion","Nelumbo nucifera"],
+["סיני","lián zǐ 蓮子","גרעין לוטוס"],
+["סיני","lián zǐ 蓮子","lotus seed"],
+["סיני","lián zǐ 蓮子","Nelumbo nucifera"],
+["סיני","lián zǐ 蓮子","Calm Mind & Digestion"],
+["סיני","Calm Mind & Digestion","lián zǐ 蓮子"],
+["סיני","תמר סיני","jujube / red date"],
+["סיני","תמר סיני","Ziziphus jujuba"],
+["סיני","תמר סיני","dà zǎo 大棗"],
+["סיני","תמר סיני","Blood & Calm"],
+["סיני","Blood & Calm","תמר סיני"],
+["סיני","jujube / red date","תמר סיני"],
+["סיני","jujube / red date","Ziziphus jujuba"],
+["סיני","jujube / red date","dà zǎo 大棗"],
+["סיני","jujube / red date","Blood & Calm"],
+["סיני","Blood & Calm","jujube / red date"],
+["סיני","Ziziphus jujuba","תמר סיני"],
+["סיני","Ziziphus jujuba","jujube / red date"],
+["סיני","Ziziphus jujuba","dà zǎo 大棗"],
+["סיני","Ziziphus jujuba","Blood & Calm"],
+["סיני","Blood & Calm","Ziziphus jujuba"],
+["סיני","dà zǎo 大棗","תמר סיני"],
+["סיני","dà zǎo 大棗","jujube / red date"],
+["סיני","dà zǎo 大棗","Ziziphus jujuba"],
+["סיני","dà zǎo 大棗","Blood & Calm"],
+["סיני","Blood & Calm","dà zǎo 大棗"],
+["סיני","קודונופסיס","codonopsis"],
+["סיני","קודונופסיס","Codonopsis pilosula"],
+["סיני","קודונופסיס","dǎng shēn 黨參"],
+["סיני","קודונופסיס","Qi Tonic & Digestion"],
+["סיני","Qi Tonic & Digestion","קודונופסיס"],
+["סיני","codonopsis","קודונופסיס"],
+["סיני","codonopsis","Codonopsis pilosula"],
+["סיני","codonopsis","dǎng shēn 黨參"],
+["סיני","codonopsis","Qi Tonic & Digestion"],
+["סיני","Qi Tonic & Digestion","codonopsis"],
+["סיני","Codonopsis pilosula","קודונופסיס"],
+["סיני","Codonopsis pilosula","codonopsis"],
+["סיני","Codonopsis pilosula","dǎng shēn 黨參"],
+["סיני","Codonopsis pilosula","Qi Tonic & Digestion"],
+["סיני","Qi Tonic & Digestion","Codonopsis pilosula"],
+["סיני","dǎng shēn 黨參","קודונופסיס"],
+["סיני","dǎng shēn 黨參","codonopsis"],
+["סיני","dǎng shēn 黨參","Codonopsis pilosula"],
+["סיני","dǎng shēn 黨參","Qi Tonic & Digestion"],
+["סיני","Qi Tonic & Digestion","dǎng shēn 黨參"],
+["סיני","פוריה","poria mushroom"],
+["סיני","פוריה","Wolfiporia extensa"],
+["סיני","פוריה","fú líng 茯苓"],
+["סיני","פוריה","Calm & Digestion"],
+["סיני","Calm & Digestion","פוריה"],
+["סיני","poria mushroom","פוריה"],
+["סיני","poria mushroom","Wolfiporia extensa"],
+["סיני","poria mushroom","fú líng 茯苓"],
+["סיני","poria mushroom","Calm & Digestion"],
+["סיני","Calm & Digestion","poria mushroom"],
+["סיני","Wolfiporia extensa","פוריה"],
+["סיני","Wolfiporia extensa","poria mushroom"],
+["סיני","Wolfiporia extensa","fú líng 茯苓"],
+["סיני","Wolfiporia extensa","Calm & Digestion"],
+["סיני","Calm & Digestion","Wolfiporia extensa"],
+["סיני","fú líng 茯苓","פוריה"],
+["סיני","fú líng 茯苓","poria mushroom"],
+["סיני","fú líng 茯苓","Wolfiporia extensa"],
+["סיני","fú líng 茯苓","Calm & Digestion"],
+["סיני","Calm & Digestion","fú líng 茯苓"],
+["סיני","זעפרן סיני","saffron"],
+["סיני","זעפרן סיני","Crocus sativus"],
+["סיני","זעפרן סיני","zàng hóng huā 藏紅花"],
+["סיני","זעפרן סיני","Blood & Depression"],
+["סיני","Blood & Depression","זעפרן סיני"],
+["סיני","saffron","זעפרן סיני"],
+["סיני","saffron","Crocus sativus"],
+["סיני","saffron","zàng hóng huā 藏紅花"],
+["סיני","saffron","Blood & Depression"],
+["סיני","Blood & Depression","saffron"],
+["סיני","Crocus sativus","זעפרן סיני"],
+["סיני","Crocus sativus","saffron"],
+["סיני","Crocus sativus","zàng hóng huā 藏紅花"],
+["סיני","Crocus sativus","Blood & Depression"],
+["סיני","Blood & Depression","Crocus sativus"],
+["סיני","zàng hóng huā 藏紅花","זעפרן סיני"],
+["סיני","zàng hóng huā 藏紅花","saffron"],
+["סיני","zàng hóng huā 藏紅花","Crocus sativus"],
+["סיני","zàng hóng huā 藏紅花","Blood & Depression"],
+["סיני","Blood & Depression","zàng hóng huā 藏紅花"],
+["סיני","פאוניה לבנה","white peony"],
+["סיני","פאוניה לבנה","Paeonia lactiflora"],
+["סיני","פאוניה לבנה","bái sháo 白芍"],
+["סיני","פאוניה לבנה","Liver & Blood"],
+["סיני","Liver & Blood","פאוניה לבנה"],
+["סיני","white peony","פאוניה לבנה"],
+["סיני","white peony","Paeonia lactiflora"],
+["סיני","white peony","bái sháo 白芍"],
+["סיני","white peony","Liver & Blood"],
+["סיני","Liver & Blood","white peony"],
+["סיני","Paeonia lactiflora","פאוניה לבנה"],
+["סיני","Paeonia lactiflora","white peony"],
+["סיני","Paeonia lactiflora","bái sháo 白芍"],
+["סיני","Paeonia lactiflora","Liver & Blood"],
+["סיני","Liver & Blood","Paeonia lactiflora"],
+["סיני","bái sháo 白芍","פאוניה לבנה"],
+["סיני","bái sháo 白芍","white peony"],
+["סיני","bái sháo 白芍","Paeonia lactiflora"],
+["סיני","bái sháo 白芍","Liver & Blood"],
+["סיני","Liver & Blood","bái sháo 白芍"],
+["סיני","קודזו","kudzu"],
+["סיני","קודזו","Pueraria lobata"],
+["סיני","קודזו","gé gēn 葛根"],
+["סיני","קודזו","Alcohol Detox & Headache"],
+["סיני","Alcohol Detox & Headache","קודזו"],
+["סיני","kudzu","קודזו"],
+["סיני","kudzu","Pueraria lobata"],
+["סיני","kudzu","gé gēn 葛根"],
+["סיני","kudzu","Alcohol Detox & Headache"],
+["סיני","Alcohol Detox & Headache","kudzu"],
+["סיני","Pueraria lobata","קודזו"],
+["סיני","Pueraria lobata","kudzu"],
+["סיני","Pueraria lobata","gé gēn 葛根"],
+["סיני","Pueraria lobata","Alcohol Detox & Headache"],
+["סיני","Alcohol Detox & Headache","Pueraria lobata"],
+["סיני","gé gēn 葛根","קודזו"],
+["סיני","gé gēn 葛根","kudzu"],
+["סיני","gé gēn 葛根","Pueraria lobata"],
+["סיני","gé gēn 葛根","Alcohol Detox & Headache"],
+["סיני","Alcohol Detox & Headache","gé gēn 葛根"],
+["סיני","קופטיס","coptis"],
+["סיני","קופטיס","Coptis chinensis"],
+["סיני","קופטיס","huáng lián 黃連"],
+["סיני","קופטיס","Heat & Antibacterial"],
+["סיני","Heat & Antibacterial","קופטיס"],
+["סיני","coptis","קופטיס"],
+["סיני","coptis","Coptis chinensis"],
+["סיני","coptis","huáng lián 黃連"],
+["סיני","coptis","Heat & Antibacterial"],
+["סיני","Heat & Antibacterial","coptis"],
+["סיני","Coptis chinensis","קופטיס"],
+["סיני","Coptis chinensis","coptis"],
+["סיני","Coptis chinensis","huáng lián 黃連"],
+["סיני","Coptis chinensis","Heat & Antibacterial"],
+["סיני","Heat & Antibacterial","Coptis chinensis"],
+["סיני","huáng lián 黃連","קופטיס"],
+["סיני","huáng lián 黃連","coptis"],
+["סיני","huáng lián 黃連","Coptis chinensis"],
+["סיני","huáng lián 黃連","Heat & Antibacterial"],
+["סיני","Heat & Antibacterial","huáng lián 黃連"],
+["סיני","פו-טי","fo-ti"],
+["סיני","פו-טי","Polygonum multiflorum"],
+["סיני","פו-טי","hé shǒu wū 何首烏"],
+["סיני","פו-טי","Hair & Anti-aging"],
+["סיני","Hair & Anti-aging","פו-טי"],
+["סיני","fo-ti","פו-טי"],
+["סיני","fo-ti","Polygonum multiflorum"],
+["סיני","fo-ti","hé shǒu wū 何首烏"],
+["סיני","fo-ti","Hair & Anti-aging"],
+["סיני","Hair & Anti-aging","fo-ti"],
+["סיני","Polygonum multiflorum","פו-טי"],
+["סיני","Polygonum multiflorum","fo-ti"],
+["סיני","Polygonum multiflorum","hé shǒu wū 何首烏"],
+["סיני","Polygonum multiflorum","Hair & Anti-aging"],
+["סיני","Hair & Anti-aging","Polygonum multiflorum"],
+["סיני","hé shǒu wū 何首烏","פו-טי"],
+["סיני","hé shǒu wū 何首烏","fo-ti"],
+["סיני","hé shǒu wū 何首烏","Polygonum multiflorum"],
+["סיני","hé shǒu wū 何首烏","Hair & Anti-aging"],
+["סיני","Hair & Anti-aging","hé shǒu wū 何首烏"],
+["סיני","סלביה סינית","Chinese salvia"],
+["סיני","סלביה סינית","Salvia miltiorrhiza"],
+["סיני","סלביה סינית","dān shēn 丹參"],
+["סיני","סלביה סינית","Heart & Blood"],
+["סיני","Heart & Blood","סלביה סינית"],
+["סיני","Chinese salvia","סלביה סינית"],
+["סיני","Chinese salvia","Salvia miltiorrhiza"],
+["סיני","Chinese salvia","dān shēn 丹參"],
+["סיני","Chinese salvia","Heart & Blood"],
+["סיני","Heart & Blood","Chinese salvia"],
+["סיני","Salvia miltiorrhiza","סלביה סינית"],
+["סיני","Salvia miltiorrhiza","Chinese salvia"],
+["סיני","Salvia miltiorrhiza","dān shēn 丹參"],
+["סיני","Salvia miltiorrhiza","Heart & Blood"],
+["סיני","Heart & Blood","Salvia miltiorrhiza"],
+["סיני","dān shēn 丹參","סלביה סינית"],
+["סיני","dān shēn 丹參","Chinese salvia"],
+["סיני","dān shēn 丹參","Salvia miltiorrhiza"],
+["סיני","dān shēn 丹參","Heart & Blood"],
+["סיני","Heart & Blood","dān shēn 丹參"],
+["סיני","בופלויר","bupleurum"],
+["סיני","בופלויר","Bupleurum chinense"],
+["סיני","בופלויר","chái hú 柴胡"],
+["סיני","בופלויר","Liver Qi & Stress"],
+["סיני","Liver Qi & Stress","בופלויר"],
+["סיני","bupleurum","בופלויר"],
+["סיני","bupleurum","Bupleurum chinense"],
+["סיני","bupleurum","chái hú 柴胡"],
+["סיני","bupleurum","Liver Qi & Stress"],
+["סיני","Liver Qi & Stress","bupleurum"],
+["סיני","Bupleurum chinense","בופלויר"],
+["סיני","Bupleurum chinense","bupleurum"],
+["סיני","Bupleurum chinense","chái hú 柴胡"],
+["סיני","Bupleurum chinense","Liver Qi & Stress"],
+["סיני","Liver Qi & Stress","Bupleurum chinense"],
+["סיני","chái hú 柴胡","בופלויר"],
+["סיני","chái hú 柴胡","bupleurum"],
+["סיני","chái hú 柴胡","Bupleurum chinense"],
+["סיני","chái hú 柴胡","Liver Qi & Stress"],
+["סיני","Liver Qi & Stress","chái hú 柴胡"],
+["סיני","מגנוליה","magnolia bark"],
+["סיני","מגנוליה","Magnolia officinalis"],
+["סיני","מגנוליה","hòu pò 厚朴"],
+["סיני","מגנוליה","Anxiety & Digestive Stress"],
+["סיני","Anxiety & Digestive Stress","מגנוליה"],
+["סיני","magnolia bark","מגנוליה"],
+["סיני","magnolia bark","Magnolia officinalis"],
+["סיני","magnolia bark","hòu pò 厚朴"],
+["סיני","magnolia bark","Anxiety & Digestive Stress"],
+["סיני","Anxiety & Digestive Stress","magnolia bark"],
+["סיני","Magnolia officinalis","מגנוליה"],
+["סיני","Magnolia officinalis","magnolia bark"],
+["סיני","Magnolia officinalis","hòu pò 厚朴"],
+["סיני","Magnolia officinalis","Anxiety & Digestive Stress"],
+["סיני","Anxiety & Digestive Stress","Magnolia officinalis"],
+["סיני","hòu pò 厚朴","מגנוליה"],
+["סיני","hòu pò 厚朴","magnolia bark"],
+["סיני","hòu pò 厚朴","Magnolia officinalis"],
+["סיני","hòu pò 厚朴","Anxiety & Digestive Stress"],
+["סיני","Anxiety & Digestive Stress","hòu pò 厚朴"],
+["סיני","אאוקומיה","eucommia"],
+["סיני","אאוקומיה","Eucommia ulmoides"],
+["סיני","אאוקומיה","dù zhòng 杜仲"],
+["סיני","אאוקומיה","Joints & Kidney Yang"],
+["סיני","Joints & Kidney Yang","אאוקומיה"],
+["סיני","eucommia","אאוקומיה"],
+["סיני","eucommia","Eucommia ulmoides"],
+["סיני","eucommia","dù zhòng 杜仲"],
+["סיני","eucommia","Joints & Kidney Yang"],
+["סיני","Joints & Kidney Yang","eucommia"],
+["סיני","Eucommia ulmoides","אאוקומיה"],
+["סיני","Eucommia ulmoides","eucommia"],
+["סיני","Eucommia ulmoides","dù zhòng 杜仲"],
+["סיני","Eucommia ulmoides","Joints & Kidney Yang"],
+["סיני","Joints & Kidney Yang","Eucommia ulmoides"],
+["סיני","dù zhòng 杜仲","אאוקומיה"],
+["סיני","dù zhòng 杜仲","eucommia"],
+["סיני","dù zhòng 杜仲","Eucommia ulmoides"],
+["סיני","dù zhòng 杜仲","Joints & Kidney Yang"],
+["סיני","Joints & Kidney Yang","dù zhòng 杜仲"],
+["סיני","אנג'ליקה","Chinese angelica"],
+["סיני","אנג'ליקה","Angelica dahurica"],
+["סיני","אנג'ליקה","bái zhǐ 白芷"],
+["סיני","אנג'ליקה","Circulation & Women"],
+["סיני","Circulation & Women","אנג'ליקה"],
+["סיני","Chinese angelica","אנג'ליקה"],
+["סיני","Chinese angelica","Angelica dahurica"],
+["סיני","Chinese angelica","bái zhǐ 白芷"],
+["סיני","Chinese angelica","Circulation & Women"],
+["סיני","Circulation & Women","Chinese angelica"],
+["סיני","Angelica dahurica","אנג'ליקה"],
+["סיני","Angelica dahurica","Chinese angelica"],
+["סיני","Angelica dahurica","bái zhǐ 白芷"],
+["סיני","Angelica dahurica","Circulation & Women"],
+["סיני","Circulation & Women","Angelica dahurica"],
+["סיני","bái zhǐ 白芷","אנג'ליקה"],
+["סיני","bái zhǐ 白芷","Chinese angelica"],
+["סיני","bái zhǐ 白芷","Angelica dahurica"],
+["סיני","bái zhǐ 白芷","Circulation & Women"],
+["סיני","Circulation & Women","bái zhǐ 白芷"],
+["סיני","מור","myrrh"],
+["סיני","מור","Commiphora myrrha"],
+["סיני","מור","mò yào 沒藥"],
+["סיני","מור","Pain & Inflammation"],
+["סיני","Pain & Inflammation","מור"],
+["סיני","myrrh","מור"],
+["סיני","myrrh","Commiphora myrrha"],
+["סיני","myrrh","mò yào 沒藥"],
+["סיני","myrrh","Pain & Inflammation"],
+["סיני","Pain & Inflammation","myrrh"],
+["סיני","Commiphora myrrha","מור"],
+["סיני","Commiphora myrrha","myrrh"],
+["סיני","Commiphora myrrha","mò yào 沒藥"],
+["סיני","Commiphora myrrha","Pain & Inflammation"],
+["סיני","Pain & Inflammation","Commiphora myrrha"],
+["סיני","mò yào 沒藥","מור"],
+["סיני","mò yào 沒藥","myrrh"],
+["סיני","mò yào 沒藥","Commiphora myrrha"],
+["סיני","mò yào 沒藥","Pain & Inflammation"],
+["סיני","Pain & Inflammation","mò yào 沒藥"]
+];
+
+const ENGLISH_DATA = [
+// ── A1 ──
+["A1","hello / goodbye","שלום / להתראות"],
+["A1","please / thank you","בבקשה / תודה"],
+["A1","yes / no","כן / לא"],
+["A1","sorry / excuse me","סליחה / פרדון"],
+["A1","good / bad","טוב / רע"],
+["A1","big / small","גדול / קטן"],
+["A1","hot / cold","חם / קר"],
+["A1","open / closed","פתוח / סגור"],
+["A1","I want...","אני רוצה..."],
+["A1","I need...","אני צריך..."],
+["A1","I don't understand","אני לא מבין"],
+["A1","What is your name?","מה שמך?"],
+["A1","How are you?","מה שלומך?"],
+["A1","Where is...?","איפה נמצא...?"],
+["A1","How much is this?","כמה זה עולה?"],
+["A1","Can you help me?","אתה יכול לעזור לי?"],
+["A1","I like / I don't like","אני אוהב / אני לא אוהב"],
+["A1","Do you speak English?","אתה מדבר אנגלית?"],
+["A1","Please speak slowly","בבקשה דבר לאט"],
+["A1","Can you repeat that?","אתה יכול לחזור על זה?"],
+// ── A2 ──
+["A2","to agree / to disagree","להסכים / לא להסכים"],
+["A2","to arrive / to leave","להגיע / לעזוב"],
+["A2","to buy / to sell","לקנות / למכור"],
+["A2","to forget / to remember","לשכוח / לזכור"],
+["A2","to find / to lose","למצוא / לאבד"],
+["A2","I would like to...","הייתי רוצה..."],
+["A2","Could you please...?","האם תוכל בבקשה...?"],
+["A2","What do you think?","מה אתה חושב?"],
+["A2","How long does it take?","כמה זמן זה לוקח?"],
+["A2","I'm looking for...","אני מחפש..."],
+["A2","Is there...?","האם יש...?"],
+["A2","I'd prefer...","הייתי מעדיף..."],
+["A2","What time does it open?","באיזו שעה זה נפתח?"],
+["A2","neighbourhood","שכונה"],
+["A2","appointment","פגישה / תור"],
+["A2","receipt","קבלה"],
+["A2","directions","הוראות הגעה"],
+["A2","to complain","להתלונן"],
+["A2","to recommend","להמליץ"],
+["A2","It depends","זה תלוי"],
+// ── B1 ──
+["B1","although / however","למרות ש / עם זאת"],
+["B1","therefore / consequently","לכן / כתוצאה מכך"],
+["B1","moreover / furthermore","יתר על כן / בנוסף"],
+["B1","to deal with","להתמודד עם"],
+["B1","to take part in","להשתתף ב"],
+["B1","to be aware of","להיות מודע ל"],
+["B1","to look forward to","להצפות בהתרגשות ל"],
+["B1","opportunity","הזדמנות"],
+["B1","challenge","אתגר"],
+["B1","experience","ניסיון / חוויה"],
+["B1","responsibility","אחריות"],
+["B1","achievement","הישג"],
+["B1","In my opinion...","לדעתי..."],
+["B1","On the one hand... on the other hand...","מצד אחד... מצד שני..."],
+["B1","As far as I know...","ככל שידוע לי..."],
+["B1","It seems to me that...","נדמה לי ש..."],
+["B1","I tend to agree/disagree","אני נוטה להסכים/לא להסכים"],
+["B1","What I mean is...","כוונתי היא..."],
+["B1","Generally speaking...","בדרך כלל..."],
+["B1","To be honest...","באמת אומר לך..."],
+// ── B2 ──
+["B2","ambiguous","דו-משמעי"],
+["B2","contemplate","לשקול / להתבונן"],
+["B2","deteriorate","להידרדר"],
+["B2","elaborate","לפרט / מפורט"],
+["B2","fluctuate","להשתנות / לנוע"],
+["B2","inevitable","בלתי נמנע"],
+["B2","perceive","לתפוס / לראות"],
+["B2","substantial","משמעותי / ניכר"],
+["B2","unprecedented","חסר תקדים"],
+["B2","acknowledge","להכיר / להודות"],
+["B2","implication","השלכה"],
+["B2","Nevertheless...","עם זאת... / בכל זאת..."],
+["B2","I'd argue that...","אני טוען ש..."],
+["B2","It goes without saying that...","מובן מאליו ש..."],
+["B2","To put it differently...","לנסח זאת אחרת..."],
+["B2","All things considered...","לאחר שקלול כל הגורמים..."],
+["B2","This raises the question of...","זה מעלה את השאלה של..."],
+["B2","The evidence suggests...","הראיות מצביעות על..."],
+["B2","significant","משמעותי"],
+["B2","transition","מעבר"],
+// ── C1 ──
+["C1","meticulous","קפדני מאוד"],
+["C1","convoluted","מסובך ומפותל"],
+["C1","nuance","ניואנס / דקות"],
+["C1","ephemeral","חולף / ארעי"],
+["C1","pragmatic","פרגמטי / מעשי"],
+["C1","superfluous","מיותר"],
+["C1","paradox","פרדוקס"],
+["C1","rhetoric","רטוריקה"],
+["C1","eloquent","רהוט / דברן"],
+["C1","empirical","אמפירי"],
+["C1","autonomy","אוטונומיה"],
+["C1","ambivalent","אמביוולנטי"],
+["C1","discrepancy","אי-התאמה"],
+["C1","implicit","מרומז"],
+["C1","paradigm","פרדיגמה"],
+["C1","scrutinize","לבחון לעומק"],
+["C1","I would contend that...","אני טוען בתוקף ש..."],
+["C1","Arguably,...","יש לטעון ש... / מסתבר ש..."],
+["C1","To that end,...","לשם כך..."],
+["C1","The crux of the matter is...","לב העניין הוא..."],
+// ── C2 ──
+["C2","to obfuscate","לטשטש / לסרבל בכוונה"],
+["C2","to exacerbate","להחמיר / להעצים"],
+["C2","to mitigate","להפחית / למתן"],
+["C2","to juxtapose","להשוות זה לצד זה"],
+["C2","to corroborate","לאשש / לתמוך בראיות"],
+["C2","to circumvent","לעקוף"],
+["C2","to extrapolate","לחלץ מסקנות / להקיש"],
+["C2","insidious","חשאי ומסוכן"],
+["C2","tenacious","עקשן / אמיץ"],
+["C2","innocuous","חסר נזק / תמים"],
+["C2","sycophant","חנפן"],
+["C2","loquacious","פטפטן / דברן יתר"],
+["C2","perspicacious","חד-תפיסה / נבון"],
+["C2","Be that as it may,...","יהיה אשר יהיה..."],
+["C2","It stands to reason that...","מתבקש מן הסברה ש..."],
+["C2","One cannot overstate...","לא ניתן להפריז ב..."],
+["C2","It would be remiss not to mention...","יהיה בלתי אחראי לא להזכיר..."],
+["C2","The ramifications are far-reaching...","ההשלכות הן רחבות טווח..."],
+// ── Phrasal Verbs ──
+["Phrasal Verbs","give up","לוותר"],
+["Phrasal Verbs","look up","לחפש"],
+["Phrasal Verbs","run out of","להיגמר"],
+["Phrasal Verbs","come across","להיתקל ב"],
+["Phrasal Verbs","get along","להסתדר עם"],
+["Phrasal Verbs","bring up","להעלות נושא"],
+["Phrasal Verbs","figure out","להבין / לפתור"],
+["Phrasal Verbs","put off","לדחות"],
+["Phrasal Verbs","turn down","לסרב"],
+["Phrasal Verbs","set up","להקים / לסדר"],
+["Phrasal Verbs","take over","להשתלט"],
+["Phrasal Verbs","carry out","לבצע"],
+["Phrasal Verbs","point out","להצביע על"],
+["Phrasal Verbs","go through","לעבור דרך"],
+["Phrasal Verbs","make up","להמציא / לפייס"],
+["Phrasal Verbs","catch up","להדביק פער"],
+["Phrasal Verbs","break down","להתמוטט"],
+["Phrasal Verbs","keep up","לעמוד בקצב"],
+["Phrasal Verbs","show off","להתהדר"],
+["Phrasal Verbs","fall apart","להתפרק"],
+// ── Idioms ──
+["Idioms","bite the bullet","לשאת את הכאב בגבורה"],
+["Idioms","break the ice","לשבור את הקרח"],
+["Idioms","hit the nail on the head","לפגוע בול"],
+["Idioms","spill the beans","להסגיר סוד"],
+["Idioms","under the weather","לא מרגיש טוב"],
+["Idioms","cost an arm and a leg","לעלות הון"],
+["Idioms","once in a blue moon","לעיתים נדירות מאוד"],
+["Idioms","the ball is in your court","התורה שלך"],
+["Idioms","piece of cake","קל מאוד"],
+["Idioms","hit the sack","ללכת לישון"],
+["Idioms","let the cat out of the bag","לגלות סוד בטעות"],
+["Idioms","burn the midnight oil","לעבוד עד אמצע הלילה"],
+["Idioms","bite off more than you can chew","לקחת יותר ממה שאפשר"],
+["Idioms","beat around the bush","לדבר מסביב לעניין"],
+["Idioms","actions speak louder than words","מעשים מדברים יותר ממילים"],
+];
+
+const JAPANESE_DATA = [
+// Hiragana — basic 46
+["Hiragana","あ","a"],["Hiragana","い","i"],["Hiragana","う","u"],["Hiragana","え","e"],["Hiragana","お","o"],
+["Hiragana","か","ka"],["Hiragana","き","ki"],["Hiragana","く","ku"],["Hiragana","け","ke"],["Hiragana","こ","ko"],
+["Hiragana","さ","sa"],["Hiragana","し","shi"],["Hiragana","す","su"],["Hiragana","せ","se"],["Hiragana","そ","so"],
+["Hiragana","た","ta"],["Hiragana","ち","chi"],["Hiragana","つ","tsu"],["Hiragana","て","te"],["Hiragana","と","to"],
+["Hiragana","な","na"],["Hiragana","に","ni"],["Hiragana","ぬ","nu"],["Hiragana","ね","ne"],["Hiragana","の","no"],
+["Hiragana","は","ha"],["Hiragana","ひ","hi"],["Hiragana","ふ","fu"],["Hiragana","へ","he"],["Hiragana","ほ","ho"],
+["Hiragana","ま","ma"],["Hiragana","み","mi"],["Hiragana","む","mu"],["Hiragana","め","me"],["Hiragana","も","mo"],
+["Hiragana","や","ya"],["Hiragana","ゆ","yu"],["Hiragana","よ","yo"],
+["Hiragana","ら","ra"],["Hiragana","り","ri"],["Hiragana","る","ru"],["Hiragana","れ","re"],["Hiragana","ろ","ro"],
+["Hiragana","わ","wa"],["Hiragana","を","wo"],["Hiragana","ん","n"],
+// Hiragana — dakuten (voiced)
+["Hiragana","が","ga"],["Hiragana","ぎ","gi"],["Hiragana","ぐ","gu"],["Hiragana","げ","ge"],["Hiragana","ご","go"],
+["Hiragana","ざ","za"],["Hiragana","じ","ji"],["Hiragana","ず","zu"],["Hiragana","ぜ","ze"],["Hiragana","ぞ","zo"],
+["Hiragana","だ","da"],["Hiragana","ぢ","di"],["Hiragana","づ","du"],["Hiragana","で","de"],["Hiragana","ど","do"],
+["Hiragana","ば","ba"],["Hiragana","び","bi"],["Hiragana","ぶ","bu"],["Hiragana","べ","be"],["Hiragana","ぼ","bo"],
+["Hiragana","ぱ","pa"],["Hiragana","ぴ","pi"],["Hiragana","ぷ","pu"],["Hiragana","ぺ","pe"],["Hiragana","ぽ","po"],
+// Hiragana — combinations (youon)
+["Hiragana","きゃ","kya"],["Hiragana","きゅ","kyu"],["Hiragana","きょ","kyo"],
+["Hiragana","しゃ","sha"],["Hiragana","しゅ","shu"],["Hiragana","しょ","sho"],
+["Hiragana","ちゃ","cha"],["Hiragana","ちゅ","chu"],["Hiragana","ちょ","cho"],
+["Hiragana","にゃ","nya"],["Hiragana","にゅ","nyu"],["Hiragana","にょ","nyo"],
+["Hiragana","ひゃ","hya"],["Hiragana","ひゅ","hyu"],["Hiragana","ひょ","hyo"],
+["Hiragana","みゃ","mya"],["Hiragana","みゅ","myu"],["Hiragana","みょ","myo"],
+["Hiragana","りゃ","rya"],["Hiragana","りゅ","ryu"],["Hiragana","りょ","ryo"],
+["Hiragana","ぎゃ","gya"],["Hiragana","ぎゅ","gyu"],["Hiragana","ぎょ","gyo"],
+["Hiragana","じゃ","ja"],["Hiragana","じゅ","ju"],["Hiragana","じょ","jo"],
+["Hiragana","びゃ","bya"],["Hiragana","びゅ","byu"],["Hiragana","びょ","byo"],
+["Hiragana","ぴゃ","pya"],["Hiragana","ぴゅ","pyu"],["Hiragana","ぴょ","pyo"],
+// Katakana — basic 46
+["Katakana","ア","a"],["Katakana","イ","i"],["Katakana","ウ","u"],["Katakana","エ","e"],["Katakana","オ","o"],
+["Katakana","カ","ka"],["Katakana","キ","ki"],["Katakana","ク","ku"],["Katakana","ケ","ke"],["Katakana","コ","ko"],
+["Katakana","サ","sa"],["Katakana","シ","shi"],["Katakana","ス","su"],["Katakana","セ","se"],["Katakana","ソ","so"],
+["Katakana","タ","ta"],["Katakana","チ","chi"],["Katakana","ツ","tsu"],["Katakana","テ","te"],["Katakana","ト","to"],
+["Katakana","ナ","na"],["Katakana","ニ","ni"],["Katakana","ヌ","nu"],["Katakana","ネ","ne"],["Katakana","ノ","no"],
+["Katakana","ハ","ha"],["Katakana","ヒ","hi"],["Katakana","フ","fu"],["Katakana","ヘ","he"],["Katakana","ホ","ho"],
+["Katakana","マ","ma"],["Katakana","ミ","mi"],["Katakana","ム","mu"],["Katakana","メ","me"],["Katakana","モ","mo"],
+["Katakana","ヤ","ya"],["Katakana","ユ","yu"],["Katakana","ヨ","yo"],
+["Katakana","ラ","ra"],["Katakana","リ","ri"],["Katakana","ル","ru"],["Katakana","レ","re"],["Katakana","ロ","ro"],
+["Katakana","ワ","wa"],["Katakana","ヲ","wo"],["Katakana","ン","n"],
+// Katakana — dakuten (voiced)
+["Katakana","ガ","ga"],["Katakana","ギ","gi"],["Katakana","グ","gu"],["Katakana","ゲ","ge"],["Katakana","ゴ","go"],
+["Katakana","ザ","za"],["Katakana","ジ","ji"],["Katakana","ズ","zu"],["Katakana","ゼ","ze"],["Katakana","ゾ","zo"],
+["Katakana","ダ","da"],["Katakana","ヂ","di"],["Katakana","ヅ","du"],["Katakana","デ","de"],["Katakana","ド","do"],
+["Katakana","バ","ba"],["Katakana","ビ","bi"],["Katakana","ブ","bu"],["Katakana","ベ","be"],["Katakana","ボ","bo"],
+["Katakana","パ","pa"],["Katakana","ピ","pi"],["Katakana","プ","pu"],["Katakana","ペ","pe"],["Katakana","ポ","po"],
+// Katakana — combinations
+["Katakana","キャ","kya"],["Katakana","キュ","kyu"],["Katakana","キョ","kyo"],
+["Katakana","シャ","sha"],["Katakana","シュ","shu"],["Katakana","ショ","sho"],
+["Katakana","チャ","cha"],["Katakana","チュ","chu"],["Katakana","チョ","cho"],
+["Katakana","ニャ","nya"],["Katakana","ニュ","nyu"],["Katakana","ニョ","nyo"],
+["Katakana","ヒャ","hya"],["Katakana","ヒュ","hyu"],["Katakana","ヒョ","hyo"],
+["Katakana","ミャ","mya"],["Katakana","ミュ","myu"],["Katakana","ミョ","myo"],
+["Katakana","リャ","rya"],["Katakana","リュ","ryu"],["Katakana","リョ","ryo"],
+["Katakana","ギャ","gya"],["Katakana","ギュ","gyu"],["Katakana","ギョ","gyo"],
+["Katakana","ジャ","ja"],["Katakana","ジュ","ju"],["Katakana","ジョ","jo"],
+["Katakana","ビャ","bya"],["Katakana","ビュ","byu"],["Katakana","ビョ","byo"],
+["Katakana","ピャ","pya"],["Katakana","ピュ","pyu"],["Katakana","ピョ","pyo"],
+];
+
+const NUTRITION_DATA = [
+// Macronutrients
+["מאקרו","protein","builds muscle & repairs tissue"],
+["מאקרו","carbohydrates","primary energy source"],
+["מאקרו","fat","energy storage & hormone production"],
+["מאקרו","fiber","gut health & blood sugar regulation"],
+["מאקרו","water","hydration & all bodily functions"],
+["מאקרו","starch","complex carb — slow energy release"],
+["מאקרו","sugar","simple carb — fast energy"],
+["מאקרו","saturated fat","raises LDL — found in meat & dairy"],
+["מאקרו","unsaturated fat","heart-healthy — found in olive oil & nuts"],
+["מאקרו","trans fat","harmful — raises LDL lowers HDL"],
+["מאקרו","cholesterol","cell membrane component — liver & eggs"],
+["מאקרו","omega-3","anti-inflammatory — found in fish & flaxseed"],
+["מאקרו","omega-6","essential fat — found in vegetable oils"],
+["מאקרו","complete protein","all 9 essential amino acids — meat, eggs, soy"],
+["מאקרו","incomplete protein","missing some amino acids — most plants"],
+
+// Vitamins
+["ויטמינים","vitamin A","vision & immune — carrots, liver"],
+["ויטמינים","vitamin B1 (thiamine)","energy metabolism — whole grains, legumes"],
+["ויטמינים","vitamin B2 (riboflavin)","energy & cell growth — dairy, eggs"],
+["ויטמינים","vitamin B3 (niacin)","DNA repair & metabolism — meat, nuts"],
+["ויטמינים","vitamin B6","protein metabolism & mood — chicken, banana"],
+["ויטמינים","vitamin B9 (folate)","cell division & fetal development — leafy greens"],
+["ויטמינים","vitamin B12","nerve function & blood — meat, dairy"],
+["ויטמינים","vitamin C","antioxidant & collagen — citrus, peppers"],
+["ויטמינים","vitamin D","calcium absorption & immunity — sun, fish"],
+["ויטמינים","vitamin E","antioxidant — nuts, seeds, oils"],
+["ויטמינים","vitamin K","blood clotting & bone — leafy greens"],
+["ויטמינים","biotin","fat & glucose metabolism — eggs, nuts"],
+["ויטמינים","pantothenic acid (B5)","hormone synthesis — avocado, mushrooms"],
+
+// Minerals
+["מינרלים","calcium","bones & teeth — dairy, leafy greens"],
+["מינרלים","iron","oxygen transport — red meat, spinach"],
+["מינרלים","magnesium","muscle & nerve — nuts, seeds, dark chocolate"],
+["מינרלים","potassium","blood pressure & heart — banana, potato"],
+["מינרלים","sodium","fluid balance — salt, processed foods"],
+["מינרלים","zinc","immunity & wound healing — oysters, beef"],
+["מינרלים","phosphorus","bones & energy — dairy, meat, fish"],
+["מינרלים","iodine","thyroid hormone — seaweed, dairy, iodized salt"],
+["מינרלים","selenium","antioxidant — brazil nuts, tuna"],
+["מינרלים","copper","iron absorption & connective tissue — liver, nuts"],
+["מינרלים","manganese","bone formation — whole grains, legumes"],
+["מינרלים","chromium","insulin sensitivity — broccoli, whole grains"],
+
+// Phytonutrients & antioxidants
+["פיטוכימיקלים","lycopene","antioxidant — tomatoes, watermelon"],
+["פיטוכימיקלים","beta-carotene","vitamin A precursor — carrots, sweet potato"],
+["פיטוכימיקלים","quercetin","anti-inflammatory — onions, apples"],
+["פיטוכימיקלים","resveratrol","heart-protective — red wine, grapes"],
+["פיטוכימיקלים","curcumin","anti-inflammatory — turmeric"],
+["פיטוכימיקלים","sulforaphane","cancer-protective — broccoli, cauliflower"],
+["פיטוכימיקלים","anthocyanins","antioxidant — berries, red cabbage"],
+["פיטוכימיקלים","isoflavones","estrogen-like — soy products"],
+["פיטוכימיקלים","lutein","eye health — kale, eggs"],
+["פיטוכימיקלים","zeaxanthin","macular protection — corn, peppers"],
+["פיטוכימיקלים","flavonoids","anti-inflammatory — tea, citrus, berries"],
+["פיטוכימיקלים","polyphenols","antioxidant — coffee, dark chocolate, berries"],
+
+// Food components
+["רכיבי מזון","gluten","protein in wheat, rye, barley"],
+["רכיבי מזון","lactose","sugar in milk — needs lactase enzyme"],
+["רכיבי מזון","casein","main milk protein — slow-digesting"],
+["רכיבי מזון","fructose","fruit sugar — metabolized by liver"],
+["רכיבי מזון","glucose","blood sugar — brain's primary fuel"],
+["רכיבי מזון","sucrose","table sugar — glucose + fructose"],
+["רכיבי מזון","maltose","malt sugar — two glucose units"],
+["רכיבי מזון","pectin","soluble fiber — found in fruit skin"],
+["רכיבי מזון","lecithin","emulsifier — egg yolk, soy"],
+["רכיבי מזון","tannins","bitter compounds — tea, red wine, unripe fruit"],
+["רכיבי מזון","capsaicin","spicy compound — chili peppers"],
+["רכיבי מזון","allicin","antibacterial compound — garlic"],
+["רכיבי מזון","caffeine","stimulant — coffee, tea, chocolate"],
+["רכיבי מזון","alcohol","7 kcal/g — metabolized by liver"],
+["רכיבי מזון","oxalates","bind calcium — spinach, beets, nuts"],
+["רכיבי מזון","phytates","bind minerals — whole grains, legumes"],
+
+// Diets & concepts
+["תזונה ומושגים","glycemic index","how fast food raises blood sugar"],
+["תזונה ומושגים","glycemic load","glycemic index × amount of carbs"],
+["תזונה ומושגים","caloric density","calories per gram of food"],
+["תזונה ומושגים","nutrient density","nutrients per calorie"],
+["תזונה ומושגים","bioavailability","how well a nutrient is absorbed"],
+["תזונה ומושגים","antioxidant","neutralizes free radicals"],
+["תזונה ומושגים","free radical","unstable molecule — causes cell damage"],
+["תזונה ומושגים","inflammation","immune response — chronic form linked to disease"],
+["תזונה ומושגים","gut microbiome","bacteria in intestine — affects health & mood"],
+["תזונה ומושגים","probiotics","beneficial live bacteria — yogurt, kefir"],
+["תזונה ומושגים","prebiotics","food for gut bacteria — onion, garlic, oats"],
+["תזונה ומושגים","intermittent fasting","cycling between eating & fasting periods"],
+["תזונה ומושגים","ketosis","fat-burning state — very low carb diet"],
+["תזונה ומושגים","BMR","calories burned at rest — basal metabolic rate"],
+["תזונה ומושגים","TDEE","total daily energy expenditure"],
+["תזונה ומושגים","caloric deficit","eating less than TDEE — leads to fat loss"],
+["תזונה ומושגים","caloric surplus","eating more than TDEE — leads to weight gain"],
+];
+
+
+const HISTORY_DATA = [
+// Ancient & Classical
+["עתיקה","כיבוש אלכסנדריה בידי אלכסנדר הגדול","נובמבר 332 לפנה״ס"],
+["עתיקה","הקמת האימפריה הרומית — אוגוסטוס קיסר ראשון","ינואר 27 לפנה״ס"],
+["עתיקה","חורבן בית המקדש השני","ספטמבר 70 לספירה"],
+["עתיקה","נפילת האימפריה הרומית המערבית","ספטמבר 476"],
+["עתיקה","הקמת האסלאם — הגירה למדינה","ספטמבר 622"],
+
+// Middle Ages
+["ימי הביניים","הכיבוש המוסלמי של ספרד","אפריל 711"],
+["ימי הביניים","עלייתו של קרל הגדול לשלטון","דצמבר 768"],
+["ימי הביניים","כיבוש אנגליה על ידי הנורמנים — קרב הייסטינגס","אוקטובר 1066"],
+["ימי הביניים","הצלב הראשון — כיבוש ירושלים","יולי 1099"],
+["ימי הביניים","מגנה קרטה — אנגליה","יוני 1215"],
+["ימי הביניים","נפילת קונסטנטינופול לידי העות'מאנים","מאי 1453"],
+
+// Early Modern
+["עידן מודרני מוקדם","תגלית אמריקה — קולומבוס","אוקטובר 1492"],
+["עידן מודרני מוקדם","הרפורמציה הפרוטסטנטית — לותר","אוקטובר 1517"],
+["עידן מודרני מוקדם","מהפכת קופרניקוס — תאוריה הליוצנטרית","מאי 1543"],
+["עידן מודרני מוקדם","ארמדה הספרדית — תבוסה","אוגוסט 1588"],
+["עידן מודרני מוקדם","מהפכה האנגלית הגדולה — גיליום השלישי","נובמבר 1688"],
+
+// Revolutions
+["מהפכות","הכרזת העצמאות האמריקאית","יולי 1776"],
+["מהפכות","נפילת הבסטיל — מהפכה הצרפתית","יולי 1789"],
+["מהפכות","הכרזת הרפובליקה הצרפתית הראשונה","ספטמבר 1792"],
+["מהפכות","נפוליאון — קיסר צרפת","מאי 1804"],
+["מהפכות","קרב ווטרלו — תבוסת נפוליאון","יוני 1815"],
+["מהפכות","מהפכות 1848 באירופה","פברואר 1848"],
+["מהפכות","קומונת פריז","מרץ 1871"],
+["מהפכות","מהפכה הרוסית — אוקטובר","נובמבר 1917"],
+
+// 19th Century
+["המאה ה-19","ביטול עבדות ב-USA","ינואר 1863"],
+["המאה ה-19","איחוד גרמניה תחת ביסמרק","ינואר 1871"],
+["המאה ה-19","קנל סואץ נפתח","נובמבר 1869"],
+["המאה ה-19","הקמת ברית כדורגל — FA","אוקטובר 1863"],
+["המאה ה-19","גילוי פניצילין על ידי פלמינג","ספטמבר 1928"],
+
+// WWI
+["מלחמת העולם הראשונה","רצח הארכידוק פרנץ פרדיננד","יוני 1914"],
+["מלחמת העולם הראשונה","פרוץ מלחמת העולם הראשונה","אוגוסט 1914"],
+["מלחמת העולם הראשונה","הצהרת בלפור","נובמבר 1917"],
+["מלחמת העולם הראשונה","סיום מלחמת העולם הראשונה","נובמבר 1918"],
+["מלחמת העולם הראשונה","הסכם ורסאי","יוני 1919"],
+
+// WWII
+["מלחמת העולם השנייה","גרמניה פולשת לפולין — תחילת המלחמה","ספטמבר 1939"],
+["מלחמת העולם השנייה","קרב בריטניה","יולי 1940"],
+["מלחמת העולם השנייה","ועידת ואנזה — הפתרון הסופי","ינואר 1942"],
+["מלחמת העולם השנייה","ביצוע שלחים — D-Day","יוני 1944"],
+["מלחמת העולם השנייה","הפצצת הירושימה ונגסקי","אוגוסט 1945"],
+["מלחמת העולם השנייה","כניעת יפן — סיום מלחמת העולם השנייה","ספטמבר 1945"],
+
+// Cold War & Modern
+["המאה ה-20","הקמת מדינת ישראל","מאי 1948"],
+["המאה ה-20","נאטו מוקם","אפריל 1949"],
+["המאה ה-20","מלחמת קוריאה מתחילה","יוני 1950"],
+["המאה ה-20","עלייתו של מאו צה-טונג — סין","אוקטובר 1949"],
+["המאה ה-20","שיגור ספוטניק — תחילת עידן החלל","אוקטובר 1957"],
+["המאה ה-20","משבר הטילים בקובה","אוקטובר 1962"],
+["המאה ה-20","נחיתה על הירח — אפולו 11","יולי 1969"],
+["המאה ה-20","נפילת חומת ברלין","נובמבר 1989"],
+["המאה ה-20","התפרקות ברית המועצות","דצמבר 1991"],
+
+// 21st Century
+["המאה ה-21","פיגועי 11 בספטמבר","ספטמבר 2001"],
+["המאה ה-21","מגיפת קורונה מוכרזת כמגיפה עולמית","מרץ 2020"],
+["המאה ה-21","פלישת רוסיה לאוקראינה","פברואר 2022"],
+
+// Jewish History
+["היסטוריה יהודית","יציאת מצרים (לפי המסורת)","±1250 לפנה״ס"],
+["היסטוריה יהודית","חורבן בית המקדש הראשון — בבל","אוגוסט 586 לפנה״ס"],
+["היסטוריה יהודית","גזירות אנטיוכוס — מרד מכבים","167 לפנה״ס"],
+["היסטוריה יהודית","גירוש יהודים מספרד","אוגוסט 1492"],
+["היסטוריה יהודית","הקונגרס הציוני הראשון — הרצל","אוגוסט 1897"],
+["היסטוריה יהודית","פרוגרום קריסטלנאכט","נובמבר 1938"],
+["היסטוריה יהודית","הקמת מדינת ישראל","מאי 1948"],
+["היסטוריה יהודית","מלחמת ששת הימים","יוני 1967"],
+["היסטוריה יהודית","מלחמת יום הכיפורים","אוקטובר 1973"],
+["היסטוריה יהודית","הסכמי אוסלו","ספטמבר 1993"],
+
+// ── יפן פאודלית ──
+["יפן פאודלית","תקופת נארה — ראשית שלטון קיסרי","710–794"],
+["יפן פאודלית","תקופת היאן — שיא הקולטורה הקלאסית","794–1185"],
+["יפן פאודלית","ראשית השוגונות — מינמוטו נו יוריטומו","1185"],
+["יפן פאודלית","תקופת קמקורה — שוגונות ראשונה","1185–1333"],
+["יפן פאודלית","ניסיון פלישת המונגולים ליפן","1274 ו-1281"],
+["יפן פאודלית","תקופת מורומאצ'י — שוגונות אשיקאגה","1336–1573"],
+["יפן פאודלית","מלחמות אונין — תחילת סנגוקו","1467"],
+["יפן פאודלית","תקופת סנגוקו — מדינות לוחמות","1467–1615"],
+["יפן פאודלית","אודה נובונאגה — מאחד יפן (חלקי)","1568–1582"],
+["יפן פאודלית","טויוטומי הידיושי — מאחד יפן","1590"],
+["יפן פאודלית","קרב סקיגהארה — טוקוגאווה מנצח","אוקטובר 1600"],
+["יפן פאודלית","תקופת אדו — שוגונות טוקוגאווה","1603–1868"],
+["יפן פאודלית","מדיניות סאקוקו — יפן סגורה לעולם","1635"],
+["יפן פאודלית","אדמירל פרי פותח את יפן לאמריקה","יולי 1853"],
+["יפן פאודלית","רסטורציית מייג'י — ביטול השוגונות","ינואר 1868"],
+["יפן פאודלית","סוף עידן הסמוראים — מרד סאצומה","ספטמבר 1877"],
+
+// ── מי זה — יפן פאודלית ──
+["דמויות יפן","מינמוטו נו יוריטומו","מייסד השוגונות הראשונה — קמקורה 1185"],
+["דמויות יפן","אודה נובונאגה","דאימיו שהחל לאחד יפן, נרצח 1582"],
+["דמויות יפן","טויוטומי הידיושי","איחד יפן, בן אכר שהפך לשליט עליון"],
+["דמויות יפן","טוקוגאווה איאסו","מייסד שוגונות אדו, ניצח בסקיגהארה"],
+["דמויות יפן","מיאמוטו מוסאשי","חרבן הגדול ביפן, כתב 'ספר חמשת הטבעות'"],
+["דמויות יפן","יאגיו מונאנורי","מחנך הכנדו הגדול של שוגונות טוקוגאווה"],
+["דמויות יפן","טקדה שינגן","דאימיו רב-עוצמה, יריבו של אודה"],
+["דמויות יפן","אואסוגי קנשין","דאימיו מנצח, קרא עצמו 'אל המלחמה'"],
+["דמויות יפן","סאיגו טקמורי","מנהיג מרד סאצומה — 'הסמוראי האחרון'"],
+["דמויות יפן","האטורי האנזו","מפורסם בנינג'יטסו — ראש נינג'ה של טוקוגאווה"],
+
+// ── היסטוריה של אומנויות לחימה ──
+["אומנויות לחימה — עתיקה","הפנקרציון — קרב חופשי ביוון העתיקה","648 לפנה״ס — אולימפיאדה 33"],
+["אומנויות לחימה — עתיקה","האבירות הסינית — יופנגשו","שושלת ג'ואו — ±500 לפנה״ס"],
+["אומנויות לחימה — עתיקה","ראשית הכנדו — חרב עץ בשימוש סמוראים","תקופת נארה — המאה ה-8"],
+["אומנויות לחימה — עתיקה","ג'יוג'יטסו — מערכת הלחימה הסמוראית","התפתח בתקופת מורומאצ'י, 1300-1500"],
+["אומנויות לחימה — עתיקה","שאולין קונג-פו — מנזר שאולין סין","ייסוד ±495 לספירה, שושלת ווי"],
+["אומנויות לחימה — עתיקה","נינג'יטסו — ראשית השימוש בנינג'ה","תקופת סנגוקו — המאה ה-15"],
+["אומנויות לחימה — מודרנית","ג'ודו — הוקם על ידי ג'יגורו קאנו","1882 — טוקיו"],
+["אומנויות לחימה — מודרנית","קראטה מגיע לאוקינאווה מסין","המאה ה-14, הוצג ביפן ±1920"],
+["אומנויות לחימה — מודרנית","ג'יוג'יטסו ברזילאי (BJJ) מייסד","מיטסויו מאאדה לימד את הגרייסי — 1914"],
+["אומנויות לחימה — מודרנית","קיקבוקסינג נוסד ביפן","אוסמו נוגוצ'י — שנות ה-60"],
+["אומנויות לחימה — מודרנית","טאקוונדו מוכר כספורט לאומי קוריאה","1955 — גנרל צ'וי הונג הי"],
+["אומנויות לחימה — מודרנית","מוואי תאי — קידוש כספורט לאומי תאילנד","1921 — ראמה ה-6"],
+["אומנויות לחימה — מודרנית","קראטה נכנס לאולימפיאדה","טוקיו 2020 (2021)"],
+["אומנויות לחימה — מודרנית","ג'ודו נכנס לאולימפיאדה","טוקיו 1964"],
+["אומנויות לחימה — מודרנית","UFC נוסד — תחילת עידן ה-MMA","נובמבר 1993"],
+["אומנויות לחימה — מודרנית","גראסי ג'יוג'יטסו — הוקיי הוקו ברזיל","רורים גרייסי הביא BJJ לארה״ב — 1978"],
+["אומנויות לחימה — מודרנית","אייקידו הוקם על ידי מוריהי אואשיבה","1942 — יפן"],
+["אומנויות לחימה — מודרנית","קראטה שוטוקן — גיצ'ין פונאקושי","1922 — הדגמה ראשונה ביפן"],
+["אומנויות לחימה — מודרנית","סמבו — לחימה סובייטית הוקמה","שנות ה-20 — ברית המועצות"],
+["אומנויות לחימה — מודרנית","ווינג צ'ון — קונג פו סיני לנשים","מיוחס לנג מוי — תקופת צ'ינג, 1700"],
+];
+
+
+const BLOOD_DATA = [
+// ── ערכים תקינים — CBC ──
+["ערכים","המוגלובין — גבר","13.5–17.5 g/dL"],
+["ערכים","המוגלובין — אישה","12.0–15.5 g/dL"],
+["ערכים","המטוקריט — גבר","41–53%"],
+["ערכים","המטוקריט — אישה","36–46%"],
+["ערכים","כדוריות דם לבנות WBC","4,500–11,000 /µL"],
+["ערכים","טסיות דם Platelets","150,000–400,000 /µL"],
+["ערכים","MCV — נפח תא דם אדום","80–100 fL"],
+// ── ערכים — כבד ──
+["ערכים","ALT — תקין","7–56 U/L"],
+["ערכים","AST — תקין","10–40 U/L"],
+["ערכים","ALP — תקין","44–147 U/L"],
+["ערכים","בילירובין כולל","0.2–1.2 mg/dL"],
+["ערכים","אלבומין — תקין","3.5–5.0 g/dL"],
+["ערכים","INR — תקין","0.8–1.2"],
+// ── ערכים — כליות ──
+["ערכים","קריאטינין — גבר","0.7–1.3 mg/dL"],
+["ערכים","קריאטינין — אישה","0.6–1.1 mg/dL"],
+["ערכים","אוריאה BUN","7–20 mg/dL"],
+["ערכים","נתרן Na⁺","136–145 mEq/L"],
+["ערכים","אשלגן K⁺","3.5–5.0 mEq/L"],
+["ערכים","סידן Ca","8.5–10.5 mg/dL"],
+["ערכים","GFR — תקין",">60 mL/min/1.73m²"],
+// ── ערכים — סוכר ──
+["ערכים","גלוקוז בצום — תקין","70–99 mg/dL"],
+["ערכים","HbA1c — תקין","<5.7%"],
+["ערכים","HbA1c — טרום סוכרת","5.7–6.4%"],
+["ערכים","HbA1c — סוכרת","≥6.5%"],
+// ── ערכים — שומנים ──
+["ערכים","כולסטרול כולל — רצוי","<200 mg/dL"],
+["ערכים","LDL — רצוי","<100 mg/dL"],
+["ערכים","HDL — גבר (מינימום)","≥40 mg/dL"],
+["ערכים","HDL — אישה (מינימום)","≥50 mg/dL"],
+["ערכים","טריגליצרידים — תקין","<150 mg/dL"],
+// ── ערכים — בלוטת התריס ──
+["ערכים","TSH — תקין","0.4–4.0 mIU/L"],
+["ערכים","T4 חופשי","0.8–1.8 ng/dL"],
+["ערכים","T3 חופשי","2.3–4.2 pg/mL"],
+// ── ערכים — הורמונים ──
+["ערכים","ויטמין D תקין","30–100 ng/mL"],
+["ערכים","קורטיזול בבוקר","6–23 µg/dL"],
+["ערכים","טרופונין T — תקין","<0.01 ng/mL"],
+["ערכים","CRP — תקין","<1.0 mg/L"],
+["ערכים","ESR — גבר","<15 mm/hr"],
+["ערכים","ESR — אישה","<20 mm/hr"],
+["ערכים","פריטין — גבר","30–300 ng/mL"],
+["ערכים","פריטין — אישה","15–150 ng/mL"],
+["ערכים","ויטמין B12","200–900 pg/mL"],
+["ערכים","D-Dimer — תקין","<0.5 µg/mL"],
+["ערכים","הומוציסטאין","5–15 µmol/L"],
+
+// ── ראשי תיבות ──
+["ראשי תיבות","CBC","Complete Blood Count — ספירת דם מלאה"],
+["ראשי תיבות","Hb / Hgb","Hemoglobin — המוגלובין, חלבון נושא חמצן"],
+["ראשי תיבות","Hct","Hematocrit — אחוז כדוריות דם אדומות מנפח הדם"],
+["ראשי תיבות","WBC","White Blood Cells — כדוריות דם לבנות"],
+["ראשי תיבות","RBC","Red Blood Cells — כדוריות דם אדומות"],
+["ראשי תיבות","MCV","Mean Corpuscular Volume — נפח ממוצע של כדורית"],
+["ראשי תיבות","MCH","Mean Corpuscular Hemoglobin — המוגלובין ממוצע בכדורית"],
+["ראשי תיבות","RDW","Red cell Distribution Width — פיזור גודל כדוריות"],
+["ראשי תיבות","PLT","Platelets — טסיות דם"],
+["ראשי תיבות","ALT","Alanine Aminotransferase — אנזים כבד, עולה בנזק לתאי כבד"],
+["ראשי תיבות","AST","Aspartate Aminotransferase — אנזים כבד ולב"],
+["ראשי תיבות","ALP","Alkaline Phosphatase — אנזים מרה ועצם"],
+["ראשי תיבות","GGT","Gamma-Glutamyl Transferase — אנזים כבד, רגיש לאלכוהול"],
+["ראשי תיבות","LDH","Lactate Dehydrogenase — אנזים רקמות, עולה בנזק תאי"],
+["ראשי תיבות","BUN","Blood Urea Nitrogen — אוריאה בדם, מדד תפקוד כליה"],
+["ראשי תיבות","GFR","Glomerular Filtration Rate — קצב סינון גלומרולרי"],
+["ראשי תיבות","eGFR","estimated GFR — אומדן קצב סינון כלייתי"],
+["ראשי תיבות","CRP","C-Reactive Protein — חלבון דלקתי"],
+["ראשי תיבות","ESR","Erythrocyte Sedimentation Rate — שקיעת דם"],
+["ראשי תיבות","TSH","Thyroid-Stimulating Hormone — הורמון מגרה תריס"],
+["ראשי תיבות","T3","Triiodothyronine — הורמון תריס פעיל"],
+["ראשי תיבות","T4","Thyroxine — הורמון תריס עיקרי"],
+["ראשי תיבות","HbA1c","Hemoglobin A1c — סוכר מצטבר, ממוצע 3 חודשים"],
+["ראשי תיבות","FBS","Fasting Blood Sugar — סוכר בצום"],
+["ראשי תיבות","LDL","Low-Density Lipoprotein — כולסטרול רע"],
+["ראשי תיבות","HDL","High-Density Lipoprotein — כולסטרול טוב"],
+["ראשי תיבות","TIBC","Total Iron Binding Capacity — קיבולת קשירת ברזל"],
+["ראשי תיבות","INR","International Normalized Ratio — מדד קרישה מנורמל"],
+["ראשי תיבות","PT","Prothrombin Time — זמן פרותרומבין, מסלול חיצוני"],
+["ראשי תיבות","PTT / aPTT","Partial Thromboplastin Time — מסלול פנימי"],
+["ראשי תיבות","BNP","B-type Natriuretic Peptide — מדד אי-ספיקת לב"],
+["ראשי תיבות","NT-proBNP","N-terminal pro-BNP — מדד עומס על הלב"],
+["ראשי תיבות","PSA","Prostate-Specific Antigen — סמן לסרטן ערמונית"],
+["ראשי תיבות","CEA","Carcinoembryonic Antigen — סמן גידולי כללי"],
+["ראשי תיבות","AFP","Alpha-Fetoprotein — סמן לסרטן כבד"],
+["ראשי תיבות","FSH","Follicle-Stimulating Hormone — הורמון מגרה זקיק"],
+["ראשי תיבות","LH","Luteinizing Hormone — הורמון לוטייניזציה"],
+["ראשי תיבות","DHEA-S","Dehydroepiandrosterone Sulfate — הורמון אדרנל"],
+["ראשי תיבות","PTH","Parathyroid Hormone — הורמון פאראתירואיד"],
+
+// ── קליני — מה הבדיקה מודדת ומה עלייה/ירידה אומרת ──
+["קליני","עלייה ב-ALT — מה משמעותה?","נזק לתאי כבד: הפטיטיס, שומן בכבד, תרופות"],
+["קליני","עלייה ב-AST — מה משמעותה?","נזק כבד, שריר לב, שרירים (פחות ספציפי מ-ALT)"],
+["קליני","עלייה ב-ALP — מה משמעותה?","חסימת מרה, מחלת עצם, הריון"],
+["קליני","עלייה ב-בילירובין — מה משמעותה?","צהבת: הרס כדוריות / חסימת מרה / כשל כבד"],
+["קליני","עלייה ב-קריאטינין — מה משמעותה?","פגיעה בתפקוד הכליה"],
+["קליני","ירידה ב-GFR — מה משמעותה?","החמרה בתפקוד הכליה, אי-ספיקה כלייתית"],
+["קליני","עלייה ב-CRP — מה משמעותה?","דלקת חריפה, זיהום, מחלה אוטואימונית"],
+["קליני","עלייה ב-טרופונין — מה משמעותה?","נמק שריר הלב — אוטם שריר הלב (MI)"],
+["קליני","ירידה ב-המוגלובין — מה משמעותה?","אנמיה: חסר ברזל, ויטמין B12, כרוני, דימום"],
+["קליני","עלייה ב-WBC — מה משמעותה?","זיהום חיידקי, לוקמיה, דלקת, סטרס"],
+["קליני","ירידה ב-WBC — מה משמעותה?","וירוס, כימותרפיה, כשל מח עצם"],
+["קליני","MCV גבוה — מה משמעו?","אנמיה מגלובלסטית: חסר B12 או פולט"],
+["קליני","MCV נמוך — מה משמעו?","אנמיה מחסר ברזל, תלסמיה"],
+["קליני","פריטין נמוך — מה משמעו?","מחסור בברזל (המאגרים ריקים)"],
+["קליני","פריטין גבוה מאוד — מה משמעו?","דלקת חריפה, המוכרומטוזיס, מחלת כבד"],
+["קליני","TSH גבוה — מה משמעו?","תת-פעילות בלוטת התריס (היפותירואידיזם)"],
+["קליני","TSH נמוך — מה משמעו?","יתר-פעילות בלוטת התריס (היפרתירואידיזם)"],
+["קליני","HbA1c ≥6.5% — מה משמעו?","אבחנת סוכרת"],
+["קליני","D-Dimer גבוה — מה משמעו?","חשד לפקקת ורידים עמוקה DVT או תסחיף ריאתי"],
+["קליני","INR גבוה — מה משמעו?","קרישה ממושכת: כשל כבד / תרופות אנטיקואגולנט"],
+["קליני","אשלגן K⁺ גבוה — מה משמעו?","היפרקלמיה: סכנת הפרעת קצב לב"],
+["קליני","נתרן Na⁺ נמוך — מה משמעו?","היפונתרמיה: סכנת בצקת מוח, בלבול, עוויתות"],
+["קליני","BNP גבוה — מה משמעו?","אי-ספיקת לב — הלב עובד תחת עומס"],
+["קליני","PSA גבוה — מה משמעו?","חשד לסרטן ערמונית, דלקת ערמונית, BPH"],
+["קליני","ויטמין D נמוך מ-20 — מה משמעו?","מחסור — סיכון לאוסטיאופורוזיס, חולשת שרירים"],
+["קליני","הומוציסטאין גבוה — מה משמעו?","סיכון קרדיווסקולרי, חסר B12/B6/פולט"],
+];
+
+const DRUG_DATA = [
+["פרמקולוגיה","metformin","Type 2 Diabetes (Biguanide)"],
+["פרמקולוגיה","aspirin","Pain / Fever / Antiplatelet (Salicylate)"],
+["פרמקולוגיה","atorvastatin","High Cholesterol (Statin)"],
+["פרמקולוגיה","lisinopril","Hypertension / Heart Failure (ACE Inhibitor)"],
+["פרמקולוגיה","amlodipine","Hypertension / Angina (Calcium Channel Blocker)"],
+["פרמקולוגיה","omeprazole","Acid Reflux / Ulcers (PPI)"],
+["פרמקולוגיה","amoxicillin","Bacterial Infections (Penicillin)"],
+["פרמקולוגיה","paracetamol","Pain & Fever (Analgesic)"],
+["פרמקולוגיה","ibuprofen","Pain / Inflammation / Fever (NSAID)"],
+["פרמקולוגיה","warfarin","Blood Clot Prevention (Anticoagulant)"],
+["פרמקולוגיה","levothyroxine","Hypothyroidism (Thyroid Hormone)"],
+["פרמקולוגיה","salbutamol","Asthma / Bronchospasm (Beta-2 Agonist)"],
+["פרמקולוגיה","sertraline","Depression / Anxiety (SSRI)"],
+["פרמקולוגיה","diazepam","Anxiety / Seizures (Benzodiazepine)"],
+["פרמקולוגיה","morphine","Severe Pain (Opioid)"],
+["פרמקולוגיה","ciprofloxacin","Bacterial Infections (Fluoroquinolone)"],
+["פרמקולוגיה","furosemide","Edema / Heart Failure (Loop Diuretic)"],
+["פרמקולוגיה","insulin glargine","Basal Insulin — Type 1 & 2 Diabetes"],
+["פרמקולוגיה","semaglutide","Type 2 Diabetes & Weight Loss (GLP-1)"],
+["פרמקולוגיה","prednisolone","Inflammation / Autoimmune (Corticosteroid)"],
+["פרמקולוגיה","metoprolol","Hypertension / Heart Failure (Beta Blocker)"],
+["פרמקולוגיה","clopidogrel","Prevent Heart Attack & Stroke (Antiplatelet)"],
+["פרמקולוגיה","allopurinol","Gout — reduces uric acid"],
+["פרמקולוגיה","doxycycline","Bacterial & Parasitic Infections (Tetracycline)"],
+["פרמקולוגיה","fluoxetine","Depression / OCD (SSRI)"],
+["פרמקולוגיה","lithium","Bipolar Disorder — mood stabilizer"],
+["פרמקולוגיה","vancomycin","MRSA Infections (Glycopeptide)"],
+["פרמקולוגיה","oseltamivir","Influenza (Neuraminidase Inhibitor)"],
+["פרמקולוגיה","rivaroxaban","DVT / PE / Atrial Fibrillation (NOAC)"],
+["פרמקולוגיה","enalapril","Hypertension / Heart Failure (ACE Inhibitor)"],
+["פתולוגיה","myocardial infarction","אוטם שריר הלב (התקף לב)"],
+["פתולוגיה","אוטם שריר הלב","myocardial infarction (MI)"],
+["פתולוגיה","stroke","שבץ מוחי"],
+["פתולוגיה","שבץ מוחי","stroke (CVA)"],
+["פתולוגיה","hypertension","יתר לחץ דם"],
+["פתולוגיה","יתר לחץ דם","hypertension"],
+["פתולוגיה","diabetes mellitus","סוכרת"],
+["פתולוגיה","סוכרת","diabetes mellitus"],
+["פתולוגיה","pneumonia","דלקת ריאות"],
+["פתולוגיה","דלקת ריאות","pneumonia"],
+["פתולוגיה","appendicitis","דלקת התוספתן"],
+["פתולוגיה","דלקת התוספתן","appendicitis"],
+["פתולוגיה","cirrhosis","שחמת הכבד"],
+["פתולוגיה","שחמת הכבד","cirrhosis"],
+["פתולוגיה","pulmonary embolism","תסחיף ריאתי"],
+["פתולוגיה","תסחיף ריאתי","pulmonary embolism (PE)"],
+["פתולוגיה","deep vein thrombosis","פקקת ורידים עמוקה"],
+["פתולוגיה","פקקת ורידים עמוקה","deep vein thrombosis (DVT)"],
+["פתולוגיה","atrial fibrillation","פרפור פרוזדורים"],
+["פתולוגיה","פרפור פרוזדורים","atrial fibrillation (AF)"],
+["פתולוגיה","hypothyroidism","תת-פעילות בלוטת התריס"],
+["פתולוגיה","תת-פעילות בלוטת התריס","hypothyroidism"],
+["פתולוגיה","hyperthyroidism","יתר-פעילות בלוטת התריס"],
+["פתולוגיה","יתר-פעילות בלוטת התריס","hyperthyroidism"],
+["פתולוגיה","Crohn disease","מחלת קרוהן"],
+["פתולוגיה","מחלת קרוהן","Crohn disease"],
+["פתולוגיה","ulcerative colitis","קוליטיס כיבית"],
+["פתולוגיה","קוליטיס כיבית","ulcerative colitis"],
+["פתולוגיה","rheumatoid arthritis","דלקת מפרקים שגרונתית"],
+["פתולוגיה","דלקת מפרקים שגרונתית","rheumatoid arthritis (RA)"],
+["פתולוגיה","osteoporosis","אוסטיאופורוזיס"],
+["פתולוגיה","אוסטיאופורוזיס","osteoporosis"],
+["פתולוגיה","asthma","אסתמה"],
+["פתולוגיה","אסתמה","asthma"],
+["פתולוגיה","COPD","מחלת ריאות חסימתית כרונית"],
+["פתולוגיה","מחלת ריאות חסימתית כרונית","COPD"],
+["פתולוגיה","epilepsy","אפילפסיה"],
+["פתולוגיה","אפילפסיה","epilepsy"],
+["פתולוגיה","multiple sclerosis","טרשת נפוצה"],
+["פתולוגיה","טרשת נפוצה","multiple sclerosis (MS)"],
+["פתולוגיה","Parkinson disease","מחלת פרקינסון"],
+["פתולוגיה","מחלת פרקינסון","Parkinson disease"],
+["פתולוגיה","Alzheimer disease","מחלת אלצהיימר"],
+["פתולוגיה","מחלת אלצהיימר","Alzheimer disease"],
+["פתולוגיה","sepsis","אלח דם"],
+["פתולוגיה","אלח דם","sepsis"],
+["פתולוגיה","meningitis","דלקת קרומי המוח"],
+["פתולוגיה","דלקת קרומי המוח","meningitis"],
+["פתולוגיה","חסימת עורק כלילי — נמק שריר הלב","אוטם שריר הלב (MI)"],
+["פתולוגיה","הפרעת קצב — פרוזדורים מרטטים","פרפור פרוזדורים (AF)"],
+["פתולוגיה","דימום או חסימה בכלי דם מוחי","שבץ מוחי (CVA)"],
+["פתולוגיה","חסר אינסולין או עמידות לאינסולין","סוכרת (diabetes mellitus)"],
+["פתולוגיה","לחץ דם כרוני 140/90 ומעלה","יתר לחץ דם (hypertension)"],
+["פתולוגיה","דלקת כרונית גרנולומטית של מערכת העיכול","מחלת קרוהן"],
+["פתולוגיה","ניוון נוירוני דופמינרגי — רעידות וקשיחות","מחלת פרקינסון"],
+["פתולוגיה","משקעי עמילואיד ו-טאו במוח — דמנציה","מחלת אלצהיימר"],
+["פתולוגיה","תקיפה אוטואימונית של מיאלין בעצבי המרכז","טרשת נפוצה (MS)"],
+["פתולוגיה","קריש דם בוריד עמוק — לרוב ברגל","פקקת ורידים עמוקה (DVT)"],
+["פתולוגיה","קריש דם שמגיע מהרגל לריאות","תסחיף ריאתי (PE)"],
+["פתולוגיה","TSH גבוה, T4 נמוך, עייפות, עלייה במשקל","תת-פעילות תריס"],
+["פתולוגיה","TSH נמוך, T4 גבוה, דפיקות לב, ירידה במשקל","יתר-פעילות תריס"],
+["פתולוגיה","זיהום מוכלל — תגובה דלקתית מסכנת חיים","אלח דם (sepsis)"],
+["פתולוגיה","atherosclerosis","הצטברות פלאק בדפנות עורקים — סיכון חסימה"],
+["פתולוגיה","necrosis","מוות תאי בלתי הפיך — חוסר אספקת דם"],
+["פתולוגיה","apoptosis","מוות תאי מתוכנת — מנגנון שליטה תקין"],
+["פתולוגיה","inflammation","תגובה לנזק — אדמומיות, חום, נפיחות, כאב"],
+["פתולוגיה","fibrosis","הצטלקות — החלפת רקמה תקינה בקולגן"],
+["פתולוגיה","ischemia","חוסר אספקת דם וחמצן לרקמה"],
+["פתולוגיה","edema","הצטברות נוזלים ברקמה — בצקת"],
+["פתולוגיה","embolism","חסימת כלי דם ע״י גוף זר"],
+["פתולוגיה","thrombosis","היווצרות קריש דם בתוך כלי דם"],
+["פתולוגיה","infarction","מוות רקמה עקב חסימת אספקת דם"],
+["פתולוגיה","hypertrophy","הגדלת תאים עקב עומס מוגבר"],
+["פתולוגיה","hyperplasia","ריבוי תאים תקין בתגובה לגירוי"],
+["פתולוגיה","metaplasia","החלפת סוג תאי — עדיין הפיך"],
+["פתולוגיה","dysplasia","שינויים טרום-ממאירים בתאים"],
+["פתולוגיה","neoplasia","גידול לא מבוקר של תאים"],
+["פתולוגיה","aneurysm","התרחבות דפנות עורק — סיכון פקיעה"],
+["פתולוגיה","stenosis","היצרות פתח כלי דם או שסתום"],
+["פתולוגיה","abscess","מוקד מוגלה מוקף רקמה דלקתית"],
+["פתולוגיה","granuloma","צבר מאקרופאגים — קרוהן, שחפת, סרקואידוזיס"],
+["פתולוגיה","autoimmunity","תקיפה של מערכת החיסון ברקמות עצמו"],
+["אנטומיה","aorta","אבי העורקים — הגדול שבעורקים"],
+["אנטומיה","mitral valve","המסתם המיטרלי — בין עליית וחדר שמאל"],
+["אנטומיה","SA node","קוצב הלב — יוצר דחף חשמלי"],
+["אנטומיה","hypothalamus","ויסות טמפרטורה, תיאבון, הורמונים"],
+["אנטומיה","hippocampus","מרכז הזיכרון — יצירת זיכרונות חדשים"],
+["אנטומיה","cerebellum","מוחון — שיווי משקל ותיאום תנועה"],
+["אנטומיה","medulla oblongata","מוח מאורך — שליטה בנשימה ולב"],
+["אנטומיה","thyroid gland","בלוטת התריס — מייצרת T3 ו-T4"],
+["אנטומיה","adrenal gland","בלוטת יותרת הכליה — קורטיזול, אדרנלין"],
+["אנטומיה","pancreas","לבלב — אינסולין + אנזימי עיכול"],
+["אנטומיה","glomerulus","גלומרולוס — מסנן הדם בכליה"],
+["אנטומיה","alveoli","שלפוחיות הריאה — חילוף גזים"],
+["אנטומיה","meninges","קרומי המוח — דורה, ארכנואיד, פיה"],
+["אנטומיה","femur","עצם הירך — הארוכה ביותר בגוף"],
+["אנטומיה","achilles tendon","גיד אכילס — החזק ביותר בגוף"],
+["אנטומיה","rotator cuff","שרירי שרוול המסובב — יציבות הכתף"],
+["אנטומיה","sciatic nerve","העצב הסיאטי — הגדול בגוף, מגב לרגל"],
+["אנטומיה","carotid artery","עורק הצוואר — אספקת דם למוח"],
+["אנטומיה","hepatic portal vein","וריד שער הכבד — ממערכת עיכול לכבד"],
+["אנטומיה","spleen","טחול — מסנן דם, מאגר טסיות"],
+["אנטומיה","thymus","תימוס — הבשלת לימפוציטים T"],
+["אנטומיה","lymph node","בלוטת לימפה — מסנן ומרכז חיסוני"],
+];
+
+
+const SOURCE_COLORS = {
+  pt:      { bg:'#9b7ec8', light:'#ede8f5', border:'#7d5fa8' },
+  drug:    { bg:'#c47a7a', light:'#f5e6e6', border:'#a05a5a' },
+  flags:   { bg:'#c49a4a', light:'#f5edda', border:'#a07830' },
+  herbs:   { bg:'#6a9e7a', light:'#ddeedd', border:'#4a7e5a' },
+  english: { bg:'#6a8eb8', light:'#dce8f5', border:'#4a6e98' },
+  japanese:   { bg:'#b86a7a', light:'#f5dde2', border:'#984a5a' },
+  nutrition:  { bg:'#7aab6e', light:'#ddeedd', border:'#5a8a52' },
+  history:    { bg:'#8a7a5a', light:'#f0ead8', border:'#6a5a3a' },
+  blood:      { bg:'#b85a6a', light:'#f5e0e4', border:'#924a56' },
+};
+
+const SOURCE_LABELS = { pt:'פורטוגזית', drug:'רפואה', flags:'דגלים', herbs:'צמחי מרפא', english:'אנגלית', japanese:'יפנית', nutrition:'תזונה', history:'היסטוריה', blood:'בדיקות דם' };
+
+const DATA_MAP = { pt: PT_DATA, drug: DRUG_DATA, flags: FLAGS_DATA, herbs: HERBS_DATA, english: ENGLISH_DATA, japanese: JAPANESE_DATA, nutrition: NUTRITION_DATA, history: HISTORY_DATA, blood: BLOOD_DATA };
+
+
+
+const DATA_MAP_LOCAL = { pt: PT_DATA, drug: DRUG_DATA, flags: FLAGS_DATA, herbs: HERBS_DATA, english: ENGLISH_DATA, japanese: JAPANESE_DATA, nutrition: NUTRITION_DATA, history: HISTORY_DATA, blood: BLOOD_DATA };
+let activeModes   = new Set(['pt','drug','flags','herbs','english','japanese','nutrition','history','blood']);
+let activeCatKeys = new Set();
+let allCatKeys    = [];
+let allCards      = [];
+let gameType      = 'quiz';
+let sessionSize   = 10;
+let sessionTotal  = 0;
+let deck=[], wrongPile=[], allWrong=[], current=null;
+const correctSet  = new Set();
+let isFlipped=false, quizLocked=false, isReviewMode=false;
+let ttsEnabled=true;
+let rightCount=0, wrongCount=0, streak=0;
+let firstRoundRight=0, firstRoundWrong=0, firstRoundDone=false;
+let streakHistory=[];
+let audioUnlocked=false;
+
+
+const catIndexMap = {};
+function getCatStyle(source, cat) {
+  const key = source + '|' + cat;
+  if (catIndexMap[key] === undefined) {
+    const sameSource = Object.keys(catIndexMap).filter(k => k.startsWith(source + '|'));
+    catIndexMap[key] = sameSource.length;
+  }
+  const idx = catIndexMap[key];
+  const sc  = SOURCE_COLORS[source];
+  // Strict alternating: odd = full color, even = 55% opacity (light)
+  const op = (idx % 2 === 0) ? 1.0 : 0.55;
+  return { bg: sc.bg + Math.round(op*255).toString(16).padStart(2,'0'),
+           border: sc.border };
+}
+
+function shuffle(a) {
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+function getCatStyle(source, cat) {
+  const key = source + '|' + cat;
+  if (catIndexMap[key] === undefined) {
+    const sameSource = Object.keys(catIndexMap).filter(k => k.startsWith(source + '|'));
+    catIndexMap[key] = sameSource.length;
+  }
+  const idx = catIndexMap[key];
+  const sc  = SOURCE_COLORS[source];
+  // Generate shades: alternate between slightly lighter and slightly darker tones
+  // by reducing opacity over the source color on a white background
+  // We'll use opacity steps: 1.0, 0.82, 0.68, 0.56, 0.46, 0.38, cycling
+  const opacities = [1.0, 0.82, 0.68, 0.56, 0.78, 0.62, 0.9, 0.72, 0.5, 0.85];
+  const op = opacities[idx % opacities.length];
+  return { bg: sc.bg + Math.round(op*255).toString(16).padStart(2,'0'),
+           border: sc.border };
+}
+
+const TEACHER_PROFILES = [
+  { pitch: 1.0,  rate: 0.85, gender: 'female' },
+  { pitch: 0.75, rate: 0.80, gender: 'male'   },
+  { pitch: 1.25, rate: 0.90, gender: 'female' },
+  { pitch: 0.85, rate: 0.82, gender: 'male'   },
+  { pitch: 1.15, rate: 0.88, gender: 'female' },
+  { pitch: 0.70, rate: 0.78, gender: 'male'   },
+  { pitch: 1.30, rate: 0.92, gender: 'female' },
+  { pitch: 0.90, rate: 0.85, gender: 'male'   },
+];
+
+function getCatProfile(source, cat) {
+  // Stable hash from source+cat string
+  const key = (source || '') + '|' + (cat || '');
+  let h = 0;
+  for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) & 0xffff;
+  return TEACHER_PROFILES[h % TEACHER_PROFILES.length];
+}
+
+function applyCardColor(source, cat) {
+  // Light tint for card background, slightly saturated border
+  const sc  = SOURCE_COLORS[source] || {bg:'#ffffff', border:'#e5e5e5', light:'#f7f7f7'};
+  const light = sc.light || '#f0f0ff';
+  // Mix: use light color with slight transparency
+  const border = sc.border;
+  const root = document.documentElement;
+  root.style.setProperty('--card-bg',      light);
+  root.style.setProperty('--card-bg-back', light);
+  root.style.setProperty('--card-border',  border);
+}
+
+function getVoices(lang){
+  if(!window.speechSynthesis)return null;
+  const v=window.speechSynthesis.getVoices();
+  return v.find(x=>x.lang===lang)||v.find(x=>x.lang.startsWith(lang.slice(0,5)))||v.find(x=>x.lang.startsWith(lang.slice(0,2)))||null;
+}
+
+function getVoiceForProfile(lang, gender) {
+  if (!window.speechSynthesis) return null;
+  const voices = window.speechSynthesis.getVoices();
+  const langVoices = voices.filter(v => v.lang.startsWith(lang.slice(0,2)));
+  if (!langVoices.length) return null;
+  // Try to match gender by common name patterns
+  const femaleHints = ['female','woman','girl','fiona','karen','victoria','samantha','moira','veena','tessa','zoe','alice','amelie','anna','sara'];
+  const maleHints   = ['male','man','boy','daniel','alex','jorge','thomas','diego','luca','henrik','nikos','reed','gordon'];
+  const hints = gender === 'female' ? femaleHints : maleHints;
+  const matched = langVoices.find(v => hints.some(h => v.name.toLowerCase().includes(h)));
+  return matched || langVoices[0];
+}
+
+function speak(text, lang, source, cat) {
+  if (!window.speechSynthesis) return; ttsCancel();
+  const u = new SpeechSynthesisUtterance(text.replace(/-/g,' '));
+  const profile = getCatProfile(source, cat);
+  u.lang   = lang;
+  u.rate   = profile.rate;
+  u.pitch  = profile.pitch;
+  u.volume = 1;
+  const v = getVoiceForProfile(lang, profile.gender);
+  if (v) u.voice = v;
+  const btnId = gameType==='flash' ? 'ttsBtnFlash' : 'ttsBtnQuiz';
+  const btn = document.getElementById(btnId);
+  if (btn) { btn.classList.add('speaking'); u.onend = u.onerror = () => btn.classList.remove('speaking'); }
+  setTimeout(() => { try { window.speechSynthesis.speak(u); } catch(e) {} }, 80);
+}
+
+function ttsCancel(){try{if(window.speechSynthesis)window.speechSynthesis.cancel();}catch(e){}}
+
+function unlockAudio(){
+  if(audioUnlocked)return; audioUnlocked=true;
+  try{const c=new(window.AudioContext||window.webkitAudioContext)(),b=c.createBuffer(1,1,22050),s=c.createBufferSource();s.buffer=b;s.connect(c.destination);s.start(0);setTimeout(()=>c.close(),100);}catch(e){}
+}
+
+
+// ── SETUP-SPECIFIC ──
+function buildPool() {
+  allCards = [];
+  activeModes.forEach(src => {
+    const dm = (typeof DATA_MAP_LOCAL !== "undefined" ? DATA_MAP_LOCAL : DATA_MAP) || {};
+    (dm[src] || []).forEach(([cat, q, a]) => {
+      if (activeCatKeys.has(src + '|' + cat)) {
+        allCards.push({ source: src, cat, q, a, reversed: false });
+        // Add reversed card (skip for flags/japanese — answer is pronunciation/name)
+        if (src !== 'flags' && src !== 'japanese') {
+          allCards.push({ source: src, cat, q: a, a: q, reversed: true });
+        }
+      }
+    });
+  });
+}
+
+function toggleMode(m) {
+  if (activeModes.has(m) && activeModes.size > 1) activeModes.delete(m);
+  else activeModes.add(m);
+  document.querySelectorAll('.src-btn').forEach(b =>
+    b.classList.toggle('active', activeModes.has(b.dataset.mode))
+  );
+  renderCatSections();
+}
+
+function applyChip(chip, on) {
+  const key2 = chip.dataset.key;
+  if (!key2) return;
+  const src2  = key2.split('|')[0];
+  const color = chip.style.borderColor;
+  if (on && !activeCatKeys.has(key2)) {
+    activeCatKeys.add(key2);
+    chip.classList.add('on');
+    chip.style.background = color;
+    chip.style.color = '#fff';
+    syncSrcBtn(src2);
+  } else if (!on && activeCatKeys.has(key2)) {
+    activeCatKeys.delete(key2);
+    chip.classList.remove('on');
+    chip.style.background = '#fff';
+    chip.style.color = color;
+    syncSrcBtn(src2);
+  }
+}
+
+function renderCatSections() {
+  const wrap = document.getElementById('catSections');
+  wrap.innerHTML = '';
+  allCatKeys = [];
+
+  [...activeModes].forEach(src => {
+    const dm = (typeof DATA_MAP_LOCAL !== 'undefined' ? DATA_MAP_LOCAL : DATA_MAP) || {};
+    const data = dm[src] || [];
+    const cats = [...new Set(data.map(r => r[0]))].sort();
+    const sc   = SOURCE_COLORS[src];
+
+    const sec = document.createElement('div');
+    sec.className = 'cat-section';
+
+    const hdr = document.createElement('div');
+    hdr.className = 'cat-accordion-header';
+    hdr.style.cssText = 'background:' + sc.bg + ';position:relative;display:flex;align-items:center;';
+
+    // 👁 eye SVG on far right
+    const btnAll = document.createElement('button');
+    btnAll.innerHTML = '<svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="11" cy="7" rx="10" ry="6" stroke="rgba(255,255,255,0.9)" stroke-width="1.5"/><circle cx="11" cy="7" r="2.8" fill="rgba(255,255,255,0.9)"/></svg>';
+    btnAll.title = 'בחר הכל';
+    btnAll.style.cssText = 'all:unset;cursor:pointer;flex-shrink:0;display:flex;align-items:center;padding-right:4px;';
+    btnAll.addEventListener('click', function(e){ e.stopPropagation(); selectAllSrc(src, true); });
+
+    // Name in center (flex:1, centered)
+    const hdrLabel = document.createElement('span');
+    hdrLabel.textContent = SOURCE_LABELS[src];
+    hdrLabel.style.cssText = 'font-weight:800;flex:1;text-align:center;';
+
+    // ✕ on left
+    const btnNone = document.createElement('button');
+    btnNone.innerHTML = '&times;';
+    btnNone.title = 'בטל הכל';
+    btnNone.style.cssText = 'all:unset;font-size:20px;font-weight:300;cursor:pointer;color:rgba(255,255,255,0.9);flex-shrink:0;width:36px;text-align:center;';
+    btnNone.addEventListener('click', function(e){ e.stopPropagation(); selectAllSrc(src, false); });
+
+    hdr.appendChild(btnAll);
+    hdr.appendChild(hdrLabel);
+    hdr.appendChild(btnNone);
+
+    const chipsWrap = document.createElement('div');
+    chipsWrap.className = 'cat-chips-wrap';
+    chipsWrap.dataset.src = src;
+
+    hdr.onclick = () => {
+      hdr.classList.toggle('open');
+      chipsWrap.classList.toggle('open');
+    };
+
+    // Drag-select on chipsWrap
+    let _dragMode = null;
+    chipsWrap.addEventListener('touchstart', e => {
+      if (e.touches.length !== 2) return; // only two-finger
+      const chip = e.target.closest('.topic-chip');
+      if (chip && chip.dataset.key) {
+        _dragMode = !activeCatKeys.has(chip.dataset.key);
+      }
+    }, {passive:true});
+    chipsWrap.addEventListener('touchmove', e => {
+      if (e.touches.length !== 2 || _dragMode === null) return;
+      e.preventDefault();
+      // Use midpoint of two fingers
+      const t = { clientX: (e.touches[0].clientX + e.touches[1].clientX) / 2,
+                  clientY: (e.touches[0].clientY + e.touches[1].clientY) / 2 };
+      const el = document.elementFromPoint(t.clientX, t.clientY);
+      const chip = el && el.closest('.topic-chip');
+      if (chip && chip.dataset.key) applyChip(chip, _dragMode);
+    }, {passive:false});
+    chipsWrap.addEventListener('touchend', e => {
+      if (e.touches.length === 0) _dragMode = null;
+    });
+
+    const topicWrap = document.createElement('div');
+    topicWrap.style.cssText = 'display:flex;flex-direction:column;gap:6px;padding:6px 4px 4px;';
+
+
+
+    cats.forEach(cat => {
+      const key = src + '|' + cat;
+      const cs  = getCatStyle(src, cat);
+      allCatKeys.push(key);
+      if (!activeCatKeys.has(key)) activeCatKeys.add(key);
+
+      const btn = document.createElement('button');
+      btn.className = 'cat-chip topic-chip' + (activeCatKeys.has(key) ? ' on' : '');
+      btn.dataset.key = key;
+      btn.textContent = cat;
+      btn.style.borderColor = cs.border;
+      btn.style.color     = activeCatKeys.has(key) ? '#fff' : cs.bg;
+      btn.style.background = activeCatKeys.has(key) ? cs.bg : '#fff';
+      btn.style.width = '100%';
+      btn.style.textAlign = 'center';
+      btn.onclick = () => toggleCat(key, cs, btn);
+
+      topicWrap.appendChild(btn);
+    });
+
+    chipsWrap.appendChild(topicWrap);
+    sec.appendChild(hdr);
+    sec.appendChild(chipsWrap);
+    wrap.appendChild(sec);
+  });
+}
+
+function toggleCat(key, cs, btn) {
+  const src = key.split('|')[0];
+  if (activeCatKeys.has(key)) {
+    activeCatKeys.delete(key);
+    btn.classList.remove('on');
+    btn.style.color = cs.bg; btn.style.background = '#fff';
+  } else {
+    activeCatKeys.add(key);
+    btn.classList.add('on');
+    btn.style.color = '#fff'; btn.style.background = cs.bg;
+  }
+  syncSrcBtn(src);
+}
+
+function selectAllSrc(src, on) {
+  const wrap = document.querySelector('[data-src="' + src + '"]');
+  if (!wrap) return;
+  const chips = wrap.querySelectorAll('.cat-chip');
+  chips.forEach(btn => {
+    const key = btn.dataset.key;
+    if (!key) return;
+    if (on) {
+      activeCatKeys.add(key);
+      btn.style.color = '#fff';
+      btn.style.background = btn.style.borderColor;
+      btn.classList.add('on');
+    } else {
+
+      activeCatKeys.delete(key);
+      const col = btn.style.borderColor;
+      btn.style.color = col;
+      btn.style.background = '#fff';
+      btn.classList.remove('on');
+    }
+  });
+  syncSrcBtn(src);
+}
+
+function syncSrcBtn(src) {
+  const anyActive = [...activeCatKeys].some(k => k.startsWith(src + '|'));
+  if (anyActive) {
+    activeModes.add(src);
+  } else {
+    if (activeModes.size > 1) activeModes.delete(src);
+  }
+  // Update accordion header color
+  const sc = SOURCE_COLORS[src];
+  const hdrs = document.querySelectorAll('.cat-accordion-header');
+  hdrs.forEach(hdr => {
+    const wrap = hdr.nextElementSibling;
+    if (wrap && wrap.dataset.src === src) {
+      hdr.style.background = anyActive ? sc.bg : '#c0bab4';
+      hdr.style.opacity    = anyActive ? '1' : '0.6';
+    }
+  });
+}
+
+function setQty(n) {
+  sessionSize = n;
+  document.querySelectorAll('.qty-btn').forEach(b => {
+    const v = b.textContent === 'הכל' ? 0 : parseInt(b.textContent);
+    b.classList.toggle('active', v === n);
+  });
+}
+
+function setGameType(t) {
+  gameType = t;
+  document.getElementById('gtFlash').classList.toggle('active', t==='flash');
+  document.getElementById('gtQuiz').classList.toggle('active',  t==='quiz');
+}
+
+
+
+function startGame() {
+  buildPool();
+  if (allCards.length === 0) {
+    const btn = document.querySelector('.btn-start');
+    btn.textContent = 'חובה לבחור נושא!';
+    btn.style.background = '#c87a7a';
+    setTimeout(() => { btn.textContent = 'התחל'; btn.style.background = ''; }, 2000);
+    return;
+  }
+  // Save config to sessionStorage
+  sessionStorage.setItem('tok_activeModes',   JSON.stringify([...activeModes]));
+  sessionStorage.setItem('tok_activeCatKeys', JSON.stringify([...activeCatKeys]));
+  sessionStorage.setItem('tok_gameType',      gameType);
+  sessionStorage.setItem('tok_sessionSize',   sessionSize);
+  sessionStorage.setItem('tok_allCards',      JSON.stringify(allCards));
+  sessionStorage.setItem('tok_fullPool',      JSON.stringify(allCards));
+  // Navigate to game page
+  showPage('game');
+}
+
+// init
+renderCatSections();
+
+
+
+// ── GAME-SPECIFIC ──
+function updateTtsBtns() {
+  document.querySelectorAll('.tts-btn').forEach(b => {
+    b.classList.toggle('tts-off', !ttsEnabled);
+    b.title = ttsEnabled ? 'לחץ להשתקה' : 'לחץ להפעלה';
+  });
+}
+
+function playCurrentTts() {
+  if (!ttsEnabled || !current || current.source === 'flags') return;
+  unlockAudio();
+  const lm = {pt:'pt-PT', drug:'en-US', herbs:'en-US', english:'en-US', japanese:'ja-JP', nutrition:'en-US', history:'he-IL', blood:'he-IL'};
+  // For Chinese herbs: strip kanji characters (everything after the first non-latin/non-space/non-diacritic char block)
+  // e.g. "rén shēn 人參" → "rén shēn"
+  let text = current.q;
+  let lang = lm[current.source] || 'en-US';
+  if (current.reversed && current.source === 'pt') lang = 'en-US';
+  if (current.source === 'herbs' && current.cat === 'סיני') {
+    // Strip kanji: "rén shēn 人參" → "rén shēn"
+    text = text.replace(/[\u4e00-\u9fff\u3400-\u4dbf]+/g, '').trim();
+  }
+  speak(text, lang, current.source, current.cat);
+}
+
+function speakAnswer(e) {
+  if (e) { e.stopPropagation(); e.preventDefault(); }
+  if (!current) return;
+  unlockAudio();
+  // Speak the answer (current.a) in appropriate language
+  const lm = {pt:'pt-PT', drug:'en-US', herbs:'en-US', english:'en-US', japanese:'en-US', nutrition:'en-US', flags:'en-US'};
+  // Answer language logic: PT non-reversed → answer is English; PT reversed → answer is Portuguese
+  let lang = 'en-US';
+  if (current.source === 'pt' && current.reversed)  lang = 'pt-PT';
+  if (current.source === 'pt' && !current.reversed) lang = 'en-US';
+  // Strip anything after em-dash for cleaner TTS
+  let text = current.a.replace(/—.*$/, '').trim();
+  speak(text, lang, current.source, current.cat);
+}
+
+function speakCurrent(e) {
+  if (e) { e.stopPropagation(); e.preventDefault(); }
+  ttsEnabled = !ttsEnabled;
+  updateTtsBtns();
+  if (ttsEnabled) { playCurrentTts(); } else { ttsCancel(); }
+}
+
+function makeBadge(text, color) {
+  const b = document.createElement('span');
+  b.className = 'badge';
+  b.style.background = color;
+  b.textContent = text;
+  return b;
+}
+
+function renderBadges(containerId, card) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  if (!card) return;
+  const sc = SOURCE_COLORS[card.source];
+  const cs = getCatStyle(card.source, card.cat);
+  el.appendChild(makeBadge(SOURCE_LABELS[card.source], sc.bg));
+  el.appendChild(makeBadge(card.cat, cs.bg));
+  if (card.reversed) el.appendChild(makeBadge('↔', '#64748b'));
+}
+
+function updatePanels() {
+  updateTtsBtns();
+  const isFlash = gameType === 'flash';
+  document.getElementById('flashScene').style.display  = isFlash ? '' : 'none';
+  document.getElementById('btnFlip').classList.toggle('hidden', !isFlash);
+  document.getElementById('flipBackLink').style.display = 'none';
+  document.getElementById('btnRow').classList.add('hidden');
+  document.getElementById('quizWrap').style.display    = isFlash ? 'none' : 'flex';
+}
+
+function updateProgress() {
+  if (isReviewMode) {
+    const corrected = allWrong.filter(c => correctSet.has(c.q)).length;
+    const total     = allWrong.length;
+    const pct       = total > 0 ? Math.min(100, corrected/total*100).toFixed(0) : 0;
+    document.getElementById('progLabel').textContent = corrected + ' / ' + total + ' תיקונים';
+    document.getElementById('progFill').style.width  = pct + '%';
+  } else {
+    const target   = sessionSize > 0 ? sessionSize : (sessionTotal||1);
+    const answered = rightCount + wrongCount;
+    const pct      = Math.min(100, answered/target*100).toFixed(0);
+    document.getElementById('progLabel').textContent = answered + ' / ' + target + ' שאלות';
+    document.getElementById('progFill').style.width  = pct + '%';
+  }
+  document.getElementById('streakBadge').textContent = 'רצף ' + streak;
+}
+
+function updateStats() {
+  updateProgress();
+  // In review mode: freeze the first-round stats, only update "remaining"
+  if (isReviewMode) {
+    document.getElementById('sLeft').textContent = deck.length + wrongPile.length;
+    return; // don't update score/right/wrong during review
+  }
+  const t = rightCount + wrongCount;
+  document.getElementById('sRight').textContent = rightCount;
+  document.getElementById('sWrong').textContent = wrongCount;
+  document.getElementById('sLeft').textContent  = deck.length + wrongPile.length;
+  document.getElementById('sPct').textContent   = t > 0 ? Math.round(rightCount/t*100) + '%' : '—';
+}
+
+function updateStreakDots() {
+  const row=document.getElementById('streakDots'); row.innerHTML='';
+  streakHistory.forEach(h=>{const d=document.createElement('div');d.className='sdot '+(h?'hit':'miss');row.appendChild(d);});
+}
+
+function nextCard() {
+  ttsCancel();
+  // In review mode, run until all wrong cards corrected
+  if (isReviewMode) {
+    if (!deck.length) {
+      if (!wrongPile.length) { showFinish(); return; }
+      deck = shuffle([...wrongPile]); wrongPile = [];
+    }
+  } else {
+    // Normal mode: stop after sessionSize total questions answered
+    const totalAnswered = rightCount + wrongCount;
+    if (sessionSize > 0 && totalAnswered >= sessionSize) { showFinish(); return; }
+    if (!deck.length) { showFinish(); return; } // ran out of cards
+  }
+  current = deck.shift();
+  updateProgress(); updateStreakDots();
+  if (gameType === 'flash') showFlash();
+  else showQuiz();
+}
+
+function showFlash() {
+  isFlipped = false;
+  const inner = document.getElementById('cardInner');
+  inner.style.transition = 'none';
+  inner.classList.remove('flipped');
+  void inner.offsetWidth;
+  inner.style.transition = '';
+
+  applyCardColor(current.source, current.cat);
+  const isFlag = current.source === 'flags' || current.source === 'japanese';
+  document.getElementById('cardWord').textContent  = current.q;
+  const cl = document.getElementById('cardCatLabel');
+  if(cl) { const sl = SOURCE_LABELS[current.source] || current.source; cl.innerHTML = sl + '<br>' + current.cat; }
+  document.getElementById('cardWord').style.fontSize = isFlag ? '80px' : '';
+  document.getElementById('cardSub').textContent   = (current.source==='drug'||current.source==='herbs') ? current.cat : '';
+  document.getElementById('cardAnswer').textContent = current.a;
+
+  document.getElementById('btnFlip').classList.remove('hidden');
+  document.getElementById('btnRow').classList.add('hidden');
+  document.getElementById('flipBackLink').style.display = 'none';
+  playCurrentTts();
+}
+
+function flipCard() {
+  if (isFlipped) return;
+  isFlipped = true;
+  document.getElementById('cardInner').classList.add('flipped');
+  setTimeout(() => {
+    document.getElementById('btnFlip').classList.add('hidden');
+    document.getElementById('btnRow').classList.remove('hidden');
+    document.getElementById('flipBackLink').style.display = 'block';
+    if (ttsEnabled && current) {
+      const lm = {pt:'pt-PT',drug:'en-US',herbs:'en-US',english:'en-US',japanese:'en-US',nutrition:'en-US',flags:'en-US'};
+      let lang = current.reversed && current.source==='pt' ? 'pt-PT' : (lm[current.source]||'en-US');
+      speak(current.a.replace(/—.*$/, '').trim(), lang, current.source, current.cat);
+    }
+  }, 240);
+}
+
+function unflipCard() {
+  if (!isFlipped) return;
+  isFlipped = false;
+  document.getElementById('cardInner').classList.remove('flipped');
+  document.getElementById('btnFlip').classList.remove('hidden');
+  document.getElementById('btnRow').classList.add('hidden');
+  document.getElementById('flipBackLink').style.display = 'none';
+}
+
+function onCardClick() { if (gameType==='flash' && !isFlipped) flipCard(); }
+
+function answer(correct) {
+  const back = document.getElementById('cardBack');
+  back.classList.remove('flash-ok','flash-bad'); void back.offsetWidth;
+  back.classList.add(correct ? 'flash-ok' : 'flash-bad');
+  recordAnswer(correct);
+  setTimeout(nextCard, 380);
+}
+
+function showQuiz() {
+  quizLocked = false;
+  applyCardColor(current.source, current.cat);
+  const isFlag = current.source === 'flags' || current.source === 'japanese';
+  document.getElementById('qWord').textContent   = current.q;
+  const ql = document.getElementById('qCatLabel');
+  if(ql) { const sl = SOURCE_LABELS[current.source] || current.source; ql.innerHTML = sl + '<br>' + current.cat; }
+  document.getElementById('qWord').style.fontSize = isFlag ? '72px' : '';
+  document.getElementById('qSub').textContent    = (current.source==='drug'||current.source==='herbs') ? current.cat : '';
+  document.getElementById('quizFeedback').textContent = '';
+  document.getElementById('quizFeedback').className   = 'quiz-feedback';
+  const _gi = document.getElementById('btnGotIt');
+  _gi.classList.add('hidden');
+  _gi.style.background = '';
+
+  // Distractors: SAME category first (same source+cat), then same source only, never cross-source
+  // Also filter cards where answer shares a word with the question (e.g. Kudzu in both)
+  function sharesWord(str1, str2) {
+    const words1 = str1.toLowerCase().match(/[a-zא-ת一-鿿]{3,}/g) || [];
+    const words2 = new Set((str2.toLowerCase().match(/[a-zא-ת一-鿿]{3,}/g) || []));
+    return words1.some(w => words2.has(w));
+  }
+  const pool = allCards.filter(c =>
+    c.q !== current.q &&
+    c.a !== current.a &&
+    c.reversed === current.reversed &&
+    !sharesWord(c.a, current.q) // answer shouldn't share words with question
+  );
+  const sameCat  = shuffle(pool.filter(c => c.source===current.source && c.cat===current.cat));
+  const sameSrc  = shuffle(pool.filter(c => c.source===current.source && c.cat!==current.cat));
+  const dist = [];
+  for (const src of [sameCat, sameSrc]) {
+    while (dist.length < 3 && src.length) dist.push(src.shift());
+  }
+  // Only use other sources if absolutely not enough options
+  if (dist.length < 3) {
+    const other = shuffle(pool.filter(c => c.source!==current.source));
+    while (dist.length < 3 && other.length) dist.push(other.shift());
+  }
+
+  // Deduplicate by answer text — no two options with same displayed answer
+  const seen = new Set();
+  const uniqueOpts = [];
+  for (const opt of shuffle([current, ...dist])) {
+    if (!seen.has(opt.a)) { seen.add(opt.a); uniqueOpts.push(opt); }
+    if (uniqueOpts.length === 4) break;
+  }
+  // Emergency fallback: fill from any allCards if still < 4
+  if (uniqueOpts.length < 4) {
+    const emergency = shuffle(allCards.filter(c =>
+      c.q !== current.q && c.a !== current.a && c.reversed === current.reversed &&
+      !sharesWord(c.a, current.q)
+    ));
+    for (const opt of emergency) {
+      if (!seen.has(opt.a)) { seen.add(opt.a); uniqueOpts.push(opt); }
+      if (uniqueOpts.length === 4) break;
+    }
+  }
+  // If we lost the correct answer due to dedup, ensure it's in
+  if (!uniqueOpts.some(o => o.q === current.q)) uniqueOpts[0] = current;
+  const opts = shuffle(uniqueOpts);
+
+  playCurrentTts();
+  const container = document.getElementById('quizOptions');
+  container.innerHTML = '';
+  opts.forEach(opt => {
+    const b = document.createElement('button');
+    b.className = 'quiz-opt';
+    b.dataset.key = opt.q;
+
+    // Answer text
+    const bText = document.createElement('span');
+    bText.textContent = opt.a;
+    bText.style.cssText = 'flex:1;';
+    b.appendChild(bText);
+
+
+    b.onclick = () => pickQuiz(b);
+    container.appendChild(b);
+  });
+}
+
+function pickQuiz(btn) {
+  if (quizLocked) return;
+  quizLocked = true;
+  const correct = btn.dataset.key === current.q;
+  document.querySelectorAll('.quiz-opt').forEach(b => {
+    b.disabled = true;
+    if (b.dataset.key === current.q) b.classList.add('reveal');
+  });
+  if (correct) {
+    btn.classList.remove('reveal'); btn.classList.add('correct');
+    document.getElementById('quizFeedback').textContent = 'נכון!';
+    document.getElementById('quizFeedback').className   = 'quiz-feedback ok';
+    recordAnswer(true);
+    if (ttsEnabled) {
+      setTimeout(() => {
+        const lm = {pt:'pt-PT',drug:'en-US',herbs:'en-US',english:'en-US',japanese:'en-US',nutrition:'en-US',flags:'en-US'};
+        let lang = current.reversed && current.source==='pt' ? 'pt-PT' : (lm[current.source]||'en-US');
+        speak(current.a.replace(/—.*$/, '').trim(), lang, current.source, current.cat);
+      }, 150);
+    }
+    document.getElementById('btnGotIt').classList.remove('hidden');
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById('quizFeedback').textContent = 'לא נכון — התשובה: ' + current.a;
+    document.getElementById('quizFeedback').className   = 'quiz-feedback bad';
+    recordAnswer(false);
+    document.getElementById('btnGotIt').classList.remove('hidden');
+    document.getElementById('btnGotIt').style.background = 'var(--red)';
+    if (ttsEnabled) {
+      setTimeout(() => {
+        const lm = {pt:'pt-PT',drug:'en-US',herbs:'en-US',english:'en-US',japanese:'en-US',nutrition:'en-US',flags:'en-US'};
+        let lang = current.reversed && current.source==='pt' ? 'pt-PT' : (lm[current.source]||'en-US');
+        speak(current.a.replace(/—.*$/, '').trim(), lang, current.source, current.cat);
+      }, 200);
+    }
+  }
+}
+
+const ENCOURAGEMENTS = ["מעולה! המשיכו כך!","יפה מאוד! אתם על הדרך הנכונה!","כך כך! עוד קצת ואתם שם!","אתם מתקדמים יפה מאוד!","ממש טוב! המוח שלכם עובד!","שיא אישי בדרך!","המשיכו — כל תשובה נכונה חורטת את המידע!","פנטסטי! הרצף שלכם מרשים!"];
+
+function recordAnswer(correct) {
+  if (correct) {
+    correctSet.add(current.q);
+    rightCount++; streak++; streakHistory.push(true);
+    const target = sessionSize > 0 ? sessionSize : sessionTotal;
+    if ([3,5,Math.round(target*.5),Math.round(target*.75),target-1].includes(rightCount) && rightCount < target)
+      showEncouragement(ENCOURAGEMENTS[Math.floor(Math.random()*ENCOURAGEMENTS.length)]);
+  } else {
+    if(!allWrong.some(c=>c.q===current.q)) allWrong.push(current);
+    wrongPile.push(current); wrongCount++; streak=0; streakHistory.push(false);
+  }
+  if (streakHistory.length>8) streakHistory.shift();
+  updateStats();
+}
+
+function showEncouragement(msg) {
+  let el = document.getElementById('enc');
+  if (!el) { el=document.createElement('div'); el.id='enc'; el.style.cssText='position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#58cc02;color:#fff;padding:10px 22px;border-radius:99px;font-family:Nunito,sans-serif;font-weight:800;font-size:15px;z-index:999;box-shadow:0 3px 12px rgba(0,0,0,.2);transition:opacity .4s'; document.body.appendChild(el); }
+  el.textContent=msg; el.style.opacity='1';
+  clearTimeout(el._t); el._t=setTimeout(()=>el.style.opacity='0',2200);
+} 
+
+function showFinish() {
+  isReviewMode = false;
+  // Capture first-round stats before review
+  if (!firstRoundDone) {
+    firstRoundRight = rightCount;
+    firstRoundWrong = wrongCount;
+    firstRoundDone = true;
+  }
+  // Check for uncorrected wrongs
+  const stillWrong = allWrong.filter(c => !correctSet.has(c.q));
+  if (stillWrong.length > 0) {
+    showReviewModal(stillWrong.length);
+    return;
+  }
+  // All correct — show proper finish
+  const g = document.getElementById('game'); g.classList.add('hidden'); g.style.display = 'none';
+  const t=rightCount+wrongCount, p=t>0?Math.round(rightCount/t*100):0;
+  const hit=sessionSize>0&&rightCount>=sessionSize;
+  let e,ti,m;
+  if(hit||p===100){e='🏆';ti='מושלם לחלוטין!';m='כל השאלות נכונות! שלטתם בחומר!';}
+  else if(p>=90){e='🌟';ti='מצוין!';m=p+'% — כמעט מושלם! ('+rightCount+'/'+t+')';}
+  else if(p>=75){e='🎉';ti='כל הכבוד!';m=p+'% — ממש טוב! ('+rightCount+'/'+t+')';}
+  else if(p>=50){e='👍';ti='לא רע!';m=p+'% — עוד קצת תרגול! ('+rightCount+'/'+t+')';}
+  else{e='💪';ti='המשיכו לתרגל';m=p+'% — קרה לכולנו! ('+rightCount+'/'+t+')';}
+  // Show first-round score
+  const t1 = firstRoundRight + firstRoundWrong;
+  const pct1 = t1 > 0 ? Math.round(firstRoundRight / t1 * 100) : 0;
+  document.getElementById('fScore').textContent = pct1 + '%';
+  document.getElementById('fScore').style.color = pct1>=80 ? 'var(--green)' : pct1>=60 ? 'var(--yellow)' : 'var(--red)';
+  if (pct1 === 100) setTimeout(launchConfetti, 300);
+  else if (pct1 >= 80) setTimeout(() => {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator(); const g = ctx.createGain();
+      osc.connect(g); g.connect(ctx.destination);
+      osc.frequency.value = 880; osc.type = 'sine';
+      g.gain.setValueAtTime(0.2, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+      osc.start(); osc.stop(ctx.currentTime + 0.4);
+    } catch(e) {}
+  }, 200);
+  document.getElementById('fRight').textContent = firstRoundRight;
+  document.getElementById('fWrong').textContent = firstRoundWrong;
+  document.getElementById('fTotal').textContent = t1;
+
+  const fin = document.getElementById('finish'); fin.classList.remove('hidden'); fin.style.display = 'flex';
+}
+
+function showReviewModal(n) {
+  document.getElementById('reviewMsg').textContent = n + ' שאלות שטעית בהן — בוא נעבור עליהן שוב';
+  document.getElementById('reviewModal').style.display = 'flex';
+}
+
+function closeReview() {
+  document.getElementById('reviewModal').style.display = 'none';
+  // Mark all wrongs as "accepted" so finish shows
+  allWrong.forEach(c => correctSet.add(c.q));
+  showFinish();
+}
+
+function startReview() {
+  document.getElementById('reviewModal').style.display = 'none';
+  const stillWrong = allWrong.filter(c => !correctSet.has(c.q));
+  if (stillWrong.length === 0) { showFinish(); return; }
+  isReviewMode = true;
+  deck = shuffle([...stillWrong]);
+  wrongPile = [];
+  streak = 0; streakHistory = [];
+  // Don't reset rightCount/wrongCount — keep cumulative stats
+  const gEl2 = document.getElementById('game');
+  gEl2.classList.remove('hidden');
+  gEl2.style.display = 'flex';
+  const _f = document.getElementById('finish'); _f.classList.add('hidden'); _f.style.display = 'none';
+  updatePanels(); updateStats(); nextCard();
+}
+
+function restart() {
+  const _f = document.getElementById('finish'); _f.classList.add('hidden'); _f.style.display = 'none';
+  const g = document.getElementById('game'); g.classList.remove('hidden'); g.style.display = 'flex';
+  startGame();
+}
+
+function goBack() {
+  const g = document.getElementById('game'); g.classList.add('hidden'); g.style.display = 'none';
+  const _f = document.getElementById('finish'); _f.classList.add('hidden'); _f.style.display = 'none';
+  document.getElementById('setup').classList.remove('hidden');
+  window.scrollTo(0,0);
+}
+
+// Override goBack to navigate to setup page
+function goBack() { showPage('setup'); }
+
+// TTS voice change listener
+if (window.speechSynthesis) {
+  window.speechSynthesis.getVoices();
+  window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+}
+document.addEventListener('click', unlockAudio, {once: true});
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (gameType==='flash') {
+    if ((e.key===' '||e.key==='Enter') && !isFlipped) { e.preventDefault(); flipCard(); }
+    if (e.key==='Escape' && isFlipped) unflipCard();
+    if ((e.key==='ArrowLeft'||e.key==='2') && isFlipped) answer(true);
+    if ((e.key==='ArrowRight'||e.key==='1') && isFlipped) answer(false);
+  }
+  if (gameType==='quiz') {
+    const btns = [...document.querySelectorAll('.quiz-opt:not(:disabled)')];
+    const k = parseInt(e.key);
+    if (k>=1 && k<=4 && btns[k-1]) btns[k-1].click();
+    const g = document.getElementById('btnGotIt');
+    if ((e.key==='Enter'||e.key===' ') && g && !g.classList.contains('hidden')) { e.preventDefault(); nextCard(); }
+  }
+  if (e.key==='s'||e.key==='S') {
+    if (current && current.source!=='flags') {
+      unlockAudio();
+      const lm = {pt:'pt-PT',drug:'en-US',herbs:'en-US',english:'en-US',japanese:'ja-JP',nutrition:'en-US'};
+      let _t = current.q;
+      if (current.reversed && current.source==='pt') { speak(_t,'en-US',current.source,current.cat); return; }
+      if (current.source==='herbs' && current.cat==='סיני') _t = _t.replace(/[\u4e00-\u9fff\u3400-\u4dbf]+/g,'').trim();
+      speak(_t, lm[current.source]||'en-US', current.source, current.cat);
+    }
+  }
+});
+
+// Show start button on setup screen
+document.getElementById('btnStart').style.display = 'block';
+
+// ── BOOT: load config from sessionStorage ──
+function bootGame() {
+  const modes    = sessionStorage.getItem('tok_activeModes');
+  const catKeys  = sessionStorage.getItem('tok_activeCatKeys');
+  const gt       = sessionStorage.getItem('tok_gameType');
+  const ss       = sessionStorage.getItem('tok_sessionSize');
+  const cards    = sessionStorage.getItem('tok_allCards');
+  const fullPool = sessionStorage.getItem('tok_fullPool');
+
+  if (!cards) { showPage('setup'); return; }
+
+  activeModes   = new Set(JSON.parse(modes));
+  activeCatKeys = new Set(JSON.parse(catKeys));
+  gameType      = gt || 'quiz';
+  sessionSize   = parseInt(ss) || 10;
+  // allCards = full pool for distractors, deck = chosen subset for questions
+  allCards = fullPool ? JSON.parse(fullPool) : JSON.parse(cards);
+
+  // Build game title
+  const SOURCE_LABELS_L = {pt:'פורטוגזית',drug:'רפואה',flags:'דגלים',herbs:'צמחי מרפא',english:'אנגלית',japanese:'יפנית',nutrition:'תזונה'};
+
+  // Start
+  const shuffled = shuffle([...allCards]);
+  let chosen;
+  if (sessionSize > 0) {
+    const modesList = [...activeModes];
+    const perMode   = Math.ceil(sessionSize * 4 / modesList.length);
+    const balanced  = [];
+    modesList.forEach(src => {
+      const srcCards = shuffle(shuffled.filter(c => c.source === src));
+      balanced.push(...srcCards.slice(0, perMode));
+    });
+    chosen = shuffle(balanced).slice(0, sessionSize * 4);
+  } else {
+    chosen = shuffled;
+  }
+  deck = [...chosen];
+  sessionTotal = sessionSize > 0 ? sessionSize : chosen.length;
+  wrongPile=[]; allWrong=[]; correctSet.clear(); isReviewMode=false;
+  rightCount=0; wrongCount=0; streak=0; streakHistory=[];
+  firstRoundRight=0; firstRoundWrong=0; firstRoundDone=false;
+
+  updateTtsBtns();
+  updatePanels();
+  updateStats();
+  nextCard();
+}
+
+
+</script>
+</body>
+</html>
