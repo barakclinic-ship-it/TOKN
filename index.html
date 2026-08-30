@@ -2915,7 +2915,7 @@ function showEncouragement(msg) {
   if (!el) { el=document.createElement('div'); el.id='enc'; el.style.cssText='position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#58cc02;color:#fff;padding:10px 22px;border-radius:99px;font-family:Nunito,sans-serif;font-weight:800;font-size:15px;z-index:999;box-shadow:0 3px 12px rgba(0,0,0,.2);transition:opacity .4s'; document.body.appendChild(el); }
   el.textContent=msg; el.style.opacity='1';
   clearTimeout(el._t); el._t=setTimeout(()=>el.style.opacity='0',2200);
-} 
+}
 
 function showFinish() {
   isReviewMode = false;
