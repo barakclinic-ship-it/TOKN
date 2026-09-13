@@ -2041,9 +2041,15 @@ function showQ() {
   document.getElementById('fact').style.opacity = '0';
   document.getElementById('nextBtn').style.display = 'none';
   // Distractors
+  // Find all correct answers for this question (same q, different a)
+  const correctAnswers = new Set(allPool
+    .filter(c => c.q === current.q || c.q.toLowerCase() === current.q.toLowerCase())
+    .map(c => c.a.toLowerCase())
+  );
   const pool = allPool.filter(c =>
     c.q !== current.q && c.a !== current.a && c.rev === current.rev &&
-    !sharesWord(c.a, current.q)
+    !sharesWord(c.a, current.q) &&
+    !correctAnswers.has(c.a.toLowerCase()) // exclude other valid answers for this q
   );
   const sameCat = shuffle(pool.filter(c => c.src===current.src && c.cat===current.cat));
   const sameSrc = shuffle(pool.filter(c => c.src===current.src && c.cat!==current.cat));
@@ -2088,6 +2094,7 @@ function pick(btn, opt) {
   });
   if (isRight) { btn.classList.remove('reveal'); btn.classList.add('correct'); right++; }
   else { btn.classList.add('wrong'); wrong++; wrongCards.push(current); }
+  saveState();
   document.getElementById('nextBtn').style.display = 'block';
   document.getElementById('nextBtn').style.background = isRight ? '#5a9a4e' : '#cc7a7a';
   document.getElementById('nextBtn').textContent = isRight ? 'המשך ›' : 'הבנתי ›';
@@ -2148,6 +2155,7 @@ function startReview() {
 function restartGame() { startGame(); }
 
 function backToSetup() {
+  clearState();
   document.getElementById('game').style.display = 'none';
   document.getElementById('finish').style.display = 'none';
   document.getElementById('setup').style.display = 'block';
@@ -3095,7 +3103,74 @@ const _cs=document.createElement('style');
 _cs.textContent='@keyframes fall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}';
 document.head.appendChild(_cs);
 
+// ── SAVE / RESTORE STATE ──
+function saveState() {
+  if (!deck || total === 0) return;
+  const state = {
+    deck: deck.map(c => ({src:c.src,cat:c.cat,q:c.q,a:c.a,rev:c.rev})),
+    current: current ? {src:current.src,cat:current.cat,q:current.q,a:current.a,rev:current.rev} : null,
+    allPool: allPool.map(c => ({src:c.src,cat:c.cat,q:c.q,a:c.a,rev:c.rev})),
+    right, wrong, total,
+    wrongCards: wrongCards.map(c => ({src:c.src,cat:c.cat,q:c.q,a:c.a,rev:c.rev})),
+    originalScore,
+    selected: [...selected],
+    ts: Date.now()
+  };
+  try { localStorage.setItem('tok_state', JSON.stringify(state)); } catch(e) {}
+}
+
+function clearState() {
+  try { localStorage.removeItem('tok_state'); } catch(e) {}
+}
+
+function restoreState() {
+  try {
+    const raw = localStorage.getItem('tok_state');
+    if (!raw) return false;
+    const s = JSON.parse(raw);
+    // Only restore if saved less than 24 hours ago
+    if (Date.now() - s.ts > 86400000) { clearState(); return false; }
+    if (!s.deck || !s.total) return false;
+
+    // Restore game state
+    deck = s.deck;
+    current = s.current;
+    allPool = s.allPool;
+    right = s.right; wrong = s.wrong; total = s.total;
+    wrongCards = s.wrongCards || [];
+    originalScore = s.originalScore;
+    selected = new Set(s.selected || []);
+
+    // Go straight to game screen
+    document.getElementById('setup').style.display = 'none';
+    document.getElementById('finish').style.display = 'none';
+    const gameEl = document.getElementById('game');
+    gameEl.style.display = 'block';
+
+    // Add a banner
+    const banner = document.createElement('div');
+    banner.id = 'continueBanner';
+    banner.style.cssText = 'background:#2a2a2a;border:1px solid #444;border-radius:10px;padding:10px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#aaa;';
+    banner.innerHTML = '<span>ממשיך מהמקום שעצרת</span><button onclick="restartFresh()" style="background:none;border:none;color:#666;font-size:12px;cursor:pointer;padding:4px 8px;">התחל מחדש</button>';
+    gameEl.insertBefore(banner, gameEl.firstChild);
+
+    showQ();
+    return true;
+  } catch(e) { clearState(); return false; }
+}
+
+function restartFresh() {
+  clearState();
+  const banner = document.getElementById('continueBanner');
+  if (banner) banner.remove();
+  document.getElementById('game').style.display = 'none';
+  document.getElementById('setup').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+
 buildTopics();
+restoreState();
 
 
 </script>
